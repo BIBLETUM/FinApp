@@ -1,4 +1,4 @@
-package com.yanschool.finapp.ui.theme
+package com.yanschool.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
