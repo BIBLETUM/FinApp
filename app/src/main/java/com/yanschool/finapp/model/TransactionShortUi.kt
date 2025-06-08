@@ -3,8 +3,8 @@ package com.yanschool.finapp.model
 import androidx.compose.runtime.Immutable
 
 @Immutable
-data class Transaction(
+data class TransactionShortUi(
     val id: Int,
-    val amount: Double,
-    val category: TransactionCategory,
+    val amount: String,
+    val category: TransactionCategoryUi,
 )

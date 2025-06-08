@@ -3,6 +3,6 @@ package com.yanschool.finapp.model
 import androidx.compose.runtime.Immutable
 
 @Immutable
-data class Settings(
+data class SettingsUi(
     val hasAutoLightTheme: Boolean,
 )

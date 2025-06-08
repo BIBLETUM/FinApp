@@ -3,10 +3,11 @@ package com.yanschool.finapp.model
 import androidx.compose.runtime.Immutable
 
 @Immutable
-data class TransactionCategory(
+data class TransactionCategoryUi(
     val id: Int,
     val name: String,
-    val type: TransactionType,
+    val literals: String,
+    val type: TransactionTypeUi,
     val description: String?,
     val emoji: String?,
 )
