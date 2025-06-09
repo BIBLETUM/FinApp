@@ -2,7 +2,6 @@ package com.yanschool.finapp.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -14,13 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.yanschool.components.core.EmojiOrLiteralsWithCircle
 import com.yanschool.components.core.ListItem
 import com.yanschool.finapp.model.TransactionShortUi
 import com.yanschool.ui.R
 
 @Composable
-fun ListItemExpense(
+fun ListItemIncome(
     transaction: TransactionShortUi,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
@@ -28,15 +26,9 @@ fun ListItemExpense(
     ListItem(
         modifier = modifier
             .fillMaxWidth()
-            .height(70.dp)
+            .height(73.dp)
             .background(MaterialTheme.colorScheme.surface)
             .clickable { onClick() },
-        leadingContent = {
-            EmojiOrLiteralsWithCircle(
-                literals = transaction.category.literals,
-                emoji = transaction.category.emoji,
-            )
-        },
         trailingContent = {
             Text(
                 text = transaction.amount,
@@ -54,34 +46,12 @@ fun ListItemExpense(
             )
         },
     ) {
-        ListItemExpenseWithDescription(
-            name = transaction.category.name,
-            description = transaction.category.description,
-        )
-    }
-}
-
-@Composable
-private fun ListItemExpenseWithDescription(
-    name: String,
-    description: String? = null,
-) {
-    Column {
         Text(
-            text = name,
+            text = transaction.category.name,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurface,
         )
-        description?.let {
-            Text(
-                text = it,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
     }
 }

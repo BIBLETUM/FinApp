@@ -19,15 +19,15 @@ import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.components.core.FloatingActionButtonPlus
 import com.yanschool.finapp.R
-import com.yanschool.finapp.components.ListItemExpense
+import com.yanschool.finapp.components.ListItemIncome
 import com.yanschool.finapp.components.ListItemTotalAccountChanges
 import com.yanschool.finapp.mock.Mocks
 import com.yanschool.finapp.model.DailyTransactionGroupUi
 import com.yanschool.finapp.model.TransactionTypeUi
 
 @Composable
-fun TodayExpensesScreen(
-    paddingValues: PaddingValues,
+fun TodayIncomesScreen(
+    paddingValues: PaddingValues = PaddingValues(),
 ) {
     Scaffold(
         modifier = Modifier
@@ -35,7 +35,7 @@ fun TodayExpensesScreen(
             .padding(paddingValues),
         topBar = {
             DefaultTopAppBar(
-                titleRes = R.string.today_expenses,
+                titleRes = R.string.today_incomes,
                 actions = {
                     Icon(
                         modifier = Modifier.size(48.dp),
@@ -55,9 +55,9 @@ fun TodayExpensesScreen(
         TodayExpensesScreenContent(
             paddingValues = innerPaddingValues,
             todayExpenses = DailyTransactionGroupUi(
-                total = "436 558 ₽",
-                transactionShortUis = Mocks.mockTransactionsExpense,
-                type = TransactionTypeUi.EXPENSE
+                total = "600 000 ₽",
+                transactionShortUis = Mocks.mockTransactionsIncome,
+                type = TransactionTypeUi.INCOME,
             )
         )
     }
@@ -74,15 +74,15 @@ private fun TodayExpensesScreenContent(
             .padding(paddingValues),
     ) {
         item {
-            ListItemTotalAccountChanges(amount = todayExpenses.total)
+            ListItemTotalAccountChanges(
+                amount = todayExpenses.total,
+            )
             DefaultHorizontalDivider()
         }
 
         items(items = todayExpenses.transactionShortUis, key = { it.id }) {
-            ListItemExpense(transaction = it)
+            ListItemIncome(transaction = it)
             DefaultHorizontalDivider()
         }
     }
 }
-
-

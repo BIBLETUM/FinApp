@@ -16,7 +16,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.yanschool.ui.theme.Literals
 
 @Composable
 fun EmojiOrLiteralsWithCircle(
@@ -55,7 +54,7 @@ fun EmojiOrLiteralsWithCircle(
                         lineHeight = 22.sp,
                         fontWeight = FontWeight.Medium
                     ),
-                    color = Literals
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
             }
         }
