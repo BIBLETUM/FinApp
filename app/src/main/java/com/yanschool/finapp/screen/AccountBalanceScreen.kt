@@ -53,7 +53,7 @@ fun AccountBalanceScreen(
             )
         },
     ) { innerPaddingValues ->
-        AccountBalanceContent(
+        AccountBalanceScreenContent(
             paddingValues = innerPaddingValues,
             accountBalance = AccountBalanceUi(
                 amount = "-670 000 ₽",
@@ -64,7 +64,7 @@ fun AccountBalanceScreen(
 }
 
 @Composable
-private fun AccountBalanceContent(
+private fun AccountBalanceScreenContent(
     paddingValues: PaddingValues,
     accountBalance: AccountBalanceUi,
 ) {

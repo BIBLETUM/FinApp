@@ -1,54 +1,48 @@
 package com.yanschool.finapp.components
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.yanschool.components.core.ListItem
-import com.yanschool.finapp.model.TransactionShortUi
-import com.yanschool.ui.R
 
 @Composable
-fun ListItemIncome(
-    transaction: TransactionShortUi,
+fun ListItemSettingToggle(
+    @StringRes titleRes: Int,
+    isChecked: Boolean,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
 ) {
     ListItem(
         modifier = modifier
             .fillMaxWidth()
-            .height(73.dp)
+            .height(56.dp)
             .clickable { onClick() },
-        trailingContent = {
-            Text(
-                text = transaction.amount,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.bodyLarge,
-            )
-        },
         trailingAction = {
-            Icon(
-                modifier = Modifier.size(24.dp),
-                painter = painterResource(R.drawable.more_vert),
-                tint = MaterialTheme.colorScheme.tertiary,
-                contentDescription = null,
+            Switch(
+                checked = isChecked,
+                onCheckedChange = { onClick() },
             )
         },
     ) {
         Text(
-            text = transaction.category.name,
+            text = stringResource(titleRes),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.bodyLarge.copy(
+                fontSize = 16.sp,
+                lineHeight = 24.sp,
+                letterSpacing = 0.5.sp
+            ),
             color = MaterialTheme.colorScheme.onSurface,
         )
     }

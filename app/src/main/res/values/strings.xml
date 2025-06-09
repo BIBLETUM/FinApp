@@ -9,4 +9,13 @@
     <string name="money_bag_emoji">💰</string>
     <string name="my_expense_categories">Мои статьи</string>
     <string name="find_expense_category">Найти статью</string>
+    <string name="settings">Настройки</string>
+    <string name="auto_light_theme">Светлая темная авто</string>
+    <string name="main_color">Основной цвет</string>
+    <string name="sounds">Звуки</string>
+    <string name="haptics">Хаптики</string>
+    <string name="code_password">Код пароль</string>
+    <string name="synchronization">Cинхронизация</string>
+    <string name="language">Язык</string>
+    <string name="about_app">О программе</string>
 </resources>
