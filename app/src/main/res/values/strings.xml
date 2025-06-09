@@ -18,4 +18,8 @@
     <string name="synchronization">Cинхронизация</string>
     <string name="language">Язык</string>
     <string name="about_app">О программе</string>
+    <string name="expense_categories">Статьи</string>
+    <string name="score">Счет</string>
+    <string name="incomes">Доходы</string>
+    <string name="expenses">Расходы</string>
 </resources>

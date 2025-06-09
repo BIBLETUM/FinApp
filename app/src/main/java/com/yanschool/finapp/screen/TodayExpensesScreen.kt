@@ -28,7 +28,7 @@ import com.yanschool.finapp.model.DailyTransactionGroupUi
 import com.yanschool.finapp.model.TransactionTypeUi
 
 @Composable
-fun TodayExpensesScreen(
+fun TodayExpensesScreenRoot(
     paddingValues: PaddingValues,
 ) {
     Scaffold(

@@ -16,7 +16,7 @@ import com.yanschool.finapp.model.SettingsUi
 
 
 @Composable
-fun SettingsScreen(
+fun SettingsScreenRoot(
     paddingValues: PaddingValues,
 ) {
     Scaffold(

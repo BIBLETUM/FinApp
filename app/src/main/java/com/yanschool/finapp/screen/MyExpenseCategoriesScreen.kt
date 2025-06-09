@@ -17,7 +17,7 @@ import com.yanschool.finapp.mock.Mocks
 import com.yanschool.finapp.model.MyExpenseCategoriesUi
 
 @Composable
-fun MyExpenseCategoriesScreen(
+fun MyExpenseCategoriesScreenRoot(
     paddingValues: PaddingValues,
 ) {
     Scaffold(

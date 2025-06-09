@@ -3,11 +3,9 @@ package com.yanschool.finapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.yanschool.finapp.screen.SettingsScreen
 import com.yanschool.ui.theme.FinAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +19,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colorScheme.surface,
                 ) {
-                    SettingsScreen(PaddingValues())
+                    MainScreen()
                 }
             }
         }

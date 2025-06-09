@@ -25,7 +25,7 @@ import com.yanschool.finapp.components.ListItemCurrency
 import com.yanschool.finapp.model.AccountBalanceUi
 
 @Composable
-fun AccountBalanceScreen(
+fun AccountBalanceScreenRoot(
     paddingValues: PaddingValues,
 ) {
     Scaffold(
