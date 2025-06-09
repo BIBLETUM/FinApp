@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.yanschool.finapp.screen.TodayIncomesScreen
+import com.yanschool.finapp.screen.MyExpenseCategoriesScreen
 import com.yanschool.ui.theme.FinAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
                 systemUiController.setStatusBarColor(MaterialTheme.colorScheme.primary)
                 systemUiController.setNavigationBarColor(MaterialTheme.colorScheme.surface)
                 Surface {
-                    TodayIncomesScreen(PaddingValues())
+                    MyExpenseCategoriesScreen(PaddingValues())
                 }
             }
         }

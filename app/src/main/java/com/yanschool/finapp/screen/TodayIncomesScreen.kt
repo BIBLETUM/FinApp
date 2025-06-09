@@ -1,5 +1,6 @@
 package com.yanschool.finapp.screen
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -37,12 +39,14 @@ fun TodayIncomesScreen(
             DefaultTopAppBar(
                 titleRes = R.string.today_incomes,
                 actions = {
-                    Icon(
-                        modifier = Modifier.size(48.dp),
-                        painter = painterResource(com.yanschool.ui.R.drawable.history_ic),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        contentDescription = null,
-                    )
+                    Box(Modifier.size(48.dp), contentAlignment = Alignment.Center) {
+                        Icon(
+                            modifier = Modifier.size(24.dp),
+                            painter = painterResource(com.yanschool.ui.R.drawable.history_ic),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            contentDescription = null,
+                        )
+                    }
                     Spacer(modifier = Modifier.width(4.dp))
                 }
             )

@@ -3,4 +3,10 @@
     <string name="total">Всего</string>
     <string name="today_expenses">Расходы сегодня</string>
     <string name="today_incomes">Доходы сегодня</string>
+    <string name="balance">Баланс</string>
+    <string name="currency">Валюта</string>
+    <string name="my_balance">Мой счет</string>
+    <string name="money_bag_emoji">💰</string>
+    <string name="my_expense_categories">Мои статьи</string>
+    <string name="find_expense_category">Найти статью</string>
 </resources>

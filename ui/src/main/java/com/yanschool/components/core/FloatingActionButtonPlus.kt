@@ -10,6 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.yanschool.ui.R
@@ -22,9 +23,9 @@ fun FloatingActionButtonPlus(
     Box(
         modifier = modifier
             .size(56.dp)
+            .clip(CircleShape)
             .background(
-                color = MaterialTheme.colorScheme.primary,
-                shape = CircleShape,
+                color = MaterialTheme.colorScheme.primary
             )
             .clickable { onClick() },
         contentAlignment = Alignment.Center

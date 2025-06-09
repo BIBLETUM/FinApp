@@ -4,6 +4,6 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class AccountBalanceUi(
-    val amount: Int,
+    val amount: String,
     val currency: String,
 )

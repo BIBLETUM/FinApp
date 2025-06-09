@@ -1,14 +1,13 @@
 package com.yanschool.finapp.screen
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -21,14 +20,12 @@ import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.components.core.FloatingActionButtonPlus
 import com.yanschool.finapp.R
-import com.yanschool.finapp.components.ListItemExpense
-import com.yanschool.finapp.components.ListItemTotalAccountChanges
-import com.yanschool.finapp.mock.Mocks
-import com.yanschool.finapp.model.DailyTransactionGroupUi
-import com.yanschool.finapp.model.TransactionTypeUi
+import com.yanschool.finapp.components.ListItemBalance
+import com.yanschool.finapp.components.ListItemCurrency
+import com.yanschool.finapp.model.AccountBalanceUi
 
 @Composable
-fun TodayExpensesScreen(
+fun AccountBalanceScreen(
     paddingValues: PaddingValues,
 ) {
     Scaffold(
@@ -37,12 +34,12 @@ fun TodayExpensesScreen(
             .padding(paddingValues),
         topBar = {
             DefaultTopAppBar(
-                titleRes = R.string.today_expenses,
+                titleRes = R.string.my_balance,
                 actions = {
                     Box(Modifier.size(48.dp), contentAlignment = Alignment.Center) {
                         Icon(
                             modifier = Modifier.size(24.dp),
-                            painter = painterResource(com.yanschool.ui.R.drawable.history_ic),
+                            painter = painterResource(com.yanschool.ui.R.drawable.edit_ic),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant,
                             contentDescription = null,
                         )
@@ -56,37 +53,32 @@ fun TodayExpensesScreen(
             )
         },
     ) { innerPaddingValues ->
-        TodayExpensesScreenContent(
+        AccountBalanceContent(
             paddingValues = innerPaddingValues,
-            todayExpenses = DailyTransactionGroupUi(
-                total = "436 558 ₽",
-                transactionShortUis = Mocks.mockTransactionsExpense,
-                type = TransactionTypeUi.EXPENSE
+            accountBalance = AccountBalanceUi(
+                amount = "-670 000 ₽",
+                currency = "₽",
             )
         )
     }
 }
 
 @Composable
-private fun TodayExpensesScreenContent(
+private fun AccountBalanceContent(
     paddingValues: PaddingValues,
-    todayExpenses: DailyTransactionGroupUi,
+    accountBalance: AccountBalanceUi,
 ) {
-    LazyColumn(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues),
     ) {
-        item {
-            ListItemTotalAccountChanges(amount = todayExpenses.total)
-            DefaultHorizontalDivider()
-        }
-
-        items(items = todayExpenses.transactionShortUis, key = { it.id }) {
-            ListItemExpense(transaction = it)
-            DefaultHorizontalDivider()
-        }
+        ListItemBalance(
+            amount = accountBalance.amount
+        )
+        DefaultHorizontalDivider()
+        ListItemCurrency(
+            currency = accountBalance.currency
+        )
     }
 }
-
-

@@ -1,5 +1,6 @@
 package com.yanschool.components.core
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -35,8 +36,11 @@ fun ListItem(
                 it.invoke()
                 Spacer(modifier = Modifier.width(16.dp))
             }
-            mainContent()
-            Spacer(modifier = Modifier.weight(1f))
+            Box(
+                modifier = Modifier.weight(1f)
+            ) {
+                mainContent()
+            }
             trailingContent?.let {
                 Spacer(modifier = Modifier.width(16.dp))
                 it.invoke()
@@ -48,5 +52,4 @@ fun ListItem(
             Spacer(modifier = Modifier.width(16.dp))
         }
     }
-
 }
