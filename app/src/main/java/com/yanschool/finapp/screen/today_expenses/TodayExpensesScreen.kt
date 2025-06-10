@@ -65,7 +65,7 @@ private fun TodayExpensesScreen(
         when (val currentState = screenState.value) {
             is TodayExpensesScreenState.Content -> {
                 TodayExpensesScreenContent(
-                    paddingValues = innerPaddingValues, todayExpenses = currentState.data
+                    paddingValues = innerPaddingValues, screenState = currentState
                 )
             }
 
@@ -81,7 +81,7 @@ private fun TodayExpensesScreen(
 @Composable
 private fun TodayExpensesScreenContent(
     paddingValues: PaddingValues,
-    todayExpenses: DailyTransactionGroupUi,
+    screenState: TodayExpensesScreenState.Content,
 ) {
     LazyColumn(
         modifier = Modifier
@@ -89,11 +89,11 @@ private fun TodayExpensesScreenContent(
             .padding(paddingValues),
     ) {
         item {
-            ListItemTotalAccountChanges(amount = todayExpenses.total)
+            ListItemTotalAccountChanges(amount = screenState.data.total)
             DefaultHorizontalDivider()
         }
 
-        items(items = todayExpenses.transactionShortUis, key = { it.id }) {
+        items(items = screenState.data.transactionShortUis, key = { it.id }) {
             ListItemExpense(transaction = it)
             DefaultHorizontalDivider()
         }

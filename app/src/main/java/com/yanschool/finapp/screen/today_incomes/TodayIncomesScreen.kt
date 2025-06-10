@@ -40,11 +40,11 @@ fun TodayIncomesScreenRoot(
         )
     }
 
-    TodayExpensesScreen(paddingValues = paddingValues, screenState = screenState)
+    TodayIncomesScreen(paddingValues = paddingValues, screenState = screenState)
 }
 
 @Composable
-private fun TodayExpensesScreen(
+private fun TodayIncomesScreen(
     paddingValues: PaddingValues,
     screenState: State<TodayIncomesScreenState>,
 ) {
@@ -68,9 +68,9 @@ private fun TodayExpensesScreen(
     ) { innerPaddingValues ->
         when (val currentState = screenState.value) {
             is TodayIncomesScreenState.Content -> {
-                TodayExpensesScreenContent(
+                TodayIncomesScreenContent(
                     paddingValues = innerPaddingValues,
-                    todayExpenses = currentState.data
+                    screenState = currentState
                 )
             }
 
@@ -85,9 +85,9 @@ private fun TodayExpensesScreen(
 }
 
 @Composable
-private fun TodayExpensesScreenContent(
+private fun TodayIncomesScreenContent(
     paddingValues: PaddingValues,
-    todayExpenses: DailyTransactionGroupUi,
+    screenState: TodayIncomesScreenState.Content,
 ) {
     LazyColumn(
         modifier = Modifier
@@ -96,12 +96,12 @@ private fun TodayExpensesScreenContent(
     ) {
         item {
             ListItemTotalAccountChanges(
-                amount = todayExpenses.total,
+                amount = screenState.data.total,
             )
             DefaultHorizontalDivider()
         }
 
-        items(items = todayExpenses.transactionShortUis, key = { it.id }) {
+        items(items = screenState.data.transactionShortUis, key = { it.id }) {
             ListItemIncome(transaction = it)
             DefaultHorizontalDivider()
         }

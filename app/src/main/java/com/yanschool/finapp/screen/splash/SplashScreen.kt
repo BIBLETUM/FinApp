@@ -1,4 +1,4 @@
-package com.yanschool.finapp.screen
+package com.yanschool.finapp.screen.splash
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

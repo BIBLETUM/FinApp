@@ -26,10 +26,10 @@ import androidx.navigation.compose.rememberNavController
 import com.yanschool.finapp.navigation.AppNavGraph
 import com.yanschool.finapp.navigation.BottomNavigationItem
 import com.yanschool.finapp.navigation.Screen
-import com.yanschool.finapp.screen.AccountBalanceScreenRoot
+import com.yanschool.finapp.screen.account_balance.AccountBalanceScreenRoot
 import com.yanschool.finapp.screen.MyExpenseCategoriesScreenRoot
 import com.yanschool.finapp.screen.SettingsScreenRoot
-import com.yanschool.finapp.screen.SplashScreenRoot
+import com.yanschool.finapp.screen.splash.SplashScreenRoot
 import com.yanschool.finapp.screen.today_expenses.TodayExpensesScreenRoot
 import com.yanschool.finapp.screen.today_incomes.TodayIncomesScreenRoot
 
