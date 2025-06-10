@@ -15,6 +15,7 @@ private val DarkColorScheme = darkColorScheme()
 private val LightColorScheme = lightColorScheme(
     primary = Green,
     primaryContainer = GreenSoft,
+    surface = PinkSurface,
 )
 
 @Composable

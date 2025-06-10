@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,6 +25,7 @@ fun MyExpenseCategoriesScreenRoot(
         modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues),
+        containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
             DefaultTopAppBar(
                 titleRes = R.string.my_expense_categories,

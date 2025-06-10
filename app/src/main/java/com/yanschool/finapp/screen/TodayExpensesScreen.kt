@@ -35,6 +35,7 @@ fun TodayExpensesScreenRoot(
         modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues),
+        containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
             DefaultTopAppBar(
                 titleRes = R.string.today_expenses,
