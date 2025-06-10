@@ -1,4 +1,4 @@
-package com.yanschool.finapp.screen
+package com.yanschool.finapp.screen.today_incomes
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues

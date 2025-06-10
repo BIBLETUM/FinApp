@@ -30,8 +30,8 @@ import com.yanschool.finapp.screen.AccountBalanceScreenRoot
 import com.yanschool.finapp.screen.MyExpenseCategoriesScreenRoot
 import com.yanschool.finapp.screen.SettingsScreenRoot
 import com.yanschool.finapp.screen.SplashScreenRoot
-import com.yanschool.finapp.screen.TodayExpensesScreenRoot
-import com.yanschool.finapp.screen.TodayIncomesScreenRoot
+import com.yanschool.finapp.screen.today_expenses.TodayExpensesScreenRoot
+import com.yanschool.finapp.screen.today_incomes.TodayIncomesScreenRoot
 
 @Composable
 internal fun MainScreen() {
