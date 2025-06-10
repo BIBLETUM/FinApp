@@ -27,7 +27,7 @@ import com.yanschool.finapp.navigation.AppNavGraph
 import com.yanschool.finapp.navigation.BottomNavigationItem
 import com.yanschool.finapp.navigation.Screen
 import com.yanschool.finapp.screen.account_balance.AccountBalanceScreenRoot
-import com.yanschool.finapp.screen.MyExpenseCategoriesScreenRoot
+import com.yanschool.finapp.screen.my_expense_categories.MyExpenseCategoriesScreenRoot
 import com.yanschool.finapp.screen.SettingsScreenRoot
 import com.yanschool.finapp.screen.splash.SplashScreenRoot
 import com.yanschool.finapp.screen.today_expenses.TodayExpensesScreenRoot
