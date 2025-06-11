@@ -17,6 +17,7 @@ private val LightColorScheme = lightColorScheme(
     primaryContainer = GreenSoft,
     surface = PinkSurface,
     surfaceContainer = WhiteSurfaceContainer,
+    surfaceContainerHigh = WhiteSurfaceContainerHigh,
 )
 
 @Composable
