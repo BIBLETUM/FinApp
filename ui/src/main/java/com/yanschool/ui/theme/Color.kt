@@ -5,3 +5,4 @@ import androidx.compose.ui.graphics.Color
 internal val Green = Color(0xFF2AE881)
 internal val GreenSoft = Color(0xFFD4FAE6)
 internal val PinkSurface = Color(0xFFfef7ff)
+internal val WhiteSurfaceContainer = Color(0xFFF3EDF7)
