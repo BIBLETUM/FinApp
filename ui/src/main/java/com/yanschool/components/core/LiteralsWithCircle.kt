@@ -2,7 +2,7 @@ package com.yanschool.components.core
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,7 +28,7 @@ fun LiteralsWithCircle(
     Box(
         modifier = modifier
             .background(backgroundColor, shape = CircleShape)
-            .size(size),
+            .sizeIn(minWidth = size, minHeight = size),
         contentAlignment = Alignment.Center
     ) {
         Text(

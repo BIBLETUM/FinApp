@@ -2,7 +2,7 @@ package com.yanschool.finapp.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Icon
@@ -25,7 +25,7 @@ fun ListItemSearch(
     ListItem(
         modifier = modifier
             .fillMaxWidth()
-            .height(56.dp)
+            .heightIn(56.dp)
             .background(MaterialTheme.colorScheme.surfaceContainerHigh),
         trailingAction = {
             Icon(

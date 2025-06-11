@@ -1,7 +1,7 @@
 package com.yanschool.finapp.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,7 +19,7 @@ fun ListItemTotalAccountChanges(
 ) {
     ListItem(
         modifier = modifier
-            .height(56.dp)
+            .heightIn(56.dp)
             .background(MaterialTheme.colorScheme.primaryContainer),
         trailingContent = {
             Text(

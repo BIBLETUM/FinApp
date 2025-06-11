@@ -1,11 +1,9 @@
 package com.yanschool.components.core
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
@@ -22,34 +20,29 @@ fun ListItem(
     trailingAction: (@Composable () -> Unit)? = null,
     mainContent: @Composable () -> Unit,
 ) {
-    Column(
-        modifier = modifier,
+    Row(
+        modifier = modifier
+            .padding(contentPadding),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(contentPadding),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Spacer(modifier = Modifier.width(16.dp))
-            leadingContent?.let {
-                it.invoke()
-                Spacer(modifier = Modifier.width(16.dp))
-            }
-            Box(
-                modifier = Modifier.weight(1f)
-            ) {
-                mainContent()
-            }
-            trailingContent?.let {
-                Spacer(modifier = Modifier.width(16.dp))
-                it.invoke()
-            }
-            trailingAction?.let {
-                Spacer(modifier = Modifier.width(16.dp))
-                it.invoke()
-            }
+        Spacer(modifier = Modifier.width(16.dp))
+        leadingContent?.let {
+            it.invoke()
             Spacer(modifier = Modifier.width(16.dp))
         }
+        Box(
+            modifier = Modifier.weight(1f)
+        ) {
+            mainContent()
+        }
+        trailingContent?.let {
+            Spacer(modifier = Modifier.width(16.dp))
+            it.invoke()
+        }
+        trailingAction?.let {
+            Spacer(modifier = Modifier.width(16.dp))
+            it.invoke()
+        }
+        Spacer(modifier = Modifier.width(16.dp))
     }
 }
