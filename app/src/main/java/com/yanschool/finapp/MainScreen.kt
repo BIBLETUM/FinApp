@@ -155,6 +155,6 @@ private fun NavigationBarItemLabel(
     }
     Text(
         text = stringResource(id = titleResId),
-        style = textStyle
+        style = textStyle,
     )
 }

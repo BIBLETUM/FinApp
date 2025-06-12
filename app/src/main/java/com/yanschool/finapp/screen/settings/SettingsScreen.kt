@@ -82,7 +82,7 @@ private fun SettingsScreenContent(
             .padding(paddingValues),
     ) {
         ListItemSettingToggle(
-            titleRes = R.string.auto_light_theme,
+            titleRes = R.string.dark_theme,
             isChecked = screenState.data.hasAutoLightTheme,
         )
         DefaultHorizontalDivider()
