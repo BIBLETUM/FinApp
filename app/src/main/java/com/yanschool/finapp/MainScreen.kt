@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -156,5 +157,7 @@ private fun NavigationBarItemLabel(
     Text(
         text = stringResource(id = titleResId),
         style = textStyle,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
     )
 }
