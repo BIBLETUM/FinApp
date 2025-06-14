@@ -47,7 +47,7 @@ private fun MyExpenseCategoriesScreen(
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues),
+            .padding(bottom = paddingValues.calculateBottomPadding()),
         containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
             DefaultTopAppBar(
