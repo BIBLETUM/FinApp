@@ -50,7 +50,7 @@ private fun TodayExpensesScreen(
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues),
+            .padding(bottom = paddingValues.calculateBottomPadding()),
         containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
             DefaultTopAppBar(titleRes = R.string.today_expenses, actions = {

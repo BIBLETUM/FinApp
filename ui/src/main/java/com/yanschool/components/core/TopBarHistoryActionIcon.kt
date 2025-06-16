@@ -1,20 +1,25 @@
 package com.yanschool.components.core
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.yanschool.ui.R
 
 @Composable
-fun RowScope.TopBarHistoryActionIcon() {
-    Box(Modifier.size(48.dp), contentAlignment = Alignment.Center) {
+fun RowScope.TopBarHistoryActionIcon(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
+) {
+    IconButton(
+        onClick = onClick,
+        modifier = modifier.size(48.dp),
+    ) {
         Icon(
             modifier = Modifier.size(24.dp),
             painter = painterResource(R.drawable.history_ic),

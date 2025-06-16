@@ -51,7 +51,7 @@ private fun TodayIncomesScreen(
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues),
+            .padding(bottom = paddingValues.calculateBottomPadding()),
         containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
             DefaultTopAppBar(

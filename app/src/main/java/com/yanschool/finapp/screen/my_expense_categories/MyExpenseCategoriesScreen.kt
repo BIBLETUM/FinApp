@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.finapp.R
-import com.yanschool.finapp.components.ListItemSearch
 import com.yanschool.finapp.components.ListItemTransactionCategory
+import com.yanschool.finapp.components.SearchBar
 import com.yanschool.finapp.mock.Mocks
 import com.yanschool.finapp.model.MyExpenseCategoriesUi
 
@@ -47,7 +47,7 @@ private fun MyExpenseCategoriesScreen(
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues),
+            .padding(bottom = paddingValues.calculateBottomPadding()),
         containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
             DefaultTopAppBar(
@@ -85,7 +85,7 @@ private fun MyExpenseCategoriesScreenContent(
             .padding(paddingValues),
     ) {
         item {
-            ListItemSearch(query = screenState.data.searchQuery)
+            SearchBar(query = screenState.data.searchQuery)
             DefaultHorizontalDivider()
         }
 
