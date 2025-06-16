@@ -15,6 +15,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
+import com.yanschool.components.core.ErrorScreen
+import com.yanschool.components.core.Loader
 import com.yanschool.finapp.R
 import com.yanschool.finapp.presentation.components.ListItemTransactionCategory
 import com.yanschool.finapp.presentation.components.SearchBar
@@ -55,9 +57,19 @@ private fun MyExpenseCategoriesScreen(
 
             is MyExpenseCategoriesScreenState.Error -> {
                 Log.d("MyExpenseCategoriesScreen", currentState.msg)
+                ErrorScreen(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = innerPaddingValues.calculateTopPadding())
+                )
             }
 
             is MyExpenseCategoriesScreenState.Loading -> {
+                Loader(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = innerPaddingValues.calculateTopPadding())
+                )
             }
         }
     }

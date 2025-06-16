@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.lottie)
+
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
