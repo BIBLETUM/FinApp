@@ -1,23 +1,25 @@
 package com.yanschool.finapp.navigation
 
-internal sealed class Screen(
-    val route: String,
-) {
-    data object Splash : Screen(ROUTE_SPLASH)
+import kotlinx.serialization.Serializable
 
-    data object TodayExpenses : Screen(ROUTE_TODAY_EXPENSES)
-    data object TodayIncomes : Screen(ROUTE_TODAY_INCOMES)
-    data object Balance : Screen(ROUTE_BALANCE)
-    data object ExpenseCategories : Screen(ROUTE_EXPENSE_CATEGORIES)
-    data object Settings : Screen(ROUTE_SETTINGS)
+@Serializable
+internal sealed interface Screen {
 
-    companion object {
-        const val ROUTE_SPLASH = "Splash_screen_route"
+    @Serializable
+    data object Splash : Screen
 
-        const val ROUTE_TODAY_EXPENSES = "Today_expenses_screen_route"
-        const val ROUTE_TODAY_INCOMES = "Today_incomes_screen_route"
-        const val ROUTE_BALANCE = "Balance_screen_route"
-        const val ROUTE_EXPENSE_CATEGORIES = "Expense_categories_screen_route"
-        const val ROUTE_SETTINGS = "Settings_screen_route"
-    }
+    @Serializable
+    data object TodayExpenses : Screen
+
+    @Serializable
+    data object TodayIncomes : Screen
+
+    @Serializable
+    data object Balance : Screen
+
+    @Serializable
+    data object ExpenseCategories : Screen
+
+    @Serializable
+    data object Settings : Screen
 }

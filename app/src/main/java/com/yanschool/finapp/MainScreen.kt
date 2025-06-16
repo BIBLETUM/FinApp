@@ -10,6 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -40,7 +41,7 @@ internal fun MainScreen() {
             ) {
                 navigationItems.forEach { navigationItem ->
                     val selected = backStackEntry?.destination?.hierarchy?.any {
-                        it.route == navigationItem.screen.route
+                        it.hasRoute(navigationItem.screen::class)
                     } == true
 
                     NavigationBarItem(
@@ -54,8 +55,8 @@ internal fun MainScreen() {
                         ),
                         onClick = {
                             if (!selected) {
-                                navHostController.navigate(navigationItem.screen.route) {
-                                    popUpTo(Screen.TodayExpenses.route) {
+                                navHostController.navigate(navigationItem.screen) {
+                                    popUpTo(Screen.TodayExpenses) {
                                         saveState = true
                                     }
                                     launchSingleTop = true
@@ -85,9 +86,9 @@ internal fun MainScreen() {
             splashScreenContent = {
                 SplashScreenRoot(continueToNextScreen = {
                     navHostController.navigate(
-                        Screen.TodayExpenses.route
+                        Screen.TodayExpenses
                     ) {
-                        popUpTo(Screen.Splash.route) {
+                        popUpTo(Screen.Splash) {
                             inclusive = true
                         }
                     }

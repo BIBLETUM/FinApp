@@ -16,24 +16,24 @@ internal fun AppNavGraph(
     settingsScreenContent: @Composable () -> Unit,
 ) {
     NavHost(
-        navController = navHostController, startDestination = Screen.Splash.route
+        navController = navHostController, startDestination = Screen.Splash
     ) {
-        composable(Screen.Splash.route) {
+        composable<Screen.Splash> {
             splashScreenContent()
         }
-        composable(Screen.TodayExpenses.route) {
+        composable<Screen.TodayExpenses> {
             todayExpensesScreenContent()
         }
-        composable(Screen.TodayIncomes.route) {
+        composable<Screen.TodayIncomes> {
             todayIncomesScreenContent()
         }
-        composable(Screen.Balance.route) {
+        composable<Screen.Balance> {
             balanceScreenContent()
         }
-        composable(Screen.ExpenseCategories.route) {
+        composable<Screen.ExpenseCategories> {
             myExpenseCategoriesScreenContent()
         }
-        composable(Screen.Settings.route) {
+        composable<Screen.Settings> {
             settingsScreenContent()
         }
     }
