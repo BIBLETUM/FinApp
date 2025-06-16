@@ -86,33 +86,11 @@ private fun SettingsScreenContent(
             isChecked = screenState.data.hasAutoLightTheme,
         )
         DefaultHorizontalDivider()
-        ListItemSetting(
-            titleRes = R.string.main_color,
-        )
-        DefaultHorizontalDivider()
-        ListItemSetting(
-            titleRes = R.string.sounds,
-        )
-        DefaultHorizontalDivider()
-        ListItemSetting(
-            titleRes = R.string.haptics,
-        )
-        DefaultHorizontalDivider()
-        ListItemSetting(
-            titleRes = R.string.code_password,
-        )
-        DefaultHorizontalDivider()
-        ListItemSetting(
-            titleRes = R.string.synchronization,
-        )
-        DefaultHorizontalDivider()
-        ListItemSetting(
-            titleRes = R.string.language,
-        )
-        DefaultHorizontalDivider()
-        ListItemSetting(
-            titleRes = R.string.about_app,
-        )
-        DefaultHorizontalDivider()
+        SettingOption.entries.forEach { option ->
+            ListItemSetting(
+                titleRes = option.titleRes,
+            )
+            DefaultHorizontalDivider()
+        }
     }
 }

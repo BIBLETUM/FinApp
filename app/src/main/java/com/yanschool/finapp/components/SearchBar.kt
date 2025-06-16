@@ -18,7 +18,7 @@ import com.yanschool.components.core.ListItem
 import com.yanschool.ui.R
 
 @Composable
-fun ListItemSearch(
+fun SearchBar(
     query: String,
     modifier: Modifier = Modifier,
 ) {

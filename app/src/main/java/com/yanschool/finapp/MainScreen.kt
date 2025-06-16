@@ -41,7 +41,7 @@ internal fun MainScreen() {
                 navigationItems.forEach { navigationItem ->
                     val selected = backStackEntry?.destination?.hierarchy?.any {
                         it.route == navigationItem.screen.route
-                    } ?: false
+                    } == true
 
                     NavigationBarItem(
                         selected = selected,
