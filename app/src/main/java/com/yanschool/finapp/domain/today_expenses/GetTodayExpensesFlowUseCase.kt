@@ -1,4 +1,4 @@
-package com.yanschool.finapp.domain.expenses
+package com.yanschool.finapp.domain.today_expenses
 
 import com.yanschool.finapp.domain.common_models.TransactionShort
 import kotlinx.coroutines.flow.Flow
@@ -9,14 +9,14 @@ import java.util.Locale
 import javax.inject.Inject
 
 class GetTodayExpensesFlowUseCase @Inject constructor(
-    private val todayTransactionsRepository: TodayTransactionsRepository,
+    private val transactionsRepository: TransactionsRepository,
 ) : IGetTodayExpensesFlowUseCase {
 
     override fun invoke(): Flow<Result<List<TransactionShort>>> {
         val todayString: String = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             .format(Calendar.getInstance().time)
 
-        return todayTransactionsRepository.getTransactions(
+        return transactionsRepository.getTransactions(
             startDate = todayString,
             endDate = todayString
         ).map { result ->

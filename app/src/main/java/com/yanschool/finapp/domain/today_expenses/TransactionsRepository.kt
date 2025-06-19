@@ -1,13 +1,13 @@
-package com.yanschool.finapp.domain.expenses
+package com.yanschool.finapp.domain.today_expenses
 
 import com.yanschool.finapp.domain.common_models.TransactionShort
 import kotlinx.coroutines.flow.Flow
 
-interface TodayTransactionsRepository {
+interface TransactionsRepository {
 
     fun getTransactions(
-        startDate: String,
-        endDate: String,
+        startDate: String? = null,
+        endDate: String? = null,
     ): Flow<Result<List<TransactionShort>>>
 
 }

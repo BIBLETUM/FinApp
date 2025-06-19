@@ -1,9 +1,9 @@
-package com.yanschool.finapp.presentation.screen.today_expenses
+package com.yanschool.finapp.presentation.screen.today_incomes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanschool.core.extensions.toStringWithCurrency
-import com.yanschool.finapp.domain.today_expenses.IGetTodayExpensesFlowUseCase
+import com.yanschool.finapp.domain.today_incomes.IGetTodayIncomesFlowUseCase
 import com.yanschool.finapp.presentation.common_mapper.TransactionShortUiMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,22 +15,23 @@ import java.math.BigDecimal
 import javax.inject.Inject
 
 @HiltViewModel
-class TodayExpensesViewModel @Inject constructor(
-    private val getTodayExpensesFlowUseCase: IGetTodayExpensesFlowUseCase,
+class TodayIncomesViewModel @Inject constructor(
+    private val getTodayIncomesFlow: IGetTodayIncomesFlowUseCase,
     private val mapper: TransactionShortUiMapper,
 ) : ViewModel() {
 
-    private val _screenState =
-        MutableStateFlow<TodayExpensesScreenState>(TodayExpensesScreenState.Loading)
-    val screenSate: StateFlow<TodayExpensesScreenState> = _screenState.asStateFlow()
+    private val _screenState: MutableStateFlow<TodayIncomesScreenState> = MutableStateFlow(
+        TodayIncomesScreenState.Loading
+    )
+    val screenSate: StateFlow<TodayIncomesScreenState> = _screenState.asStateFlow()
 
     init {
         viewModelScope.launch {
-            getTodayExpensesFlowUseCase.invoke()
+            getTodayIncomesFlow.invoke()
                 .collect { result ->
                     result.onFailure { error ->
                         _screenState.value =
-                            TodayExpensesScreenState.Error(error.message ?: "Произошла ошибка")
+                            TodayIncomesScreenState.Error(error.message ?: "Произошла ошибка")
                     }
                     result.onSuccess { data ->
                         val totalAmount = data
@@ -43,7 +44,7 @@ class TodayExpensesViewModel @Inject constructor(
                                     .copy(amount = BigDecimal(it.amount).toStringWithCurrency())
                             }
                         _screenState.update {
-                            TodayExpensesScreenState.Content(
+                            TodayIncomesScreenState.Content(
                                 transactionShortUis = uiItems,
                                 total = totalAmount,
                             )
@@ -52,4 +53,5 @@ class TodayExpensesViewModel @Inject constructor(
                 }
         }
     }
+
 }

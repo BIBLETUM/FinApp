@@ -10,35 +10,25 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
+import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.FloatingActionButtonPlus
+import com.yanschool.components.core.Loader
 import com.yanschool.components.core.TopBarHistoryActionIcon
 import com.yanschool.finapp.R
 import com.yanschool.finapp.presentation.components.ListItemIncome
 import com.yanschool.finapp.presentation.components.ListItemTotalAccountChanges
-import com.yanschool.finapp.presentation.mock.Mocks
-import com.yanschool.finapp.presentation.model.DailyTransactionGroupUi
-import com.yanschool.finapp.presentation.model.TransactionTypeUi
 
 @Composable
 fun TodayIncomesScreenRoot(
     paddingValues: PaddingValues = PaddingValues(),
+    viewModel: TodayIncomesViewModel = hiltViewModel()
 ) {
-    val screenState = remember {
-        mutableStateOf(
-            TodayIncomesScreenState.Content(
-                data = DailyTransactionGroupUi(
-                    total = "600 000 ₽",
-                    transactionShortUis = Mocks.mockTransactionsIncome,
-                    type = TransactionTypeUi.INCOME,
-                )
-            )
-        )
-    }
+    val screenState = viewModel.screenSate.collectAsStateWithLifecycle()
 
     TodayIncomesScreen(paddingValues = paddingValues, screenState = screenState)
 }
@@ -75,10 +65,20 @@ private fun TodayIncomesScreen(
             }
 
             is TodayIncomesScreenState.Error -> {
+                ErrorScreen(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = innerPaddingValues.calculateTopPadding())
+                )
                 Log.d("TodayExpensesScreen", currentState.msg)
             }
 
             is TodayIncomesScreenState.Loading -> {
+                Loader(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = innerPaddingValues.calculateTopPadding())
+                )
             }
         }
     }
@@ -92,16 +92,16 @@ private fun TodayIncomesScreenContent(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues),
+            .padding(top = paddingValues.calculateTopPadding()),
     ) {
         item {
             ListItemTotalAccountChanges(
-                amount = screenState.data.total,
+                amount = screenState.total,
             )
             DefaultHorizontalDivider()
         }
 
-        items(items = screenState.data.transactionShortUis, key = { it.id }) {
+        items(items = screenState.transactionShortUis, key = { it.id }) {
             ListItemIncome(transaction = it)
             DefaultHorizontalDivider()
         }
