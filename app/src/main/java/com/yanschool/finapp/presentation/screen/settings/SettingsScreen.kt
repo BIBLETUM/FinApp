@@ -15,8 +15,6 @@ import androidx.compose.ui.Modifier
 import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.finapp.R
-import com.yanschool.finapp.presentation.components.ListItemSetting
-import com.yanschool.finapp.presentation.components.ListItemSettingToggle
 import com.yanschool.finapp.presentation.model.SettingsUi
 
 

@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.components
+package com.yanschool.finapp.presentation.screen.account_balance
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,13 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.yanschool.components.core.EmojiWithCircle
 import com.yanschool.components.core.ListItem
 import com.yanschool.finapp.R
 
 @Composable
-fun ListItemBalance(
-    amount: String,
+fun ListItemCurrency(
+    currency: String,
     modifier: Modifier = Modifier,
 ) {
     ListItem(
@@ -26,16 +25,9 @@ fun ListItemBalance(
             .fillMaxWidth()
             .heightIn(56.dp)
             .background(MaterialTheme.colorScheme.primaryContainer),
-        leadingContent = {
-            EmojiWithCircle(
-                emoji = stringResource(R.string.money_bag_emoji),
-                size = 24.dp,
-                backgroundColor = MaterialTheme.colorScheme.onPrimary
-            )
-        },
         trailingContent = {
             Text(
-                text = amount,
+                text = currency,
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurface,
             )
@@ -50,7 +42,7 @@ fun ListItemBalance(
         },
     ) {
         Text(
-            text = stringResource(R.string.balance),
+            text = stringResource(R.string.currency),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurface,
         )

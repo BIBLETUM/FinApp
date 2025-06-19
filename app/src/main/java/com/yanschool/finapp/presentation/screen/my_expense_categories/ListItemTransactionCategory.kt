@@ -1,48 +1,43 @@
-package com.yanschool.finapp.presentation.components
+package com.yanschool.finapp.presentation.screen.my_expense_categories
 
-import androidx.annotation.StringRes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.yanschool.components.core.EmojiOrLiteralsWithCircle
 import com.yanschool.components.core.ListItem
+import com.yanschool.finapp.presentation.model.TransactionCategoryUi
 
 @Composable
-fun ListItemSettingToggle(
-    @StringRes titleRes: Int,
-    isChecked: Boolean,
+fun ListItemTransactionCategory(
+    category: TransactionCategoryUi,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
 ) {
     ListItem(
         modifier = modifier
             .fillMaxWidth()
-            .heightIn(56.dp)
+            .heightIn(70.dp)
+            .background(MaterialTheme.colorScheme.surface)
             .clickable { onClick() },
-        trailingAction = {
-            Switch(
-                checked = isChecked,
-                onCheckedChange = { onClick() },
+        leadingContent = {
+            EmojiOrLiteralsWithCircle(
+                literals = category.literals,
+                emoji = category.emoji,
             )
         },
     ) {
         Text(
-            text = stringResource(titleRes),
+            text = category.name,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            style = MaterialTheme.typography.bodyLarge.copy(
-                fontSize = 16.sp,
-                lineHeight = 24.sp,
-                letterSpacing = 0.5.sp
-            ),
+            style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurface,
         )
     }

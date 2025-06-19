@@ -18,7 +18,6 @@ import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.Loader
 import com.yanschool.finapp.R
-import com.yanschool.finapp.presentation.components.ListItemTransactionCategory
 import com.yanschool.finapp.presentation.components.SearchBar
 
 @Composable

@@ -20,7 +20,6 @@ import com.yanschool.components.core.FloatingActionButtonPlus
 import com.yanschool.components.core.Loader
 import com.yanschool.components.core.TopBarHistoryActionIcon
 import com.yanschool.finapp.R
-import com.yanschool.finapp.presentation.components.ListItemIncome
 import com.yanschool.finapp.presentation.components.ListItemTotalAccountChanges
 
 @Composable

@@ -25,8 +25,6 @@ import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.FloatingActionButtonPlus
 import com.yanschool.components.core.Loader
 import com.yanschool.finapp.R
-import com.yanschool.finapp.presentation.components.ListItemBalance
-import com.yanschool.finapp.presentation.components.ListItemCurrency
 
 @Composable
 fun AccountBalanceScreenRoot(
