@@ -1,4 +1,4 @@
-package com.yanschool.finapp.domain.transaction_categories
+package com.yanschool.finapp.domain.common_models
 
 data class TransactionCategory(
     val id: Int,

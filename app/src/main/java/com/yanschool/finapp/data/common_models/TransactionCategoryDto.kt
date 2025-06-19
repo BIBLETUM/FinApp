@@ -1,4 +1,4 @@
-package com.yanschool.finapp.data.transaction_categories
+package com.yanschool.finapp.data.common_models
 
 import com.google.gson.annotations.SerializedName
 

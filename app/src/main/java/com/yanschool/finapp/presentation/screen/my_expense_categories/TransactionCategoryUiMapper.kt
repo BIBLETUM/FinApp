@@ -1,6 +1,6 @@
 package com.yanschool.finapp.presentation.screen.my_expense_categories
 
-import com.yanschool.finapp.domain.transaction_categories.TransactionCategory
+import com.yanschool.finapp.domain.common_models.TransactionCategory
 import com.yanschool.finapp.presentation.model.TransactionCategoryUi
 import com.yanschool.finapp.presentation.model.TransactionTypeUi
 import javax.inject.Inject
