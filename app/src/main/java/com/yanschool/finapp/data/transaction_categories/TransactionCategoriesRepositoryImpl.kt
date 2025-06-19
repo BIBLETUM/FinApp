@@ -2,7 +2,7 @@ package com.yanschool.finapp.data.transaction_categories
 
 import com.yanschool.core.extensions.retryFlowWithResult
 import com.yanschool.finapp.data.ApiService
-import com.yanschool.finapp.data.common_mappers.TransactionCategoryDtoMapper
+import com.yanschool.finapp.data.common_mappers.CategoryStatDtoMapper
 import com.yanschool.finapp.domain.common_models.TransactionCategory
 import com.yanschool.finapp.domain.transaction_categories.TransactionCategoriesRepository
 import kotlinx.coroutines.Dispatchers
@@ -12,16 +12,13 @@ import javax.inject.Inject
 
 class TransactionCategoriesRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
-    private val mapper: TransactionCategoryDtoMapper,
+    private val mapper: CategoryStatDtoMapper,
 ) : TransactionCategoriesRepository {
 
     override fun getTransactionCategories(): Flow<Result<List<TransactionCategory>>> {
         return retryFlowWithResult {
-            apiService.getTransactionCategories()
-                .filter { category ->
-                    !category.isIncome
-                }
-                .map { mapper.mapDtoToDomain(it) }
+            apiService.getAccountInfo().expenseStats
+                .map { mapper.mapDtoToDomain(it, false) }
         }
             .flowOn(Dispatchers.IO)
     }
