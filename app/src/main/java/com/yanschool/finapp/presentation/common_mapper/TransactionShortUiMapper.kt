@@ -2,7 +2,6 @@ package com.yanschool.finapp.presentation.common_mapper
 
 import com.yanschool.finapp.domain.common_models.TransactionShort
 import com.yanschool.finapp.presentation.model.TransactionShortUi
-import com.yanschool.finapp.presentation.screen.my_expense_categories.TransactionCategoryUiMapper
 import javax.inject.Inject
 
 class TransactionShortUiMapper @Inject constructor(

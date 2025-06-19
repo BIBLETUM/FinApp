@@ -14,33 +14,26 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
+import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.FloatingActionButtonPlus
+import com.yanschool.components.core.Loader
 import com.yanschool.finapp.R
 import com.yanschool.finapp.presentation.components.ListItemBalance
 import com.yanschool.finapp.presentation.components.ListItemCurrency
-import com.yanschool.finapp.presentation.model.AccountBalanceUi
 
 @Composable
 fun AccountBalanceScreenRoot(
     paddingValues: PaddingValues,
+    viewModel: AccountBalanceViewModel = hiltViewModel()
 ) {
-    val screenState = remember {
-        mutableStateOf(
-            AccountBalanceScreenState.Content(
-                AccountBalanceUi(
-                    amount = "-670 000 ₽",
-                    currency = "₽",
-                )
-            )
-        )
-    }
+    val screenState = viewModel.screenSate.collectAsStateWithLifecycle()
 
     AccountBalanceScreen(paddingValues = paddingValues, screenState = screenState)
 }
@@ -88,10 +81,20 @@ private fun AccountBalanceScreen(
             }
 
             is AccountBalanceScreenState.Error -> {
+                ErrorScreen(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = innerPaddingValues.calculateTopPadding())
+                )
                 Log.d("AccountBalanceScreen", currentState.msg)
             }
 
             is AccountBalanceScreenState.Loading -> {
+                Loader(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = innerPaddingValues.calculateTopPadding())
+                )
             }
         }
     }
@@ -105,7 +108,7 @@ private fun AccountBalanceScreenContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues),
+            .padding(top = paddingValues.calculateTopPadding()),
     ) {
         ListItemBalance(
             amount = screenState.data.amount

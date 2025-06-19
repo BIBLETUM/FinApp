@@ -1,6 +1,6 @@
 package com.yanschool.finapp.di
 
-import com.yanschool.finapp.data.expenses.TransactionsRepositoryImpl
+import com.yanschool.finapp.data.transactions.TransactionsRepositoryImpl
 import com.yanschool.finapp.domain.today_expenses.GetTodayExpensesFlowUseCase
 import com.yanschool.finapp.domain.today_expenses.IGetTodayExpensesFlowUseCase
 import com.yanschool.finapp.domain.today_expenses.TransactionsRepository

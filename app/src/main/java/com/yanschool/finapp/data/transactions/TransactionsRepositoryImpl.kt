@@ -1,4 +1,4 @@
-package com.yanschool.finapp.data.expenses
+package com.yanschool.finapp.data.transactions
 
 import com.yanschool.core.extensions.retryFlowWithResult
 import com.yanschool.finapp.data.ApiService

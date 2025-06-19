@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.my_expense_categories
+package com.yanschool.finapp.presentation.common_mapper
 
 import com.yanschool.finapp.domain.common_models.TransactionCategory
 import com.yanschool.finapp.presentation.model.TransactionCategoryUi

@@ -1,15 +1,11 @@
 package com.yanschool.finapp.data
 
 import com.yanschool.finapp.data.common_models.AccountInfoDto
-import com.yanschool.finapp.data.common_models.TransactionCategoryDto
 import com.yanschool.finapp.data.common_models.TransactionDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-
-    @GET("categories")
-    suspend fun getTransactionCategories(): List<TransactionCategoryDto>
 
     @GET("transactions/account/1/period")
     suspend fun getTransactions(
