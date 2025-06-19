@@ -2,6 +2,7 @@ package com.yanschool.finapp.presentation.screen.account_balance
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.yanschool.core.constants.ExceptionConstants.UNEXPECTED_ERROR
 import com.yanschool.finapp.domain.account_info.IGetAccountInfoFlowUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -20,7 +21,7 @@ class AccountBalanceViewModel @Inject constructor(
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         _screenState.value =
-            AccountBalanceScreenState.Error(throwable.message ?: "Произошла ошибка")
+            AccountBalanceScreenState.Error(throwable.message ?: UNEXPECTED_ERROR)
     }
 
     private val _screenState =
@@ -38,7 +39,7 @@ class AccountBalanceViewModel @Inject constructor(
                 .collect { result ->
                     result.onFailure { error ->
                         _screenState.value =
-                            AccountBalanceScreenState.Error(error.message ?: "Произошла ошибка")
+                            AccountBalanceScreenState.Error(error.message ?: UNEXPECTED_ERROR)
                     }
                     result.onSuccess { accountInfo ->
                         _screenState.value = AccountBalanceScreenState.Content(accountInfo)
