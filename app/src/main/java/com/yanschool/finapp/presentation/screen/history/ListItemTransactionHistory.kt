@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.today_expenses
+package com.yanschool.finapp.presentation.screen.history
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,16 +12,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.yanschool.components.core.EmojiOrLiteralsWithCircle
 import com.yanschool.components.core.ListItem
-import com.yanschool.finapp.presentation.model.TransactionShortUi
+import com.yanschool.finapp.presentation.model.TransactionDetailUi
 import com.yanschool.ui.R
 
 @Composable
-fun ListItemExpense(
-    transaction: TransactionShortUi,
+fun ListItemTransactionHistory(
+    transaction: TransactionDetailUi,
+    time: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
 ) {
@@ -38,11 +40,9 @@ fun ListItemExpense(
             )
         },
         trailingContent = {
-            Text(
-                text = transaction.amount,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.bodyLarge,
+            ListItemTransactionAmountWithTime(
+                amount = transaction.amount,
+                time = time,
             )
         },
         trailingAction = {
@@ -54,7 +54,7 @@ fun ListItemExpense(
             )
         },
     ) {
-        ListItemExpenseNameWithDescription(
+        ListItemTransactionNameWithDescription(
             name = transaction.category.name,
             description = transaction.comment,
         )
@@ -62,7 +62,7 @@ fun ListItemExpense(
 }
 
 @Composable
-private fun ListItemExpenseNameWithDescription(
+private fun ListItemTransactionNameWithDescription(
     name: String,
     description: String? = null,
 ) {
@@ -79,9 +79,24 @@ private fun ListItemExpenseNameWithDescription(
                 text = it,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
     }
+}
+
+@Composable
+private fun ListItemTransactionAmountWithTime(
+    amount: String,
+    time: String,
+) {
+    Text(
+        text = "$time\n$amount",
+        maxLines = 2,
+        textAlign = TextAlign.End,
+        overflow = TextOverflow.Ellipsis,
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.onSurface,
+    )
 }

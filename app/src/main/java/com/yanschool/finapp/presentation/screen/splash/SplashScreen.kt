@@ -6,36 +6,58 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.yanschool.components.core.ErrorScreen
 import com.yanschool.finapp.R
-import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreenRoot(
     continueToNextScreen: () -> Unit = {},
+    viewModel: SplashScreenViewModel = hiltViewModel()
 ) {
-    SplashScreenContent(
-        continueToNextScreen = continueToNextScreen
+    val screenState = viewModel.screenState.collectAsStateWithLifecycle()
+
+    SplashScreen(
+        continueToNextScreen = continueToNextScreen,
+        screenState = screenState
     )
 }
 
 @Composable
-private fun SplashScreenContent(
-    continueToNextScreen: () -> Unit = {},
+private fun SplashScreen(
+    continueToNextScreen: () -> Unit,
+    screenState: State<SplashScreenState>
 ) {
-    LaunchedEffect(Unit) {
-        delay(1000)
-        continueToNextScreen()
-    }
+    when (screenState.value) {
+        is SplashScreenState.Error -> {
+            ErrorScreen(
+                modifier = Modifier.fillMaxSize()
+            )
+        }
 
+        is SplashScreenState.Loading -> {
+            SplashScreenContent()
+        }
+
+        is SplashScreenState.ReadyToProceed -> {
+            continueToNextScreen()
+        }
+    }
+}
+
+@Composable
+private fun SplashScreenContent(
+) {
     Box(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.surface)
