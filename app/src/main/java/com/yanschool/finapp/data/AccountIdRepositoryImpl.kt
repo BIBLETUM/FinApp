@@ -27,7 +27,11 @@ class AccountIdRepositoryImpl @Inject constructor(
     init {
         scope.launch {
             flow {
-                emit(apiService.getAccounts().first().id)
+                try {
+                    emit(apiService.getAccounts().first().id)
+                } catch (e: Exception) {
+                    emit(-1)
+                }
             }
                 .retryWhen { cause, attempt ->
                     if (cause is HttpException && cause.code() == 500 && attempt < 3) {
