@@ -38,10 +38,11 @@ private fun SplashScreen(
     continueToNextScreen: () -> Unit,
     screenState: State<SplashScreenState>
 ) {
-    when (screenState.value) {
+    when (val currentScreenState = screenState.value) {
         is SplashScreenState.Error -> {
             ErrorScreen(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
+                message = currentScreenState.msg
             )
         }
 

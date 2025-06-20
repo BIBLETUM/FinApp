@@ -12,10 +12,16 @@ class GetIsReadyToProceedFromSplashScreenFlowUseCase @Inject constructor(
         return accountIdRepository.getCurrentAccountId().map { it != null }
     }
 
+    override suspend fun loadAccountId() {
+        accountIdRepository.loadAccountId()
+    }
+
 }
 
 interface IGetIsReadyToProceedFromSplashScreenFlowUseCase {
 
     operator fun invoke(): Flow<Boolean>
+
+    suspend fun loadAccountId()
 
 }

@@ -12,13 +12,14 @@ import com.yanschool.ui.R
 @Composable
 fun ErrorScreen(
     modifier: Modifier = Modifier,
+    message: String = stringResource(R.string.an_unexpected_error_occurred_try_restarting_the_application),
 ) {
     Box(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = stringResource(R.string.an_unexpected_error_occurred_try_restarting_the_application),
+            text = message,
             style = MaterialTheme.typography.bodyLarge
         )
     }

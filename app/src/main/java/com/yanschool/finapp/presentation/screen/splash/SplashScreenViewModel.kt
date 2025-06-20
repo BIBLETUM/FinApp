@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,6 +28,8 @@ class SplashScreenViewModel @Inject constructor(
     val screenState: StateFlow<SplashScreenState> = _screenState.asStateFlow()
 
     init {
+        initAccountId()
+
         viewModelScope.launch(exceptionHandler) {
             getIsReadyToProceedFromSplashScreenFlow.invoke()
                 .collect { isReadyToProceed ->
@@ -37,4 +40,17 @@ class SplashScreenViewModel @Inject constructor(
                 }
         }
     }
+
+    private fun initAccountId() {
+        viewModelScope.launch {
+            try {
+                getIsReadyToProceedFromSplashScreenFlow.loadAccountId()
+            } catch (e: HttpException) {
+                if (e.code() == 401) {
+                    _screenState.value = SplashScreenState.Error("Missing API token")
+                }
+            }
+        }
+    }
+
 }
