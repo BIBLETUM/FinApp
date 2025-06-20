@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.history_expenses
+package com.yanschool.finapp.presentation.screen.history_income
 
 import android.util.Log
 import androidx.compose.foundation.clickable
@@ -34,14 +34,14 @@ import com.yanschool.finapp.presentation.components.ListItemInfoContainer
 import com.yanschool.finapp.presentation.components.ListItemTransactionHistory
 
 @Composable
-fun HistoryExpensesScreenRoot(
+fun HistoryIncomesScreenRoot(
     paddingValues: PaddingValues,
-    viewModel: HistoryExpensesScreenViewModel = hiltViewModel(),
+    viewModel: HistoryIncomesScreenViewModel = hiltViewModel(),
     navigateBack: () -> Unit,
 ) {
     val screenState = viewModel.screenState.collectAsStateWithLifecycle()
 
-    HistoryExpensesScreen(
+    HistoryIncomesScreen(
         paddingValues = paddingValues,
         screenState = screenState,
         onNavigateBack = navigateBack,
@@ -52,11 +52,11 @@ fun HistoryExpensesScreenRoot(
 }
 
 @Composable
-private fun HistoryExpensesScreen(
+private fun HistoryIncomesScreen(
     paddingValues: PaddingValues,
     onNavigateBack: () -> Unit,
     onDateSelected: (Long?, DateType) -> Unit,
-    screenState: State<HistoryExpensesScreenState>,
+    screenState: State<HistoryIncomesScreenState>,
 ) {
     Scaffold(
         modifier = Modifier
@@ -75,16 +75,16 @@ private fun HistoryExpensesScreen(
         },
     ) { innerPaddingValues ->
         when (val currentState = screenState.value) {
-            is HistoryExpensesScreenState.Content -> {
-                HistoryExpensesScreenContent(
+            is HistoryIncomesScreenState.Content -> {
+                HistoryIncomesScreenContent(
                     paddingValues = innerPaddingValues,
                     screenState = currentState,
                     onDateSelected = onDateSelected,
                 )
             }
 
-            is HistoryExpensesScreenState.Error -> {
-                Log.d("HistoryExpensesScreen", currentState.msg)
+            is HistoryIncomesScreenState.Error -> {
+                Log.d("HistoryIncomesScreen", currentState.msg)
                 ErrorScreen(
                     modifier = Modifier
                         .fillMaxSize()
@@ -92,7 +92,7 @@ private fun HistoryExpensesScreen(
                 )
             }
 
-            is HistoryExpensesScreenState.Loading -> {
+            is HistoryIncomesScreenState.Loading -> {
                 Loader(
                     modifier = Modifier
                         .fillMaxSize()
@@ -104,9 +104,9 @@ private fun HistoryExpensesScreen(
 }
 
 @Composable
-private fun HistoryExpensesScreenContent(
+private fun HistoryIncomesScreenContent(
     paddingValues: PaddingValues,
-    screenState: HistoryExpensesScreenState.Content,
+    screenState: HistoryIncomesScreenState.Content,
     onDateSelected: (Long?, DateType) -> Unit,
 ) {
     val isDatePickerEnabled = remember {

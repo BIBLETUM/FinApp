@@ -25,17 +25,23 @@ import com.yanschool.finapp.presentation.components.ListItemTotalAccountChanges
 @Composable
 fun TodayIncomesScreenRoot(
     paddingValues: PaddingValues = PaddingValues(),
-    viewModel: TodayIncomesViewModel = hiltViewModel()
+    viewModel: TodayIncomesViewModel = hiltViewModel(),
+    onHistoryClick: () -> Unit,
 ) {
     val screenState = viewModel.screenSate.collectAsStateWithLifecycle()
 
-    TodayIncomesScreen(paddingValues = paddingValues, screenState = screenState)
+    TodayIncomesScreen(
+        paddingValues = paddingValues,
+        screenState = screenState,
+        onHistoryClick = onHistoryClick
+    )
 }
 
 @Composable
 private fun TodayIncomesScreen(
     paddingValues: PaddingValues,
     screenState: State<TodayIncomesScreenState>,
+    onHistoryClick: () -> Unit,
 ) {
     Scaffold(
         modifier = Modifier
@@ -46,7 +52,9 @@ private fun TodayIncomesScreen(
             DefaultTopAppBar(
                 titleRes = R.string.today_incomes,
                 actions = {
-                    TopBarHistoryActionIcon()
+                    TopBarHistoryActionIcon() {
+                        onHistoryClick()
+                    }
                 }
             )
         },

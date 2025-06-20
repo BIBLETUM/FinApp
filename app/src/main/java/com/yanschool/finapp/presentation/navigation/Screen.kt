@@ -25,4 +25,7 @@ internal sealed interface Screen {
 
     @Serializable
     data object HistoryExpenses : Screen
+
+    @Serializable
+    data object HistoryIncomes : Screen
 }
