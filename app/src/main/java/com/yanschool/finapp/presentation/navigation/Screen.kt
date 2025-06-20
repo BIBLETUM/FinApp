@@ -9,7 +9,16 @@ internal sealed interface Screen {
     data object Splash : Screen
 
     @Serializable
+    data object ExpensesHome : Screen
+
+    @Serializable
     data object TodayExpenses : Screen
+
+    @Serializable
+    data object HistoryExpenses : Screen
+
+    @Serializable
+    data object IncomesHome : Screen
 
     @Serializable
     data object TodayIncomes : Screen
@@ -22,9 +31,6 @@ internal sealed interface Screen {
 
     @Serializable
     data object Settings : Screen
-
-    @Serializable
-    data object HistoryExpenses : Screen
 
     @Serializable
     data object HistoryIncomes : Screen

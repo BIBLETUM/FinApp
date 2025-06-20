@@ -10,12 +10,12 @@ internal enum class BottomNavigationItem(
     @StringRes val titleResId: Int,
 ) {
     TodayExpenses(
-        screen = Screen.TodayExpenses,
+        screen = Screen.ExpensesHome,
         iconResId = R.drawable.expenses_ic,
         titleResId = R.string.expenses
     ),
     TodayIncomes(
-        screen = Screen.TodayIncomes,
+        screen = Screen.IncomesHome,
         iconResId = R.drawable.incomes_ic,
         titleResId = R.string.incomes
     ),

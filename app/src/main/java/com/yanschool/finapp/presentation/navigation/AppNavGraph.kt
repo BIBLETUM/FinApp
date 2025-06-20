@@ -23,12 +23,14 @@ internal fun AppNavGraph(
         composable<Screen.Splash> {
             splashScreenContent()
         }
-        composable<Screen.TodayExpenses> {
-            todayExpensesScreenContent()
-        }
-        composable<Screen.TodayIncomes> {
-            todayIncomesScreenContent()
-        }
+        ExpensesNavGraph(
+            todayExpensesScreenContent,
+            historyExpensesScreenContent
+        )
+        IncomesNavGraph(
+            todayIncomesScreenContent,
+            historyIncomesScreenContent
+        )
         composable<Screen.Balance> {
             balanceScreenContent()
         }
@@ -37,12 +39,6 @@ internal fun AppNavGraph(
         }
         composable<Screen.Settings> {
             settingsScreenContent()
-        }
-        composable<Screen.HistoryExpenses> {
-            historyExpensesScreenContent()
-        }
-        composable<Screen.HistoryIncomes> {
-            historyIncomesScreenContent()
         }
     }
 }
