@@ -20,6 +20,7 @@ import com.yanschool.finapp.presentation.navigation.AppNavGraph
 import com.yanschool.finapp.presentation.navigation.Screen
 import com.yanschool.finapp.presentation.navigation.navigationItems
 import com.yanschool.finapp.presentation.screen.account_balance.AccountBalanceScreenRoot
+import com.yanschool.finapp.presentation.screen.history_expenses.HistoryExpensesScreenRoot
 import com.yanschool.finapp.presentation.screen.my_expense_categories.MyExpenseCategoriesScreenRoot
 import com.yanschool.finapp.presentation.screen.settings.SettingsScreenRoot
 import com.yanschool.finapp.presentation.screen.splash.SplashScreenRoot
@@ -96,7 +97,9 @@ internal fun MainScreen() {
                 })
             },
             todayExpensesScreenContent = {
-                TodayExpensesScreenRoot(paddingValues)
+                TodayExpensesScreenRoot(paddingValues, onHistoryClick = {
+                    navHostController.navigate(Screen.HistoryExpenses)
+                })
             },
             todayIncomesScreenContent = {
                 TodayIncomesScreenRoot(paddingValues)
@@ -110,6 +113,11 @@ internal fun MainScreen() {
             settingsScreenContent = {
                 SettingsScreenRoot(paddingValues)
             },
+            historyScreenContent = {
+                HistoryExpensesScreenRoot(paddingValues) {
+                    navHostController.popBackStack()
+                }
+            }
         )
     }
 }

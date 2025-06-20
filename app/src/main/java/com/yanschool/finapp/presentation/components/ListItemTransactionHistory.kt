@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.history
+package com.yanschool.finapp.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,7 +23,6 @@ import com.yanschool.ui.R
 @Composable
 fun ListItemTransactionHistory(
     transaction: TransactionDetailUi,
-    time: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
 ) {
@@ -42,7 +41,7 @@ fun ListItemTransactionHistory(
         trailingContent = {
             ListItemTransactionAmountWithTime(
                 amount = transaction.amount,
-                time = time,
+                time = transaction.time,
             )
         },
         trailingAction = {
@@ -92,7 +91,7 @@ private fun ListItemTransactionAmountWithTime(
     time: String,
 ) {
     Text(
-        text = "$time\n$amount",
+        text = "$amount\n$time",
         maxLines = 2,
         textAlign = TextAlign.End,
         overflow = TextOverflow.Ellipsis,

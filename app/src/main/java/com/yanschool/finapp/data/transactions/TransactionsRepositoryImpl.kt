@@ -3,6 +3,7 @@ package com.yanschool.finapp.data.transactions
 import com.yanschool.core.extensions.retryFlowWithResult
 import com.yanschool.finapp.data.ApiService
 import com.yanschool.finapp.data.common_mappers.TransactionMapper
+import com.yanschool.finapp.domain.common_models.TransactionDetail
 import com.yanschool.finapp.domain.common_models.TransactionShort
 import com.yanschool.finapp.domain.splash.AccountIdRepository
 import com.yanschool.finapp.domain.today_expenses.TransactionsRepository
@@ -21,7 +22,7 @@ class TransactionsRepositoryImpl @Inject constructor(
 ) : TransactionsRepository {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override fun getTransactions(
+    override fun getTransactionsShort(
         startDate: String?,
         endDate: String?,
     ): Flow<Result<List<TransactionShort>>> {
@@ -34,10 +35,29 @@ class TransactionsRepositoryImpl @Inject constructor(
                         startDate = startDate,
                         endDate = endDate
                     )
-                        .map { mapper.mapDtoToDomain(it) }
+                        .map { mapper.mapDtoToDomainShort(it) }
                 }
             }
             .flowOn(Dispatchers.IO)
+    }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override fun getTransactionsDetail(
+        startDate: String?,
+        endDate: String?
+    ): Flow<Result<List<TransactionDetail>>> {
+        return accountIdRepository.getCurrentAccountId()
+            .filterNotNull()
+            .flatMapLatest { accountId ->
+                retryFlowWithResult {
+                    apiService.getTransactions(
+                        accountId = accountId,
+                        startDate = startDate,
+                        endDate = endDate
+                    )
+                        .map { mapper.mapDtoToDomainDetail(it) }
+                }
+            }
+            .flowOn(Dispatchers.IO)
     }
 }

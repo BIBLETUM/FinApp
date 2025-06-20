@@ -23,4 +23,8 @@
     <string name="incomes">Доходы</string>
     <string name="expenses">Расходы</string>
     <string name="no_internet_connection">Отсутствует соединение с интернетом</string>
+    <string name="beginning">Начало</string>
+    <string name="end">Конец</string>
+    <string name="sum">Сумма</string>
+    <string name="my_history">Моя история</string>
 </resources>

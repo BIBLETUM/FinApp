@@ -3,7 +3,9 @@ package com.yanschool.core.extensions
 import java.math.BigDecimal
 import java.math.RoundingMode
 
-fun BigDecimal.toStringWithCurrency(): String {
+fun BigDecimal.toStringWithCurrency(
+    currencySymbol: String = "₽"
+): String {
     val parts = this.setScale(0, RoundingMode.DOWN)
         .toPlainString()
         .reversed()
@@ -11,5 +13,5 @@ fun BigDecimal.toStringWithCurrency(): String {
         .joinToString(" ")
         .reversed()
 
-    return "$parts ₽"
+    return "$parts $currencySymbol"
 }

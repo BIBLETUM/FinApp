@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="an_unexpected_error_occurred_try_restarting_the_application">Произошла непредвиденная ошибка.\nПопробуйте перезапустить приложение</string>
+    <string name="cancel">Отмена</string>
+    <string name="ok">ОК</string>
+    <string name="clear">Очистить</string>
 </resources>

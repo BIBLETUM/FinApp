@@ -14,6 +14,7 @@ internal fun AppNavGraph(
     balanceScreenContent: @Composable () -> Unit,
     myExpenseCategoriesScreenContent: @Composable () -> Unit,
     settingsScreenContent: @Composable () -> Unit,
+    historyScreenContent: @Composable () -> Unit,
 ) {
     NavHost(
         navController = navHostController, startDestination = Screen.Splash
@@ -35,6 +36,9 @@ internal fun AppNavGraph(
         }
         composable<Screen.Settings> {
             settingsScreenContent()
+        }
+        composable<Screen.HistoryExpenses> {
+            historyScreenContent()
         }
     }
 }

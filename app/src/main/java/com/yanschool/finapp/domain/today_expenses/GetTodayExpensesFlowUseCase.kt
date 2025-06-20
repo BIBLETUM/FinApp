@@ -16,7 +16,7 @@ class GetTodayExpensesFlowUseCase @Inject constructor(
         val todayString: String = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             .format(Calendar.getInstance().time)
 
-        return transactionsRepository.getTransactions(
+        return transactionsRepository.getTransactionsShort(
             startDate = todayString,
             endDate = todayString
         ).map { result ->
