@@ -1,6 +1,6 @@
 package com.yanschool.finapp.domain.extensions
 
-import com.yanschool.finapp.domain.common_models.TransactionDetail
+import com.yanschool.domain.common_models.TransactionDetail
 import java.time.Instant
 
 fun Result<List<TransactionDetail>>.sortDescendingByDate()

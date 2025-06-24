@@ -1,6 +1,6 @@
 package com.yanschool.finapp.presentation.common_mapper
 
-import com.yanschool.finapp.domain.common_models.TransactionShort
+import com.yanschool.domain.common_models.TransactionShort
 import com.yanschool.finapp.presentation.model.TransactionShortUi
 import javax.inject.Inject
 

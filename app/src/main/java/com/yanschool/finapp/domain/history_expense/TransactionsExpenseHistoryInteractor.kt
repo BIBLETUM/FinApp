@@ -1,6 +1,6 @@
 package com.yanschool.finapp.domain.history_expense
 
-import com.yanschool.finapp.domain.common_models.TransactionDetail
+import com.yanschool.domain.common_models.TransactionDetail
 import com.yanschool.finapp.domain.extensions.filterTransactionsByType
 import com.yanschool.finapp.domain.extensions.sortDescendingByDate
 import com.yanschool.finapp.domain.today_expenses.TransactionsRepository

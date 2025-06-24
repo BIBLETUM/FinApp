@@ -10,6 +10,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:domain"))
+
     implementation(libs.lottie)
 
     implementation(libs.androidx.activity.compose)

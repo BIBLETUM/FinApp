@@ -1,7 +1,7 @@
 package com.yanschool.finapp.data.common_mappers
 
 import com.yanschool.data.common_models.TransactionCategoryDto
-import com.yanschool.finapp.domain.common_models.TransactionCategory
+import com.yanschool.domain.common_models.TransactionCategory
 import javax.inject.Inject
 
 class TransactionCategoryDtoMapper @Inject constructor() {

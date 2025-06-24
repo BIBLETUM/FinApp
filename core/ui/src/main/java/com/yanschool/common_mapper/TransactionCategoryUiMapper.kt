@@ -1,8 +1,8 @@
-package com.yanschool.finapp.presentation.common_mapper
+package com.yanschool.common_mapper
 
+import com.yanschool.common_models.TransactionCategoryUi
+import com.yanschool.common_models.TransactionTypeUi
 import com.yanschool.domain.common_models.TransactionCategory
-import com.yanschool.finapp.presentation.model.TransactionCategoryUi
-import com.yanschool.finapp.presentation.model.TransactionTypeUi
 import javax.inject.Inject
 
 class TransactionCategoryUiMapper @Inject constructor() {

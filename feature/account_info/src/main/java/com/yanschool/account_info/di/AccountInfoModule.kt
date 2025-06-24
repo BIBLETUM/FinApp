@@ -1,4 +1,4 @@
-package com.yanschool.finapp.di
+package com.yanschool.account_info.di
 
 import com.yanschool.account_info.data.AccountInfoRepositoryImpl
 import com.yanschool.account_info.domain.AccountInfoRepository

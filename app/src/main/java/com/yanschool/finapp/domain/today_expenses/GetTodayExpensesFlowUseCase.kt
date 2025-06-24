@@ -1,6 +1,6 @@
 package com.yanschool.finapp.domain.today_expenses
 
-import com.yanschool.finapp.domain.common_models.TransactionShort
+import com.yanschool.domain.common_models.TransactionShort
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.text.SimpleDateFormat

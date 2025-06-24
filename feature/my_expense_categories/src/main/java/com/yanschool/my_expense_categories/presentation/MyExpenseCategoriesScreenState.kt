@@ -1,6 +1,6 @@
-package com.yanschool.finapp.presentation.screen.my_expense_categories
+package com.yanschool.my_expense_categories.presentation
 
-import com.yanschool.finapp.presentation.model.TransactionCategoryUi
+import com.yanschool.common_models.TransactionCategoryUi
 
 sealed interface MyExpenseCategoriesScreenState {
     data object Loading : MyExpenseCategoriesScreenState

@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.my_expense_categories
+package com.yanschool.my_expense_categories.presentation
 
 import android.util.Log
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,8 +17,9 @@ import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.Loader
-import com.yanschool.finapp.presentation.components.SearchBar
+import com.yanschool.components.core.SearchBar
 import com.yanschool.finapp.ui.R
+import com.yanschool.my_expense_categories.presentation.components.ListItemTransactionCategory
 
 @Composable
 fun MyExpenseCategoriesScreenRoot(

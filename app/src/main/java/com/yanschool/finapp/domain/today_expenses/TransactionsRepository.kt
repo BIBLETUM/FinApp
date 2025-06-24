@@ -1,7 +1,7 @@
 package com.yanschool.finapp.domain.today_expenses
 
-import com.yanschool.finapp.domain.common_models.TransactionDetail
-import com.yanschool.finapp.domain.common_models.TransactionShort
+import com.yanschool.domain.common_models.TransactionDetail
+import com.yanschool.domain.common_models.TransactionShort
 import kotlinx.coroutines.flow.Flow
 
 interface TransactionsRepository {

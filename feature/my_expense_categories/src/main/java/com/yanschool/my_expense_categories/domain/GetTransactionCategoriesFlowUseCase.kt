@@ -1,0 +1,29 @@
+package com.yanschool.my_expense_categories.domain
+
+import com.yanschool.domain.common_models.TransactionCategory
+import com.yanschool.domain.common_usecase.IGetAccountIdFlowUseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.flatMapLatest
+import javax.inject.Inject
+
+class GetTransactionCategoriesFlowUseCase @Inject constructor(
+    private val repository: TransactionCategoriesRepository,
+    private val accountIdFlowUseCase: IGetAccountIdFlowUseCase,
+) : IGetTransactionCategoriesFlowUseCase {
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override fun invoke(): Flow<Result<List<TransactionCategory>>> {
+        return accountIdFlowUseCase.invoke()
+            .filterNotNull()
+            .flatMapLatest { accountId ->
+                repository.getTransactionCategories(accountId)
+            }
+    }
+
+}
+
+interface IGetTransactionCategoriesFlowUseCase {
+    operator fun invoke(): Flow<Result<List<TransactionCategory>>>
+}

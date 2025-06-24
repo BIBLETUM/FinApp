@@ -1,9 +1,9 @@
-package com.yanschool.finapp.di
+package com.yanschool.my_expense_categories.di
 
-import com.yanschool.finapp.data.transaction_categories.TransactionCategoriesRepositoryImpl
-import com.yanschool.finapp.domain.transaction_categories.GetTransactionCategoriesFlowUseCase
-import com.yanschool.finapp.domain.transaction_categories.IGetTransactionCategoriesFlowUseCase
-import com.yanschool.finapp.domain.transaction_categories.TransactionCategoriesRepository
+import com.yanschool.my_expense_categories.data.TransactionCategoriesRepositoryImpl
+import com.yanschool.my_expense_categories.domain.GetTransactionCategoriesFlowUseCase
+import com.yanschool.my_expense_categories.domain.IGetTransactionCategoriesFlowUseCase
+import com.yanschool.my_expense_categories.domain.TransactionCategoriesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

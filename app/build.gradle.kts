@@ -25,12 +25,14 @@ android {
 
 dependencies {
     api(project(":core:ui"))
-    implementation(project(":feature:settings"))
-    implementation(project(":feature:splash"))
-    implementation(project(":feature:account_info"))
     implementation(project(":core:utils"))
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
+
+    implementation(project(":feature:settings"))
+    implementation(project(":feature:splash"))
+    implementation(project(":feature:account_info"))
+    implementation(project(":feature:my_expense_categories"))
 
     ksp(libs.hilt.android.compiler)
 

@@ -1,10 +1,10 @@
 package com.yanschool.finapp.data.transactions
 
 import com.yanschool.data.ApiService
+import com.yanschool.domain.common_models.TransactionDetail
+import com.yanschool.domain.common_models.TransactionShort
 import com.yanschool.domain.common_repository.AccountIdRepository
 import com.yanschool.finapp.data.common_mappers.TransactionMapper
-import com.yanschool.finapp.domain.common_models.TransactionDetail
-import com.yanschool.finapp.domain.common_models.TransactionShort
 import com.yanschool.finapp.domain.today_expenses.TransactionsRepository
 import com.yanschool.utils.extensions.retryFlowWithResult
 import kotlinx.coroutines.Dispatchers

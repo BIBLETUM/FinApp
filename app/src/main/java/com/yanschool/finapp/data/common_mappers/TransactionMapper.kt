@@ -1,8 +1,8 @@
 package com.yanschool.finapp.data.common_mappers
 
 import com.yanschool.data.common_models.TransactionDto
-import com.yanschool.finapp.domain.common_models.TransactionDetail
-import com.yanschool.finapp.domain.common_models.TransactionShort
+import com.yanschool.domain.common_models.TransactionDetail
+import com.yanschool.domain.common_models.TransactionShort
 import javax.inject.Inject
 
 class TransactionMapper @Inject constructor(

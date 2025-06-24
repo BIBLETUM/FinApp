@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.my_expense_categories
+package com.yanschool.my_expense_categories.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -10,9 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.yanschool.common_models.TransactionCategoryUi
 import com.yanschool.components.core.EmojiOrLiteralsWithCircle
 import com.yanschool.components.core.ListItem
-import com.yanschool.finapp.presentation.model.TransactionCategoryUi
 
 @Composable
 fun ListItemTransactionCategory(
