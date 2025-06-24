@@ -1,4 +1,4 @@
-package com.yanschool.core.extensions
+package com.yanschool.utils.extensions
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow

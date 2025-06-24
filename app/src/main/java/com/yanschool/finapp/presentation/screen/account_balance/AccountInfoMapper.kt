@@ -1,8 +1,8 @@
 package com.yanschool.finapp.presentation.screen.account_balance
 
-import com.yanschool.core.extensions.toStringWithCurrency
 import com.yanschool.finapp.domain.account_info.AccountInfo
 import com.yanschool.finapp.presentation.model.AccountBalanceUi
+import com.yanschool.utils.extensions.toStringWithCurrency
 import java.math.BigDecimal
 import javax.inject.Inject
 

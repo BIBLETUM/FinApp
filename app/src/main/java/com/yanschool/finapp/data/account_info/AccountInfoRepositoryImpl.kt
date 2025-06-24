@@ -1,11 +1,12 @@
 package com.yanschool.finapp.data.account_info
 
-import com.yanschool.core.extensions.retryFlowWithResult
+
 import com.yanschool.finapp.data.ApiService
 import com.yanschool.finapp.data.common_mappers.AccountInfoMapper
 import com.yanschool.finapp.domain.account_info.AccountInfo
 import com.yanschool.finapp.domain.account_info.AccountInfoRepository
 import com.yanschool.finapp.domain.splash.AccountIdRepository
+import com.yanschool.utils.extensions.retryFlowWithResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow

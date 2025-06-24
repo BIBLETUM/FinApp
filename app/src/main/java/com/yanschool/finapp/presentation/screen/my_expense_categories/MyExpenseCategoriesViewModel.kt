@@ -2,9 +2,9 @@ package com.yanschool.finapp.presentation.screen.my_expense_categories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yanschool.core.constants.ExceptionConstants.UNEXPECTED_ERROR
 import com.yanschool.finapp.domain.transaction_categories.IGetTransactionCategoriesFlowUseCase
 import com.yanschool.finapp.presentation.common_mapper.TransactionCategoryUiMapper
+import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow

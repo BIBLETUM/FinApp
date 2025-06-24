@@ -25,8 +25,8 @@ android {
 
 dependencies {
     api(project(":ui"))
-    implementation(project(":core"))
     implementation(project(":feature:settings"))
+    implementation(project(":core:utils"))
 
     ksp(libs.hilt.android.compiler)
 

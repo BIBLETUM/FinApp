@@ -1,4 +1,4 @@
-package com.yanschool.core.extensions
+package com.yanschool.utils.extensions
 
 import java.math.BigDecimal
 import java.math.RoundingMode

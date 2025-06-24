@@ -1,4 +1,4 @@
-package com.yanschool.core.extensions
+package com.yanschool.utils.extensions
 
 import java.time.Instant
 import java.time.ZoneId

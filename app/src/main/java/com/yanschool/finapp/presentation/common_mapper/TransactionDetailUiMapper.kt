@@ -1,8 +1,8 @@
 package com.yanschool.finapp.presentation.common_mapper
 
-import com.yanschool.core.extensions.toStringWithCurrency
 import com.yanschool.finapp.domain.common_models.TransactionDetail
 import com.yanschool.finapp.presentation.model.TransactionDetailUi
+import com.yanschool.utils.extensions.toStringWithCurrency
 import java.math.BigDecimal
 import java.time.Instant
 import java.time.ZoneId
