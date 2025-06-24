@@ -13,7 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.yanschool.components.core.ListItem
-import com.yanschool.finapp.R
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun ListItemCurrency(
@@ -35,7 +35,7 @@ fun ListItemCurrency(
         trailingAction = {
             Icon(
                 modifier = Modifier.size(24.dp),
-                painter = painterResource(com.yanschool.ui.R.drawable.more_vert),
+                painter = painterResource(R.drawable.more_vert),
                 tint = MaterialTheme.colorScheme.tertiary,
                 contentDescription = null,
             )

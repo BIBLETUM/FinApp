@@ -29,9 +29,9 @@ import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.Loader
 import com.yanschool.components.core.date_picker.DatePickerModal
 import com.yanschool.components.core.date_picker.DateType
-import com.yanschool.finapp.R
 import com.yanschool.finapp.presentation.components.ListItemInfoContainer
 import com.yanschool.finapp.presentation.components.ListItemTransactionHistory
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun HistoryIncomesScreenRoot(
@@ -178,7 +178,7 @@ private fun RowScope.TopBarActionIcon(
     ) {
         Icon(
             modifier = Modifier.size(24.dp),
-            painter = painterResource(com.yanschool.ui.R.drawable.history_outline_ic),
+            painter = painterResource(R.drawable.history_outline_ic),
             tint = MaterialTheme.colorScheme.onSurfaceVariant,
             contentDescription = null,
         )
@@ -196,7 +196,7 @@ private fun TopBarNavigationIcon(
     ) {
         Icon(
             modifier = Modifier.size(24.dp),
-            painter = painterResource(com.yanschool.ui.R.drawable.arrow_back_ic),
+            painter = painterResource(R.drawable.arrow_back_ic),
             tint = MaterialTheme.colorScheme.onSurface,
             contentDescription = null,
         )

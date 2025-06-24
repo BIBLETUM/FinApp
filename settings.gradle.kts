@@ -1,3 +1,5 @@
+includeBuild("build-logic")
+
 pluginManagement {
     repositories {
         google {
@@ -25,3 +27,4 @@ include(":ui")
 include(":core")
 include(":feature:splash")
 include(":feature:settings")
+include(":core-build")

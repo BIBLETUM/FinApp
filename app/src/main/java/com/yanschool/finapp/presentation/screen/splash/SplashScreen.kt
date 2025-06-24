@@ -18,7 +18,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.yanschool.components.core.ErrorScreen
-import com.yanschool.finapp.R
+import com.yanschool.finapp.app.R
 
 @Composable
 fun SplashScreenRoot(

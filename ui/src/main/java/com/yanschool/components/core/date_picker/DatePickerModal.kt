@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.yanschool.ui.R
+import com.yanschool.finapp.ui.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

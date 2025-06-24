@@ -17,8 +17,8 @@ import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.Loader
-import com.yanschool.finapp.R
 import com.yanschool.finapp.presentation.components.SearchBar
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun MyExpenseCategoriesScreenRoot(

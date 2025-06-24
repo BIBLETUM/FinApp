@@ -9,7 +9,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.yanschool.ui.R
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun Loader(

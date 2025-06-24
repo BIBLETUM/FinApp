@@ -1,6 +1,6 @@
 package com.yanschool.finapp.data
 
-import com.yanschool.finapp.BuildConfig
+import com.yanschool.finapp.app.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

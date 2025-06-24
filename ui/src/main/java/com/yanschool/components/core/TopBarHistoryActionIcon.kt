@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.yanschool.ui.R
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun RowScope.TopBarHistoryActionIcon(

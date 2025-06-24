@@ -1,7 +1,5 @@
 @file:Suppress("MatchingDeclarationName")
 
-package com.yanschool.core_build
-
 import com.android.build.gradle.BaseExtension
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.JavaVersion

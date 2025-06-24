@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yanschool.components.core.ListItem
-import com.yanschool.ui.R
+import com.yanschool.finapp.ui.R
 
 @Composable
 internal fun ListItemSetting(

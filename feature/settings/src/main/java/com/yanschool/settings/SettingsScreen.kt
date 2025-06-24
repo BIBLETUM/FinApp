@@ -14,7 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
-import com.yanschool.ui.R
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun SettingsScreenRoot(

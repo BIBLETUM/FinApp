@@ -24,7 +24,7 @@ import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.FloatingActionButtonPlus
 import com.yanschool.components.core.Loader
-import com.yanschool.finapp.R
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun AccountBalanceScreenRoot(
@@ -56,7 +56,7 @@ private fun AccountBalanceScreen(
                     ) {
                         Icon(
                             modifier = Modifier.size(24.dp),
-                            painter = painterResource(com.yanschool.ui.R.drawable.edit_ic),
+                            painter = painterResource(R.drawable.edit_ic),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant,
                             contentDescription = null,
                         )

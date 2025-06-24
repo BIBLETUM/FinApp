@@ -15,7 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.yanschool.components.core.ListItem
-import com.yanschool.ui.R
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun SearchBar(
@@ -46,7 +46,7 @@ fun SearchBar(
                     Text(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
-                        text = stringResource(com.yanschool.finapp.R.string.find_expense_category),
+                        text = stringResource(R.string.find_expense_category),
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )

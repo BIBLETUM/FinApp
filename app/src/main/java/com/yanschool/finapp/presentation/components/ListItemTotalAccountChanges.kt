@@ -10,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yanschool.components.core.ListItem
-import com.yanschool.finapp.R
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun ListItemTotalAccountChanges(

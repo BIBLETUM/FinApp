@@ -1,14 +1,16 @@
+import com.android.build.gradle.LibraryExtension
+import gradle.kotlin.dsl.accessors._752bc230cc26cba5c4ba4310e67b6c06.implementation
+
 plugins {
     id("android-base")
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
-configure<BaseAppModuleExtension> {
+configure<LibraryExtension> {
     baseAndroidConfig(project)
     buildFeatures {
         compose = true
-        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -16,6 +18,9 @@ configure<BaseAppModuleExtension> {
 }
 
 dependencies {
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(platform(libs.androidx.compose.bom))
@@ -23,6 +28,5 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation)
     implementation(libs.material)
 }

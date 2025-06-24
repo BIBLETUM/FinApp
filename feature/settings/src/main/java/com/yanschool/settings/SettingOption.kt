@@ -1,7 +1,7 @@
 package com.yanschool.settings
 
 import androidx.annotation.StringRes
-import com.yanschool.ui.R
+import com.yanschool.finapp.ui.R
 
 internal enum class SettingOption(@StringRes val titleRes: Int) {
     MAIN_COLOR(R.string.main_color),

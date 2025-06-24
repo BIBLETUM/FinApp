@@ -14,7 +14,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.yanschool.components.core.ListItem
 import com.yanschool.finapp.presentation.model.TransactionShortUi
-import com.yanschool.ui.R
+import com.yanschool.finapp.ui.R
 
 @Composable
 fun ListItemIncome(
