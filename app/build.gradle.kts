@@ -24,7 +24,7 @@ android {
 }
 
 dependencies {
-    api(project(":ui"))
+    api(project(":core:ui"))
     implementation(project(":feature:settings"))
     implementation(project(":feature:splash"))
     implementation(project(":core:utils"))

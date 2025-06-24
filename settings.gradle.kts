@@ -23,7 +23,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "FinApp"
 include(":app")
-include(":ui")
+include(":core:ui")
 include(":feature:splash")
 include(":feature:settings")
 include(":core-build")

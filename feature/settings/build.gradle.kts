@@ -5,6 +5,5 @@ plugins {
 }
 
 dependencies {
-    api(project(":ui"))
     ksp(libs.hilt.android.compiler)
 }
