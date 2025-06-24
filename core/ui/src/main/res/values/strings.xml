@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="an_unexpected_error_occurred_try_restarting_the_application">Произошла непредвиденная ошибка.\nПопробуйте перезапустить приложение</string>
+    <string name="cancel">Отмена</string>
+    <string name="ok">ОК</string>
+    <string name="clear">Очистить</string>
+    <string name="settings">Настройки</string>
+    <string name="dark_theme">Тёмная тема</string>
+    <string name="main_color">Основной цвет</string>
+    <string name="sounds">Звуки</string>
+    <string name="haptics">Хаптики</string>
+    <string name="code_password">Код пароль</string>
+    <string name="synchronization">Cинхронизация</string>
+    <string name="language">Язык</string>
+    <string name="about_app">О программе</string>
+    <string name="total">Всего</string>
+    <string name="today_expenses">Расходы сегодня</string>
+    <string name="today_incomes">Доходы сегодня</string>
+    <string name="balance">Баланс</string>
+    <string name="currency">Валюта</string>
+    <string name="my_balance">Мой счет</string>
+    <string name="money_bag_emoji">💰</string>
+    <string name="my_expense_categories">Мои статьи</string>
+    <string name="find_expense_category">Найти статью</string>
+    <string name="expense_categories">Статьи</string>
+    <string name="score">Счет</string>
+    <string name="incomes">Доходы</string>
+    <string name="expenses">Расходы</string>
+    <string name="no_internet_connection">Отсутствует соединение с интернетом</string>
+    <string name="beginning">Начало</string>
+    <string name="end">Конец</string>
+    <string name="sum">Сумма</string>
+    <string name="my_history">Моя история</string>
+</resources>
