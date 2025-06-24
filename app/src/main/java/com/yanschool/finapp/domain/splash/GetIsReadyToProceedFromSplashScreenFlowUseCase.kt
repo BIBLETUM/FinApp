@@ -1,5 +1,6 @@
 package com.yanschool.finapp.domain.splash
 
+import com.yanschool.domain.common_repository.AccountIdRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

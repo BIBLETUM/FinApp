@@ -1,4 +1,4 @@
-package com.yanschool.finapp.domain.splash
+package com.yanschool.domain.common_repository
 
 import kotlinx.coroutines.flow.StateFlow
 

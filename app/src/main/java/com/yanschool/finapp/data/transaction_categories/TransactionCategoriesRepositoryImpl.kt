@@ -1,9 +1,9 @@
 package com.yanschool.finapp.data.transaction_categories
 
 import com.yanschool.data.ApiService
+import com.yanschool.domain.common_repository.AccountIdRepository
 import com.yanschool.finapp.data.common_mappers.CategoryStatDtoMapper
 import com.yanschool.finapp.domain.common_models.TransactionCategory
-import com.yanschool.finapp.domain.splash.AccountIdRepository
 import com.yanschool.finapp.domain.transaction_categories.TransactionCategoriesRepository
 import com.yanschool.utils.extensions.retryFlowWithResult
 import kotlinx.coroutines.Dispatchers

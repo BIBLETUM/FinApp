@@ -8,3 +8,7 @@ plugins {
 configure<LibraryExtension> {
     baseAndroidConfig(project)
 }
+
+dependencies{
+    implementation(libs.hilt.android)
+}

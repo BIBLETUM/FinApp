@@ -1,7 +1,7 @@
 package com.yanschool.finapp.di
 
-import com.yanschool.finapp.data.AccountIdRepositoryImpl
-import com.yanschool.finapp.domain.splash.AccountIdRepository
+import com.yanschool.data.common_repository.AccountIdRepositoryImpl
+import com.yanschool.domain.common_repository.AccountIdRepository
 import com.yanschool.finapp.domain.splash.GetIsReadyToProceedFromSplashScreenFlowUseCase
 import com.yanschool.finapp.domain.splash.IGetIsReadyToProceedFromSplashScreenFlowUseCase
 import dagger.Binds
