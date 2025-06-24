@@ -1,7 +1,7 @@
 package com.yanschool.finapp.data.account_info
 
 
-import com.yanschool.finapp.data.ApiService
+import com.yanschool.data.ApiService
 import com.yanschool.finapp.data.common_mappers.AccountInfoMapper
 import com.yanschool.finapp.domain.account_info.AccountInfo
 import com.yanschool.finapp.domain.account_info.AccountInfoRepository

@@ -1,4 +1,4 @@
-package com.yanschool.finapp.data
+package com.yanschool.data
 
 import okhttp3.Interceptor
 import okhttp3.Response

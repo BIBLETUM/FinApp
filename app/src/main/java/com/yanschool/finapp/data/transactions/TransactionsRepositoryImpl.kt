@@ -1,6 +1,6 @@
 package com.yanschool.finapp.data.transactions
 
-import com.yanschool.finapp.data.ApiService
+import com.yanschool.data.ApiService
 import com.yanschool.finapp.data.common_mappers.TransactionMapper
 import com.yanschool.finapp.domain.common_models.TransactionDetail
 import com.yanschool.finapp.domain.common_models.TransactionShort

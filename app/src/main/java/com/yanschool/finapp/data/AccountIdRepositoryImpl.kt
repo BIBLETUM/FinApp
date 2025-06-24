@@ -1,5 +1,6 @@
 package com.yanschool.finapp.data
 
+import com.yanschool.data.ApiService
 import com.yanschool.finapp.domain.splash.AccountIdRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

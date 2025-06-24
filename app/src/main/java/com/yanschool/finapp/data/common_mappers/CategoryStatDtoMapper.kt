@@ -1,6 +1,6 @@
 package com.yanschool.finapp.data.common_mappers
 
-import com.yanschool.finapp.data.common_models.CategoryStatDto
+import com.yanschool.data.common_models.CategoryStatDto
 import com.yanschool.finapp.domain.common_models.TransactionCategory
 import javax.inject.Inject
 

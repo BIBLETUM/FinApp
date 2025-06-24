@@ -1,6 +1,6 @@
 package com.yanschool.finapp.data.transaction_categories
 
-import com.yanschool.finapp.data.ApiService
+import com.yanschool.data.ApiService
 import com.yanschool.finapp.data.common_mappers.CategoryStatDtoMapper
 import com.yanschool.finapp.domain.common_models.TransactionCategory
 import com.yanschool.finapp.domain.splash.AccountIdRepository

@@ -1,8 +1,8 @@
-package com.yanschool.finapp.data
+package com.yanschool.data
 
-import com.yanschool.finapp.data.common_models.AccountInfoDto
-import com.yanschool.finapp.data.common_models.TransactionDto
-import com.yanschool.finapp.data.common_models.UserDto
+import com.yanschool.data.common_models.AccountInfoDto
+import com.yanschool.data.common_models.TransactionDto
+import com.yanschool.data.common_models.UserDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
