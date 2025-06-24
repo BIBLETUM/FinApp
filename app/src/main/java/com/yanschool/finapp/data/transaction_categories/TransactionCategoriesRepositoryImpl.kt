@@ -22,7 +22,7 @@ class TransactionCategoriesRepositoryImpl @Inject constructor(
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun getTransactionCategories(): Flow<Result<List<TransactionCategory>>> {
-        return accountIdRepository.getCurrentAccountId()
+        return accountIdRepository.getCurrentAccountIdFlow()
             .filterNotNull()
             .flatMapLatest { accountId ->
                 retryFlowWithResult {

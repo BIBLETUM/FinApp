@@ -38,6 +38,6 @@ class AccountIdRepositoryImpl @Inject constructor(
     }
 
 
-    override fun getCurrentAccountId(): StateFlow<Int?> = currentAccountId
+    override fun getCurrentAccountIdFlow(): StateFlow<Int?> = currentAccountId
 
 }

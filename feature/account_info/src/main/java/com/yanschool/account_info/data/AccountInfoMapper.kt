@@ -1,7 +1,7 @@
-package com.yanschool.finapp.data.common_mappers
+package com.yanschool.account_info.data
 
+import com.yanschool.account_info.domain.AccountInfo
 import com.yanschool.data.common_models.AccountInfoDto
-import com.yanschool.finapp.domain.account_info.AccountInfo
 import javax.inject.Inject
 
 class AccountInfoMapper @Inject constructor() {

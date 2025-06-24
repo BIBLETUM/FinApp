@@ -1,9 +1,9 @@
 package com.yanschool.finapp.di
 
-import com.yanschool.finapp.data.account_info.AccountInfoRepositoryImpl
-import com.yanschool.finapp.domain.account_info.AccountInfoRepository
-import com.yanschool.finapp.domain.account_info.GetAccountInfoFlowUseCase
-import com.yanschool.finapp.domain.account_info.IGetAccountInfoFlowUseCase
+import com.yanschool.account_info.data.AccountInfoRepositoryImpl
+import com.yanschool.account_info.domain.AccountInfoRepository
+import com.yanschool.account_info.domain.GetAccountInfoFlowUseCase
+import com.yanschool.account_info.domain.IGetAccountInfoFlowUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -26,7 +26,7 @@ class TransactionsRepositoryImpl @Inject constructor(
         startDate: String?,
         endDate: String?,
     ): Flow<Result<List<TransactionShort>>> {
-        return accountIdRepository.getCurrentAccountId()
+        return accountIdRepository.getCurrentAccountIdFlow()
             .filterNotNull()
             .flatMapLatest { accountId ->
                 retryFlowWithResult {
@@ -46,7 +46,7 @@ class TransactionsRepositoryImpl @Inject constructor(
         startDate: String?,
         endDate: String?
     ): Flow<Result<List<TransactionDetail>>> {
-        return accountIdRepository.getCurrentAccountId()
+        return accountIdRepository.getCurrentAccountIdFlow()
             .filterNotNull()
             .flatMapLatest { accountId ->
                 retryFlowWithResult {

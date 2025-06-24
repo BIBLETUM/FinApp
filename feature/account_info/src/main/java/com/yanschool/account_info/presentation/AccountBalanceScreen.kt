@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.account_balance
+package com.yanschool.account_info.presentation
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -19,6 +19,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.yanschool.account_info.presentation.components.ListItemBalance
+import com.yanschool.account_info.presentation.components.ListItemCurrency
 import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.components.core.ErrorScreen

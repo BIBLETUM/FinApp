@@ -1,8 +1,8 @@
-package com.yanschool.finapp.presentation.screen.account_balance
+package com.yanschool.account_info.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yanschool.finapp.domain.account_info.IGetAccountInfoFlowUseCase
+import com.yanschool.account_info.domain.IGetAccountInfoFlowUseCase
 import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler

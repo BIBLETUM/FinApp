@@ -1,6 +1,4 @@
-package com.yanschool.finapp.presentation.screen.account_balance
-
-import com.yanschool.finapp.presentation.model.AccountBalanceUi
+package com.yanschool.account_info.presentation
 
 sealed interface AccountBalanceScreenState {
 

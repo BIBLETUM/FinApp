@@ -1,4 +1,4 @@
-package com.yanschool.finapp.domain.account_info
+package com.yanschool.account_info.domain
 
 data class AccountInfo(
     val balance: String,

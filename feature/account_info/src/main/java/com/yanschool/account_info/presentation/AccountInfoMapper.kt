@@ -1,7 +1,6 @@
-package com.yanschool.finapp.presentation.screen.account_balance
+package com.yanschool.account_info.presentation
 
-import com.yanschool.finapp.domain.account_info.AccountInfo
-import com.yanschool.finapp.presentation.model.AccountBalanceUi
+import com.yanschool.account_info.domain.AccountInfo
 import com.yanschool.utils.extensions.toStringWithCurrency
 import java.math.BigDecimal
 import javax.inject.Inject

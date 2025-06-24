@@ -2,7 +2,7 @@ package com.yanschool.splash.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yanschool.splash.data.IGetIsReadyToProceedFromSplashScreenFlowUseCase
+import com.yanschool.splash.domain.IGetIsReadyToProceedFromSplashScreenFlowInteractor
 import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashScreenViewModel @Inject constructor(
-    private val getIsReadyToProceedFromSplashScreenFlow: IGetIsReadyToProceedFromSplashScreenFlowUseCase
+    private val getIsReadyToProceedFromSplashScreenFlow: IGetIsReadyToProceedFromSplashScreenFlowInteractor
 ) : ViewModel() {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->

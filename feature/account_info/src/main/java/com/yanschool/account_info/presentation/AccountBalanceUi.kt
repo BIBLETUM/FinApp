@@ -1,9 +1,9 @@
-package com.yanschool.finapp.presentation.model
+package com.yanschool.account_info.presentation
 
 import androidx.compose.runtime.Immutable
 
 @Immutable
-    data class AccountBalanceUi(
+data class AccountBalanceUi(
     val amount: String,
     val currency: String,
 )

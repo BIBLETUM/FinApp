@@ -14,12 +14,12 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.yanschool.account_info.presentation.AccountBalanceScreenRoot
 import com.yanschool.finapp.presentation.components.navigation.NavigationBarItemIcon
 import com.yanschool.finapp.presentation.components.navigation.NavigationBarItemLabel
 import com.yanschool.finapp.presentation.navigation.AppNavGraph
 import com.yanschool.finapp.presentation.navigation.Screen
 import com.yanschool.finapp.presentation.navigation.navigationItems
-import com.yanschool.finapp.presentation.screen.account_balance.AccountBalanceScreenRoot
 import com.yanschool.finapp.presentation.screen.history_expenses.HistoryExpensesScreenRoot
 import com.yanschool.finapp.presentation.screen.history_income.HistoryIncomesScreenRoot
 import com.yanschool.finapp.presentation.screen.my_expense_categories.MyExpenseCategoriesScreenRoot

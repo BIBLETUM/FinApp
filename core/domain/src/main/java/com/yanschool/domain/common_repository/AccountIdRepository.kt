@@ -6,6 +6,6 @@ interface AccountIdRepository {
 
     suspend fun loadAccountId()
 
-    fun getCurrentAccountId(): StateFlow<Int?>
+    fun getCurrentAccountIdFlow(): StateFlow<Int?>
 
 }
