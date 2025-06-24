@@ -2,7 +2,7 @@ package com.yanschool.finapp.presentation.navigation
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.yanschool.finapp.R
+import com.yanschool.ui.R
 
 internal enum class BottomNavigationItem(
     val screen: Screen,

@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.settings
+package com.yanschool.feature_settings.settings
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -14,9 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
-import com.yanschool.finapp.R
-import com.yanschool.finapp.presentation.model.SettingsUi
-
+import com.yanschool.ui.R
 
 @Composable
 fun SettingsScreenRoot(
@@ -25,9 +23,7 @@ fun SettingsScreenRoot(
     val screenState = remember {
         mutableStateOf(
             SettingsScreenState.Content(
-                data = SettingsUi(
-                    hasAutoLightTheme = false
-                )
+                hasAutoLightTheme = false
             )
         )
     }
@@ -81,7 +77,7 @@ private fun SettingsScreenContent(
     ) {
         ListItemSettingToggle(
             titleRes = R.string.dark_theme,
-            isChecked = screenState.data.hasAutoLightTheme,
+            isChecked = screenState.hasAutoLightTheme,
         )
         DefaultHorizontalDivider()
         SettingOption.entries.forEach { option ->

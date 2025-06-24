@@ -23,3 +23,5 @@ rootProject.name = "FinApp"
 include(":app")
 include(":ui")
 include(":core")
+include(":feature:splash")
+include(":feature:settings")

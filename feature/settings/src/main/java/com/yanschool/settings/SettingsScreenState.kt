@@ -1,11 +1,9 @@
-package com.yanschool.finapp.presentation.screen.settings
-
-import com.yanschool.finapp.presentation.model.SettingsUi
+package com.yanschool.settings
 
 sealed interface SettingsScreenState {
     data object Loading : SettingsScreenState
     data class Content(
-        val data: SettingsUi,
+        val hasAutoLightTheme: Boolean
     ) : SettingsScreenState
 
     data class Error(val msg: String) : SettingsScreenState

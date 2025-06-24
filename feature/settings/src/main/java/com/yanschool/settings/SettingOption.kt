@@ -1,9 +1,9 @@
-package com.yanschool.finapp.presentation.screen.settings
+package com.yanschool.settings
 
 import androidx.annotation.StringRes
-import com.yanschool.finapp.R
+import com.yanschool.ui.R
 
-enum class SettingOption(@StringRes val titleRes: Int) {
+internal enum class SettingOption(@StringRes val titleRes: Int) {
     MAIN_COLOR(R.string.main_color),
     SOUNDS(R.string.sounds),
     HAPTICS(R.string.haptics),

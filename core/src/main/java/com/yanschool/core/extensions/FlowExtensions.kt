@@ -7,6 +7,17 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.retryWhen
 import retrofit2.HttpException
 
+/**
+ * Создаёт Flow, который выполняет переданный suspend-блок и повторяет попытку в случае ошибки,
+ * если ошибка — это [HttpException] с кодом 500 (внутренняя ошибка сервера),
+ * не превышая заданное количество повторов. Возвращает результат в виде [Result].
+ *
+ * @param maxRetries Максимальное количество попыток повтора (по умолчанию [MAX_RETRIES]).
+ * @param retryDelayMillis Задержка между повторами в миллисекундах (по умолчанию [RETRY_DELAY]).
+ * @param block Suspend-лямбда, возвращающая значение типа [T].
+ * @return Flow, эмитящий [Result.success] при успешном выполнении блока
+ *         или [Result.failure] при ошибке после исчерпания попыток.
+ */
 inline fun <T> retryFlowWithResult(
     maxRetries: Int = MAX_RETRIES,
     retryDelayMillis: Long = RETRY_DELAY,
