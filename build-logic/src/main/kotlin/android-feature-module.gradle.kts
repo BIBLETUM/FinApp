@@ -18,6 +18,11 @@ configure<LibraryExtension> {
 }
 
 dependencies {
+    implementation(project(":core:data"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:utils"))
+    api(project(":ui"))
+
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
 

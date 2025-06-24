@@ -5,6 +5,8 @@ plugins {
 }
 
 dependencies {
-    api(project(":ui"))
     ksp(libs.hilt.android.compiler)
+
+    implementation(libs.lottie)
+    implementation(libs.retrofit)
 }

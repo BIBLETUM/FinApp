@@ -1,8 +1,8 @@
-package com.yanschool.finapp.presentation.screen.splash
+package com.yanschool.splash.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yanschool.finapp.domain.splash.IGetIsReadyToProceedFromSplashScreenFlowUseCase
+import com.yanschool.splash.data.IGetIsReadyToProceedFromSplashScreenFlowUseCase
 import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -19,8 +19,19 @@ class SplashScreenViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        _screenState.value =
-            SplashScreenState.Error(throwable.message ?: UNEXPECTED_ERROR)
+        when (throwable) {
+            is HttpException -> {
+                if (throwable.code() == 401) {
+                    _screenState.value = SplashScreenState.Error("Missing API token")
+                } else {
+                    _screenState.value = SplashScreenState.Error(throwable.message())
+                }
+            }
+
+            else -> {
+                _screenState.value = SplashScreenState.Error(throwable.message ?: UNEXPECTED_ERROR)
+            }
+        }
     }
 
     private val _screenState: MutableStateFlow<SplashScreenState> =
@@ -42,14 +53,8 @@ class SplashScreenViewModel @Inject constructor(
     }
 
     private fun initAccountId() {
-        viewModelScope.launch {
-            try {
-                getIsReadyToProceedFromSplashScreenFlow.loadAccountId()
-            } catch (e: HttpException) {
-                if (e.code() == 401) {
-                    _screenState.value = SplashScreenState.Error("Missing API token")
-                }
-            }
+        viewModelScope.launch(exceptionHandler) {
+            getIsReadyToProceedFromSplashScreenFlow.loadAccountId()
         }
     }
 

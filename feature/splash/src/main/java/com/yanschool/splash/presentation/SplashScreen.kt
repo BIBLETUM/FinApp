@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.splash
+package com.yanschool.splash.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,7 +18,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.yanschool.components.core.ErrorScreen
-import com.yanschool.finapp.app.R
+import com.yanschool.finapp.splash.R
 
 @Composable
 fun SplashScreenRoot(

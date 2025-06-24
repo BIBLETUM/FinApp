@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.splash
+package com.yanschool.splash.presentation
 
 import androidx.compose.runtime.Immutable
 

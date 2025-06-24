@@ -1,4 +1,4 @@
-package com.yanschool.finapp.domain.splash
+package com.yanschool.splash.data
 
 import com.yanschool.domain.common_repository.AccountIdRepository
 import kotlinx.coroutines.flow.Flow
