@@ -20,8 +20,8 @@ import com.yanschool.finapp.presentation.components.navigation.NavigationBarItem
 import com.yanschool.finapp.presentation.navigation.AppNavGraph
 import com.yanschool.finapp.presentation.navigation.Screen
 import com.yanschool.finapp.presentation.navigation.navigationItems
-import com.yanschool.finapp.presentation.screen.history_expenses.HistoryExpensesScreenRoot
-import com.yanschool.finapp.presentation.screen.history_income.HistoryIncomesScreenRoot
+import com.yanschool.history_expenses.presentation.HistoryExpensesScreenRoot
+import com.yanschool.history_incomes.presentation.HistoryIncomesScreenRoot
 import com.yanschool.my_expense_categories.presentation.MyExpenseCategoriesScreenRoot
 import com.yanschool.settings.SettingsScreenRoot
 import com.yanschool.splash.presentation.SplashScreenRoot
