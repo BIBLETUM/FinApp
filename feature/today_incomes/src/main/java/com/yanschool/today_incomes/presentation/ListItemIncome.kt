@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.today_incomes
+package com.yanschool.today_incomes.presentation
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.yanschool.common_models.TransactionShortUi
 import com.yanschool.components.core.ListItem
-import com.yanschool.finapp.presentation.model.TransactionShortUi
 import com.yanschool.finapp.ui.R
 
 @Composable

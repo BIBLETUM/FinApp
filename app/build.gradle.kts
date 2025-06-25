@@ -34,6 +34,7 @@ dependencies {
     implementation(project(":feature:account_info"))
     implementation(project(":feature:my_expense_categories"))
     implementation(project(":feature:today_expenses"))
+    implementation(project(":feature:today_incomes"))
 
     ksp(libs.hilt.android.compiler)
 

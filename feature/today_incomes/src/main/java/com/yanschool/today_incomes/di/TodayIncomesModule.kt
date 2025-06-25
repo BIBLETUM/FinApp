@@ -1,7 +1,7 @@
-package com.yanschool.finapp.di
+package com.yanschool.today_incomes.di
 
-import com.yanschool.finapp.domain.today_incomes.GetTodayIncomesFlowUseCase
-import com.yanschool.finapp.domain.today_incomes.IGetTodayIncomesFlowUseCase
+import com.yanschool.today_incomes.domain.GetTodayIncomesFlowUseCase
+import com.yanschool.today_incomes.domain.IGetTodayIncomesFlowUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
