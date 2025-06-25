@@ -1,9 +1,9 @@
 package com.yanschool.finapp.domain.history_income
 
 import com.yanschool.domain.common_models.TransactionDetail
+import com.yanschool.finapp.domain.TransactionsRepository
 import com.yanschool.finapp.domain.extensions.filterTransactionsByType
 import com.yanschool.finapp.domain.extensions.sortDescendingByDate
-import com.yanschool.finapp.domain.today_expenses.TransactionsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow

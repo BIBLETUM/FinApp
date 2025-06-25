@@ -25,8 +25,8 @@ class AccountIdRepositoryImpl @Inject constructor(
             emit(apiService.getAccounts().first().id)
         }
             .retryWhen { cause, attempt ->
-                if (cause is HttpException && cause.code() == 500 && attempt < 3) {
-                    delay(2000)
+                if (cause is HttpException && cause.code() == INTERNAL_SERVER_ERROR && attempt < MAX_RETRIES) {
+                    delay(RETRY_DELAY)
                     true
                 } else {
                     false
@@ -39,5 +39,11 @@ class AccountIdRepositoryImpl @Inject constructor(
 
 
     override fun getCurrentAccountIdFlow(): StateFlow<Int?> = currentAccountId
+
+    private companion object {
+        const val MAX_RETRIES = 3
+        const val RETRY_DELAY = 2000L
+        const val INTERNAL_SERVER_ERROR = 500
+    }
 
 }

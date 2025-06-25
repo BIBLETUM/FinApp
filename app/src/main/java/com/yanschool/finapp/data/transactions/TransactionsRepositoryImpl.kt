@@ -4,8 +4,9 @@ import com.yanschool.data.ApiService
 import com.yanschool.domain.common_models.TransactionDetail
 import com.yanschool.domain.common_models.TransactionShort
 import com.yanschool.domain.common_repository.AccountIdRepository
+import com.yanschool.finapp.data.common_mappers.TransactionDetailDtoMapper
 import com.yanschool.finapp.data.common_mappers.TransactionMapper
-import com.yanschool.finapp.domain.today_expenses.TransactionsRepository
+import com.yanschool.finapp.domain.TransactionsRepository
 import com.yanschool.utils.extensions.retryFlowWithResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -18,7 +19,8 @@ import javax.inject.Inject
 class TransactionsRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val accountIdRepository: AccountIdRepository,
-    private val mapper: TransactionMapper,
+    private val mapperShot: TransactionMapper,
+    private val mapperDetail: TransactionDetailDtoMapper,
 ) : TransactionsRepository {
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -35,7 +37,7 @@ class TransactionsRepositoryImpl @Inject constructor(
                         startDate = startDate,
                         endDate = endDate
                     )
-                        .map { mapper.mapDtoToDomainShort(it) }
+                        .map { mapperShot.mapDtoToDomainShort(it) }
                 }
             }
             .flowOn(Dispatchers.IO)
@@ -55,7 +57,7 @@ class TransactionsRepositoryImpl @Inject constructor(
                         startDate = startDate,
                         endDate = endDate
                     )
-                        .map { mapper.mapDtoToDomainDetail(it) }
+                        .map { mapperDetail.mapDtoToDomain(it) }
                 }
             }
             .flowOn(Dispatchers.IO)

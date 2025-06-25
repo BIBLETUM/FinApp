@@ -1,9 +1,9 @@
-package com.yanschool.finapp.presentation.screen.today_expenses
+package com.yanschool.today_expenses.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yanschool.finapp.domain.today_expenses.IGetTodayExpensesFlowUseCase
-import com.yanschool.finapp.presentation.common_mapper.TransactionShortUiMapper
+import com.yanschool.common_mapper.TransactionShortUiMapper
+import com.yanschool.today_expenses.domain.IGetTodayExpensesFlowUseCase
 import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
 import com.yanschool.utils.extensions.toStringWithCurrency
 import dagger.hilt.android.lifecycle.HiltViewModel

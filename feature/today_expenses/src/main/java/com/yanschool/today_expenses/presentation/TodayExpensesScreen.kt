@@ -1,4 +1,4 @@
-package com.yanschool.finapp.presentation.screen.today_expenses
+package com.yanschool.today_expenses.presentation
 
 import android.util.Log
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,9 +17,9 @@ import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.FloatingActionButtonPlus
+import com.yanschool.components.core.ListItemTotalAccountChanges
 import com.yanschool.components.core.Loader
 import com.yanschool.components.core.TopBarHistoryActionIcon
-import com.yanschool.finapp.presentation.components.ListItemTotalAccountChanges
 import com.yanschool.finapp.ui.R
 
 @Composable

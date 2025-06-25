@@ -1,7 +1,7 @@
-package com.yanschool.finapp.presentation.screen.today_expenses
+package com.yanschool.today_expenses.presentation
 
 import androidx.compose.runtime.Immutable
-import com.yanschool.finapp.presentation.model.TransactionShortUi
+import com.yanschool.common_models.TransactionShortUi
 
 @Immutable
 sealed interface TodayExpensesScreenState {

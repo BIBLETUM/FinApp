@@ -22,11 +22,11 @@ import com.yanschool.finapp.presentation.navigation.Screen
 import com.yanschool.finapp.presentation.navigation.navigationItems
 import com.yanschool.finapp.presentation.screen.history_expenses.HistoryExpensesScreenRoot
 import com.yanschool.finapp.presentation.screen.history_income.HistoryIncomesScreenRoot
-import com.yanschool.finapp.presentation.screen.today_expenses.TodayExpensesScreenRoot
 import com.yanschool.finapp.presentation.screen.today_incomes.TodayIncomesScreenRoot
 import com.yanschool.my_expense_categories.presentation.MyExpenseCategoriesScreenRoot
 import com.yanschool.settings.SettingsScreenRoot
 import com.yanschool.splash.presentation.SplashScreenRoot
+import com.yanschool.today_expenses.presentation.TodayExpensesScreenRoot
 
 @Composable
 internal fun MainScreen() {

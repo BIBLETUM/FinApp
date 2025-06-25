@@ -1,9 +1,7 @@
 package com.yanschool.finapp.di
 
 import com.yanschool.finapp.data.transactions.TransactionsRepositoryImpl
-import com.yanschool.finapp.domain.today_expenses.GetTodayExpensesFlowUseCase
-import com.yanschool.finapp.domain.today_expenses.IGetTodayExpensesFlowUseCase
-import com.yanschool.finapp.domain.today_expenses.TransactionsRepository
+import com.yanschool.finapp.domain.TransactionsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -11,12 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface TodayExpensesModule {
-
-    @Binds
-    fun bindGetTodayExpensesFlowUseCase(
-        impl: GetTodayExpensesFlowUseCase,
-    ): IGetTodayExpensesFlowUseCase
+interface TransactionRepositoryModule2 {
 
     @Binds
     fun bindTodayTransactionsRepository(

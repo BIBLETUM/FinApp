@@ -33,6 +33,7 @@ dependencies {
     implementation(project(":feature:splash"))
     implementation(project(":feature:account_info"))
     implementation(project(":feature:my_expense_categories"))
+    implementation(project(":feature:today_expenses"))
 
     ksp(libs.hilt.android.compiler)
 

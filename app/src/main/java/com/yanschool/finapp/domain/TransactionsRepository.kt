@@ -1,4 +1,4 @@
-package com.yanschool.finapp.domain.today_expenses
+package com.yanschool.finapp.domain
 
 import com.yanschool.domain.common_models.TransactionDetail
 import com.yanschool.domain.common_models.TransactionShort

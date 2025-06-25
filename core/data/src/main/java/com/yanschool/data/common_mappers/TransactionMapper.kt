@@ -1,4 +1,4 @@
-package com.yanschool.finapp.data.common_mappers
+package com.yanschool.data.common_mappers
 
 import com.yanschool.data.common_models.TransactionDto
 import com.yanschool.domain.common_models.TransactionShort
