@@ -306,7 +306,9 @@ exceptions:
       - 'Throwable'
 
 formatting:
-  active: false
+  active: true
+  PackageName:
+    active: false
 
 naming:
   active: true

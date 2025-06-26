@@ -1,4 +1,4 @@
-package conventions
+package plugins.conventions
 
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin

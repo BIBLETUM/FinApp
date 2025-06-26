@@ -23,16 +23,25 @@ dependencyResolutionManagement {
 
 rootProject.name = "FinApp"
 include(":app")
-include(":core:ui")
-include(":feature:splash")
-include(":feature:settings")
-include(":core-build")
-include(":core:utils")
-include(":core:data")
-include(":core:domain")
-include(":feature:account_info")
-include(":feature:my_expense_categories")
-include(":feature:today_expenses")
-include(":feature:today_incomes")
-include(":feature:history_expenses")
-include(":feature:history_incomes")
+
+listOf(
+    "ui",
+    "utils",
+    "data",
+    "domain",
+).forEach {
+    include(":core:$it")
+}
+
+listOf(
+    "splash",
+    "settings",
+    "account_info",
+    "my_expense_categories",
+    "today_expenses",
+    "today_incomes",
+    "history_expenses",
+    "history_incomes",
+).forEach {
+    include(":feature:$it")
+}

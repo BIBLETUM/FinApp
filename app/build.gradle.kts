@@ -3,6 +3,7 @@ import java.util.Properties
 
 plugins {
     id("android-app-module")
+    id("check-conventions-plugin")
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     id("com.google.devtools.ksp")
