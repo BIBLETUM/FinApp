@@ -24,6 +24,17 @@ class GetTransactionCategoriesFlowUseCase @Inject constructor(
 
 }
 
+/**
+ * Интерфейс use case для получения потока категорий транзакций.
+ */
 interface IGetTransactionCategoriesFlowUseCase {
+
+    /**
+     * Возвращает поток с результатом загрузки списка категорий транзакций
+     * текущего аккаунта.
+     *
+     * @return [Flow] с [Result], содержащим список категорий или ошибку
+     */
     operator fun invoke(): Flow<Result<List<TransactionCategory>>>
+
 }

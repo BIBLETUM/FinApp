@@ -1,4 +1,4 @@
-package com.yanschool.data
+package com.yanschool.data.remote_data_source
 
 import okhttp3.Interceptor
 import okhttp3.Response

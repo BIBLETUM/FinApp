@@ -39,6 +39,15 @@ class GetTodayIncomesFlowUseCase @Inject constructor(
     }
 }
 
+/**
+ * Интерфейс use case для получения потока кратких доходных транзакций за сегодняшний день.
+ */
 interface IGetTodayIncomesFlowUseCase {
+
+    /**
+     * Возвращает поток с результатом загрузки кратких доходных транзакций за текущий день.
+     *
+     * @return [Flow] с [Result], содержащим список транзакций или ошибку
+     */
     operator fun invoke(): Flow<Result<List<TransactionShort>>>
 }

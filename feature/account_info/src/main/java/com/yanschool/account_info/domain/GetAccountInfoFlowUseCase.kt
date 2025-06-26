@@ -22,6 +22,17 @@ class GetAccountInfoFlowUseCase @Inject constructor(
     }
 }
 
+/**
+ * Интерфейс use case для предоставления потока с информацией об аккаунте.
+ */
 interface IGetAccountInfoFlowUseCase {
+
+    /**
+     * Возвращает поток, содержащий результат загрузки информации об аккаунте
+     * на основе текущего активного идентификатора аккаунта.
+     *
+     * @return [Flow] с [Result], содержащим [AccountInfo] или ошибку
+     */
     operator fun invoke(): Flow<Result<AccountInfo>>
+
 }

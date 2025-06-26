@@ -21,10 +21,19 @@ class GetIsReadyToProceedFromSplashScreenFlowInteractor @Inject constructor(
 
 }
 
+/**
+ * Интерфейс интерактора для проверки готовности к переходу с экрана загрузки.
+ */
 interface IGetIsReadyToProceedFromSplashScreenFlowInteractor {
 
+    /**
+     * Возвращает поток, эмитирующий флаг готовности (true, если ID аккаунта загружен).
+     */
     operator fun invoke(): Flow<Boolean>
 
+    /**
+     * Запускает процесс загрузки идентификатора аккаунта.
+     */
     suspend fun loadAccountId()
 
 }

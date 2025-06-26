@@ -64,12 +64,31 @@ class TransactionsIncomeHistoryInteractor @Inject constructor(
 
 }
 
+/**
+ * Интерфейс интерактора для получения истории доходных транзакций.
+ */
 interface ITransactionsIncomeHistoryInteractor {
 
+    /**
+     * Возвращает поток результатов с детализированными доходными транзакциями
+     * за указанный период и текущий аккаунт.
+     *
+     * @return [Flow] с [Result], содержащим список транзакций или ошибку
+     */
     fun getFlow(): Flow<Result<List<TransactionDetail>>>
 
+    /**
+     * Устанавливает начальную дату периода фильтрации транзакций.
+     *
+     * @param startDate дата начала периода в формате ISO-8601 (например, "2025-01-01")
+     */
     fun setStartDate(startDate: String)
 
+    /**
+     * Устанавливает конечную дату периода фильтрации транзакций.
+     *
+     * @param endDate дата конца периода в формате ISO-8601 (например, "2025-01-31")
+     */
     fun setEndDate(endDate: String)
 
 }

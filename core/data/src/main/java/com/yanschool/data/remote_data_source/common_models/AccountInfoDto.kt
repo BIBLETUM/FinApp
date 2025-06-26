@@ -1,4 +1,4 @@
-package com.yanschool.data.common_models
+package com.yanschool.data.remote_data_source.common_models
 
 import com.google.gson.annotations.SerializedName
 

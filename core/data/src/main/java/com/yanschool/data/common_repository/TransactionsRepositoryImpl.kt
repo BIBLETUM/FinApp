@@ -1,8 +1,8 @@
 package com.yanschool.data.common_repository
 
-import com.yanschool.data.ApiService
-import com.yanschool.data.common_mappers.TransactionDetailDtoMapper
-import com.yanschool.data.common_mappers.TransactionMapper
+import com.yanschool.data.remote_data_source.api.TransactionsService
+import com.yanschool.data.remote_data_source.common_mappers.TransactionDetailDtoMapper
+import com.yanschool.data.remote_data_source.common_mappers.TransactionMapper
 import com.yanschool.domain.common_models.TransactionDetail
 import com.yanschool.domain.common_models.TransactionShort
 import com.yanschool.domain.common_repository.TransactionsRepository
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class TransactionsRepositoryImpl @Inject constructor(
-    private val apiService: ApiService,
+    private val transactionsService: TransactionsService,
     private val mapperShot: TransactionMapper,
     private val mapperDetail: TransactionDetailDtoMapper,
 ) : TransactionsRepository {
@@ -26,7 +26,7 @@ class TransactionsRepositoryImpl @Inject constructor(
         endDate: String?,
     ): Flow<Result<List<TransactionShort>>> {
         return retryFlowWithResult {
-            apiService.getTransactions(
+            transactionsService.getTransactions(
                 accountId = accountId,
                 startDate = startDate,
                 endDate = endDate
@@ -44,7 +44,7 @@ class TransactionsRepositoryImpl @Inject constructor(
         endDate: String?
     ): Flow<Result<List<TransactionDetail>>> {
         return retryFlowWithResult {
-            apiService.getTransactions(
+            transactionsService.getTransactions(
                 accountId = accountId,
                 startDate = startDate,
                 endDate = endDate

@@ -15,8 +15,16 @@ class GetAccountIdFlowUseCase @Inject constructor(
     }
 }
 
+/**
+ * Интерфейс use case для предоставления потока текущего идентификатора аккаунта.
+ */
 interface IGetAccountIdFlowUseCase {
 
+    /**
+     * Возвращает поток, отслеживающий идентификатор текущего аккаунта.
+     *
+     * @return [Flow], содержащий значение [Int] или `null`, если идентификатор ещё не установлен
+     */
     operator fun invoke(): Flow<Int?>
 
 }

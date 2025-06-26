@@ -1,6 +1,6 @@
-package com.yanschool.data.common_mappers
+package com.yanschool.data.remote_data_source.common_mappers
 
-import com.yanschool.data.common_models.TransactionDto
+import com.yanschool.data.remote_data_source.common_models.TransactionDto
 import com.yanschool.domain.common_models.TransactionShort
 import javax.inject.Inject
 
