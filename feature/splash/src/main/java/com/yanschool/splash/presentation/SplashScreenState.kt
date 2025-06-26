@@ -13,5 +13,4 @@ sealed interface SplashScreenState {
 
     @Immutable
     data class Error(val msg: String) : SplashScreenState
-
 }

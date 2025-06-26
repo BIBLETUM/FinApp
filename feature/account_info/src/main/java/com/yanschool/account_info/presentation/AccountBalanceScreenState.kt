@@ -8,5 +8,4 @@ sealed interface AccountBalanceScreenState {
     ) : AccountBalanceScreenState
 
     data class Error(val msg: String) : AccountBalanceScreenState
-
 }

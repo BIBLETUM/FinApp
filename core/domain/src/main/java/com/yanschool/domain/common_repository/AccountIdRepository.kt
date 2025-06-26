@@ -25,5 +25,4 @@ interface AccountIdRepository {
      * @return [StateFlow] с текущим идентификатором аккаунта или `null`
      */
     fun getCurrentAccountIdFlow(): StateFlow<Int?>
-
 }

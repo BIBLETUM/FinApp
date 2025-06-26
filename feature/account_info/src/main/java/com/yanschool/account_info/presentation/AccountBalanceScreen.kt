@@ -68,8 +68,7 @@ private fun AccountBalanceScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButtonPlus(
-            )
+            FloatingActionButtonPlus()
         },
     ) { innerPaddingValues ->
         when (val currentState = screenState.value) {

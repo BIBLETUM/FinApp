@@ -28,5 +28,4 @@ class AccountInfoMapper @Inject constructor() {
         const val EURO = "EUR"
         const val DOLLAR = "USD"
     }
-
 }

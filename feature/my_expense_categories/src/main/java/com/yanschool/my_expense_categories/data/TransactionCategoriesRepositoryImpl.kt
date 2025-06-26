@@ -23,5 +23,4 @@ class TransactionCategoriesRepositoryImpl @Inject constructor(
         }
             .flowOn(Dispatchers.IO)
     }
-
 }

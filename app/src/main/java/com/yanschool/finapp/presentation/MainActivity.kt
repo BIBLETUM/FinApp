@@ -25,7 +25,8 @@ class MainActivity : ComponentActivity() {
             super.onLost(network)
             Toast.makeText(
                 this@MainActivity,
-                getString(R.string.no_internet_connection), Toast.LENGTH_LONG
+                getString(R.string.no_internet_connection),
+                Toast.LENGTH_LONG
             ).show()
         }
     }

@@ -1,3 +1,5 @@
+@file:Suppress("LongMethod")
+
 package com.yanschool.finapp.presentation
 
 import androidx.compose.material3.MaterialTheme

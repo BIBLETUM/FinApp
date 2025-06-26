@@ -18,7 +18,6 @@ class GetIsReadyToProceedFromSplashScreenFlowInteractor @Inject constructor(
     override suspend fun loadAccountId() {
         accountIdRepository.loadAccountId()
     }
-
 }
 
 /**
@@ -35,5 +34,4 @@ interface IGetIsReadyToProceedFromSplashScreenFlowInteractor {
      * Запускает процесс загрузки идентификатора аккаунта.
      */
     suspend fun loadAccountId()
-
 }

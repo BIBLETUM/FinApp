@@ -1,5 +1,6 @@
 import com.android.build.gradle.LibraryExtension
-import gradle.kotlin.dsl.accessors._752bc230cc26cba5c4ba4310e67b6c06.implementation
+import gradle.kotlin.dsl.accessors._32a02eef0099c46a598ccc7a8c19c034.api
+import gradle.kotlin.dsl.accessors._f265cf380225e5cd02f7700a5b4c9288.implementation
 
 plugins {
     id("android-base")

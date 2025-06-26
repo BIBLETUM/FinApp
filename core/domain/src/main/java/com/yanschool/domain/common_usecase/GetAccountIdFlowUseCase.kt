@@ -26,5 +26,4 @@ interface IGetAccountIdFlowUseCase {
      * @return [Flow], содержащий значение [Int] или `null`, если идентификатор ещё не установлен
      */
     operator fun invoke(): Flow<Int?>
-
 }

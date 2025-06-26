@@ -7,5 +7,4 @@ sealed interface SettingsScreenState {
     ) : SettingsScreenState
 
     data class Error(val msg: String) : SettingsScreenState
-
 }

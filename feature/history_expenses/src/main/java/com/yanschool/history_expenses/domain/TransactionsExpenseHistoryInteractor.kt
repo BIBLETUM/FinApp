@@ -45,7 +45,6 @@ class TransactionsExpenseHistoryInteractor @Inject constructor(
             .flowOn(Dispatchers.IO)
     }
 
-
     override fun setStartDate(startDate: String) {
         _startDate.value = startDate
     }
@@ -60,7 +59,6 @@ class TransactionsExpenseHistoryInteractor @Inject constructor(
             _endDate.filterNotNull()
         ) { start, end -> start to end }
     }
-
 }
 
 /**
@@ -83,12 +81,10 @@ interface ITransactionsExpenseHistoryInteractor {
      */
     fun setStartDate(startDate: String)
 
-
     /**
      * Устанавливает конечную дату периода фильтрации транзакций.
      *
      * @param endDate дата конца периода в формате ISO-8601 (например, "2025-01-31")
      */
     fun setEndDate(endDate: String)
-
 }

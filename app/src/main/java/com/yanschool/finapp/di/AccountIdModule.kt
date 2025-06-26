@@ -22,5 +22,4 @@ interface AccountIdModule {
     fun bindAccountIdRepository(
         impl: AccountIdRepositoryImpl
     ): AccountIdRepository
-
 }

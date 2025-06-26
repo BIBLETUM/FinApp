@@ -15,5 +15,4 @@ interface TransactionCategoriesRepository {
      * @return [Flow] с [Result], содержащим список категорий или ошибку загрузки
      */
     fun getTransactionCategories(accountId: Int): Flow<Result<List<TransactionCategory>>>
-
 }

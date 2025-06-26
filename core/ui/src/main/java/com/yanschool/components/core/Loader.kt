@@ -34,5 +34,4 @@ fun Loader(
             progress = { logoAnimationState.progress }
         )
     }
-
 }

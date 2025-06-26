@@ -21,7 +21,6 @@ class GetTransactionCategoriesFlowUseCase @Inject constructor(
                 repository.getTransactionCategories(accountId)
             }
     }
-
 }
 
 /**
@@ -36,5 +35,4 @@ interface IGetTransactionCategoriesFlowUseCase {
      * @return [Flow] с [Result], содержащим список категорий или ошибку
      */
     operator fun invoke(): Flow<Result<List<TransactionCategory>>>
-
 }

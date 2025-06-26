@@ -50,20 +50,20 @@ private fun TodayExpensesScreen(
         containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
             DefaultTopAppBar(titleRes = R.string.today_expenses, actions = {
-                TopBarHistoryActionIcon() {
+                TopBarHistoryActionIcon {
                     onHistoryClick()
                 }
             })
         },
         floatingActionButton = {
-            FloatingActionButtonPlus(
-            )
+            FloatingActionButtonPlus()
         },
     ) { innerPaddingValues ->
         when (val currentState = screenState.value) {
             is TodayExpensesScreenState.Content -> {
                 TodayExpensesScreenContent(
-                    paddingValues = innerPaddingValues, screenState = currentState
+                    paddingValues = innerPaddingValues,
+                    screenState = currentState
                 )
             }
 

@@ -25,9 +25,11 @@ fun BigDecimal.toStringWithCurrency(
     val parts = this.setScale(0, RoundingMode.DOWN)
         .toPlainString()
         .reversed()
-        .chunked(3)
+        .chunked(MAX_CHUNK)
         .joinToString(" ")
         .reversed()
 
     return "$parts $currencySymbol"
 }
+
+private const val MAX_CHUNK = 3

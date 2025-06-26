@@ -15,5 +15,4 @@ interface AccountsService {
      */
     @GET("accounts")
     suspend fun getAccounts(): List<UserDto>
-
 }

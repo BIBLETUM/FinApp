@@ -17,5 +17,4 @@ class TransactionDetailDtoMapper @Inject constructor(
             dateTime = dto.transactionDate,
         )
     }
-
 }

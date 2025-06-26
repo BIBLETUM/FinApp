@@ -21,7 +21,7 @@ class SplashScreenViewModel @Inject constructor(
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         when (throwable) {
             is HttpException -> {
-                if (throwable.code() == 401) {
+                if (throwable.code() == UNAUTHORIZED) {
                     _screenState.value = SplashScreenState.Error("Missing API token")
                 } else {
                     _screenState.value = SplashScreenState.Error(throwable.message())
@@ -58,4 +58,7 @@ class SplashScreenViewModel @Inject constructor(
         }
     }
 
+    private companion object {
+        const val UNAUTHORIZED = 401
+    }
 }

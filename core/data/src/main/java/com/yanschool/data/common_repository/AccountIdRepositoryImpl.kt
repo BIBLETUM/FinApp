@@ -42,5 +42,4 @@ class AccountIdRepositoryImpl @Inject constructor(
         const val RETRY_DELAY = 2000L
         const val INTERNAL_SERVER_ERROR = 500
     }
-
 }

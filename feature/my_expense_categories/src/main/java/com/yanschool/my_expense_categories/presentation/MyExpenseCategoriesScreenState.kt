@@ -10,5 +10,4 @@ sealed interface MyExpenseCategoriesScreenState {
     ) : MyExpenseCategoriesScreenState
 
     data class Error(val msg: String) : MyExpenseCategoriesScreenState
-
 }

@@ -14,5 +14,4 @@ class TransactionCategoryDtoMapper @Inject constructor() {
             isIncome = dto.isIncome,
         )
     }
-
 }

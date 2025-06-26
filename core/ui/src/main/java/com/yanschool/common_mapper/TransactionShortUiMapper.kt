@@ -16,5 +16,4 @@ class TransactionShortUiMapper @Inject constructor(
             category = transactionCategoryUiMapper.mapDomainToUi(domain.category),
         )
     }
-
 }

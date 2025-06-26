@@ -45,7 +45,8 @@ class MyExpenseCategoriesViewModel @Inject constructor(
                     result.onSuccess { data ->
                         _screenState.update {
                             MyExpenseCategoriesScreenState.Content(
-                                searchQuery = "", expenseCategories = data
+                                searchQuery = "",
+                                expenseCategories = data
                             )
                         }
                     }
@@ -57,5 +58,4 @@ class MyExpenseCategoriesViewModel @Inject constructor(
                 }
         }
     }
-
 }

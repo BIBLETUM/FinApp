@@ -15,5 +15,4 @@ interface HistoryIncomeModule {
     fun bindTransactionsIncomeHistoryInteractor(
         impl: TransactionsIncomeHistoryInteractor,
     ): ITransactionsIncomeHistoryInteractor
-
 }

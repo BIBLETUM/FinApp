@@ -14,5 +14,4 @@ class CategoryStatDtoMapper @Inject constructor() {
             isIncome = isIncome,
         )
     }
-
 }

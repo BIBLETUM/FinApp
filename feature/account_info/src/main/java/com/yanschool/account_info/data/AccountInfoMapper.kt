@@ -12,5 +12,4 @@ class AccountInfoMapper @Inject constructor() {
             currency = dto.currency,
         )
     }
-
 }

@@ -47,5 +47,4 @@ class AccountBalanceViewModel @Inject constructor(
                 }
         }
     }
-
 }

@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-
 class TransactionsIncomeHistoryInteractor @Inject constructor(
     private val transactionsRepository: TransactionsRepository,
     private val accountIdFlowUseCase: IGetAccountIdFlowUseCase
@@ -46,7 +45,6 @@ class TransactionsIncomeHistoryInteractor @Inject constructor(
             .flowOn(Dispatchers.IO)
     }
 
-
     override fun setStartDate(startDate: String) {
         _startDate.value = startDate
     }
@@ -61,7 +59,6 @@ class TransactionsIncomeHistoryInteractor @Inject constructor(
             _endDate.filterNotNull()
         ) { start, end -> start to end }
     }
-
 }
 
 /**
@@ -90,5 +87,4 @@ interface ITransactionsIncomeHistoryInteractor {
      * @param endDate дата конца периода в формате ISO-8601 (например, "2025-01-31")
      */
     fun setEndDate(endDate: String)
-
 }

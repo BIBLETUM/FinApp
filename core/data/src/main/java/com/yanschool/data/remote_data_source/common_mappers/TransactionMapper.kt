@@ -16,5 +16,4 @@ class TransactionMapper @Inject constructor(
             comment = dto.comment,
         )
     }
-
 }

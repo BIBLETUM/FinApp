@@ -15,5 +15,4 @@ interface TransactionsModule {
     fun bindTransactionsRepository(
         impl: TransactionsRepositoryImpl
     ): TransactionsRepository
-
 }

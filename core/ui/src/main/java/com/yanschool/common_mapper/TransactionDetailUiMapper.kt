@@ -17,7 +17,6 @@ class TransactionDetailUiMapper @Inject constructor(
         .withZone(ZoneId.systemDefault())
 
     fun mapDomainToUi(domain: TransactionDetail): TransactionDetailUi {
-
         val formattedTime = Instant
             .parse(domain.dateTime)
             .atZone(ZoneId.systemDefault())

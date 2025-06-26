@@ -24,5 +24,4 @@ interface TransactionsService {
         @Query("startDate") startDate: String? = null,
         @Query("endDate") endDate: String? = null
     ): List<TransactionDto>
-
 }

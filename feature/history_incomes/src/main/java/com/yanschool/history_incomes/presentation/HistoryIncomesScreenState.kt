@@ -20,5 +20,4 @@ interface HistoryIncomesScreenState {
 
     @Immutable
     data class Error(val msg: String) : HistoryIncomesScreenState
-
 }

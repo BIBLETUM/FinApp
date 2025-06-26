@@ -17,5 +17,4 @@ interface AccountInfoService {
      */
     @GET("accounts/{id}")
     suspend fun getAccountInfo(@Path("id") accountId: Int): AccountInfoDto
-
 }

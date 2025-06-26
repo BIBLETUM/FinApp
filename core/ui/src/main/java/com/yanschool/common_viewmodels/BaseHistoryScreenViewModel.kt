@@ -1,3 +1,5 @@
+@file:Suppress("LongParameterList")
+
 package com.yanschool.common_viewmodels
 
 import androidx.lifecycle.ViewModel
@@ -110,4 +112,3 @@ abstract class BaseHistoryScreenViewModel<S>(
         return startDate to endDate
     }
 }
-

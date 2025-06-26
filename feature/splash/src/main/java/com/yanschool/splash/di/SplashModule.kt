@@ -15,5 +15,4 @@ interface SplashModule {
     fun bindGetIsReadyToProceedFromSplashScreenFlow(
         impl: GetIsReadyToProceedFromSplashScreenFlowInteractor,
     ): IGetIsReadyToProceedFromSplashScreenFlowInteractor
-
 }

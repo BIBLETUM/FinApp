@@ -39,5 +39,4 @@ interface TransactionsRepository {
         startDate: String? = null,
         endDate: String? = null,
     ): Flow<Result<List<TransactionDetail>>>
-
 }

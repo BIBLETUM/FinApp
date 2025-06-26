@@ -17,5 +17,4 @@ interface AccountInfoRepository {
      * @return [Flow] с результатом запроса информации об аккаунте
      */
     fun getAccountInfo(accountId: Int): Flow<Result<AccountInfo>>
-
 }

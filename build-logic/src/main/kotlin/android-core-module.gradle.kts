@@ -9,6 +9,6 @@ configure<LibraryExtension> {
     baseAndroidConfig(project)
 }
 
-dependencies{
+dependencies {
     implementation(libs.hilt.android)
 }

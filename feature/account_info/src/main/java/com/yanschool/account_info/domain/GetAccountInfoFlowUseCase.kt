@@ -34,5 +34,4 @@ interface IGetAccountInfoFlowUseCase {
      * @return [Flow] с [Result], содержащим [AccountInfo] или ошибку
      */
     operator fun invoke(): Flow<Result<AccountInfo>>
-
 }

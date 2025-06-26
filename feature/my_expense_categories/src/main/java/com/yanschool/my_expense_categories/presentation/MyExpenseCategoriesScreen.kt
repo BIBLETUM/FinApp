@@ -75,7 +75,6 @@ private fun MyExpenseCategoriesScreen(
     }
 }
 
-
 @Composable
 private fun MyExpenseCategoriesScreenContent(
     paddingValues: PaddingValues,

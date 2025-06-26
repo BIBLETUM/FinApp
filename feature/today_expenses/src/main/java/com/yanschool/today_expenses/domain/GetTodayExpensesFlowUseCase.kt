@@ -36,7 +36,6 @@ class GetTodayExpensesFlowUseCase @Inject constructor(
                     }
                 }
             }
-
     }
 }
 
@@ -51,5 +50,4 @@ interface IGetTodayExpensesFlowUseCase {
      * @return [Flow] с [Result], содержащим список транзакций или ошибку
      */
     operator fun invoke(): Flow<Result<List<TransactionShort>>>
-
 }

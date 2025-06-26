@@ -52,15 +52,14 @@ private fun TodayIncomesScreen(
             DefaultTopAppBar(
                 titleRes = R.string.today_incomes,
                 actions = {
-                    TopBarHistoryActionIcon() {
+                    TopBarHistoryActionIcon {
                         onHistoryClick()
                     }
                 }
             )
         },
         floatingActionButton = {
-            FloatingActionButtonPlus(
-            )
+            FloatingActionButtonPlus()
         },
     ) { innerPaddingValues ->
         when (val currentState = screenState.value) {

@@ -57,8 +57,7 @@ private fun SplashScreen(
 }
 
 @Composable
-private fun SplashScreenContent(
-) {
+private fun SplashScreenContent() {
     Box(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.surface)
@@ -74,6 +73,5 @@ private fun SplashScreenContent(
             composition = composition,
             iterations = LottieConstants.IterateForever,
         )
-
     }
 }

@@ -32,7 +32,6 @@ class TransactionsRepositoryImpl @Inject constructor(
                 endDate = endDate
             )
                 .map { mapperShot.mapDtoToDomainShort(it) }
-
         }
             .flowOn(Dispatchers.IO)
     }

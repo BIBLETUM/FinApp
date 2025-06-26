@@ -15,5 +15,4 @@ interface TodayExpensesModule {
     fun bindGetTodayExpensesFlowUseCase(
         impl: GetTodayExpensesFlowUseCase,
     ): IGetTodayExpensesFlowUseCase
-
 }

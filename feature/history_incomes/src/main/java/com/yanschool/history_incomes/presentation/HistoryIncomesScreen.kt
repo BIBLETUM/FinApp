@@ -62,7 +62,8 @@ private fun HistoryIncomesScreen(
                     TopBarNavigationIcon(
                         onClick = onNavigateBack
                     )
-                })
+                }
+            )
         },
     ) { innerPaddingValues ->
         when (val currentState = screenState.value) {
@@ -129,5 +130,3 @@ private fun TopBarNavigationIcon(
         )
     }
 }
-
-

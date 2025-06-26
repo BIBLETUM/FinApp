@@ -54,5 +54,4 @@ object AppModule {
     ): TransactionsService {
         return ApiFactory.createTransactionsService(retrofit)
     }
-
 }
