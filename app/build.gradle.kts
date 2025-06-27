@@ -42,9 +42,6 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(platform(libs.okhttp.bom))
-    implementation(libs.okhttp)
 
     implementation(libs.lottie)
 }
