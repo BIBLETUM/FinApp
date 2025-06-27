@@ -1,3 +1,5 @@
+@file:Suppress("LongMethod")
+
 package com.yanschool.finapp.presentation
 
 import androidx.compose.material3.MaterialTheme
@@ -14,19 +16,19 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.yanschool.account_info.presentation.AccountBalanceScreenRoot
 import com.yanschool.finapp.presentation.components.navigation.NavigationBarItemIcon
 import com.yanschool.finapp.presentation.components.navigation.NavigationBarItemLabel
 import com.yanschool.finapp.presentation.navigation.AppNavGraph
 import com.yanschool.finapp.presentation.navigation.Screen
 import com.yanschool.finapp.presentation.navigation.navigationItems
-import com.yanschool.finapp.presentation.screen.account_balance.AccountBalanceScreenRoot
-import com.yanschool.finapp.presentation.screen.history_expenses.HistoryExpensesScreenRoot
-import com.yanschool.finapp.presentation.screen.history_income.HistoryIncomesScreenRoot
-import com.yanschool.finapp.presentation.screen.my_expense_categories.MyExpenseCategoriesScreenRoot
-import com.yanschool.finapp.presentation.screen.settings.SettingsScreenRoot
-import com.yanschool.finapp.presentation.screen.splash.SplashScreenRoot
-import com.yanschool.finapp.presentation.screen.today_expenses.TodayExpensesScreenRoot
-import com.yanschool.finapp.presentation.screen.today_incomes.TodayIncomesScreenRoot
+import com.yanschool.history_expenses.presentation.HistoryExpensesScreenRoot
+import com.yanschool.history_incomes.presentation.HistoryIncomesScreenRoot
+import com.yanschool.my_expense_categories.presentation.MyExpenseCategoriesScreenRoot
+import com.yanschool.settings.SettingsScreenRoot
+import com.yanschool.splash.presentation.SplashScreenRoot
+import com.yanschool.today_expenses.presentation.TodayExpensesScreenRoot
+import com.yanschool.today_incomes.presentation.TodayIncomesScreenRoot
 
 @Composable
 internal fun MainScreen() {

@@ -11,7 +11,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.MaterialTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.yanschool.finapp.R
+import com.yanschool.finapp.ui.R
 import com.yanschool.ui.theme.FinAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +25,8 @@ class MainActivity : ComponentActivity() {
             super.onLost(network)
             Toast.makeText(
                 this@MainActivity,
-                getString(R.string.no_internet_connection), Toast.LENGTH_LONG
+                getString(R.string.no_internet_connection),
+                Toast.LENGTH_LONG
             ).show()
         }
     }

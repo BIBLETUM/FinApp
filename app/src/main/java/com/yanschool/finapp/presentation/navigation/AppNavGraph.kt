@@ -1,3 +1,5 @@
+@file:Suppress("LongParameterList")
+
 package com.yanschool.finapp.presentation.navigation
 
 import androidx.compose.runtime.Composable
@@ -18,7 +20,8 @@ internal fun AppNavGraph(
     historyIncomesScreenContent: @Composable () -> Unit,
 ) {
     NavHost(
-        navController = navHostController, startDestination = Screen.Splash
+        navController = navHostController,
+        startDestination = Screen.Splash
     ) {
         composable<Screen.Splash> {
             splashScreenContent()

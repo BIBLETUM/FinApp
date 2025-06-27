@@ -1,3 +1,5 @@
+includeBuild("build-logic")
+
 pluginManagement {
     repositories {
         google {
@@ -21,5 +23,25 @@ dependencyResolutionManagement {
 
 rootProject.name = "FinApp"
 include(":app")
-include(":ui")
-include(":core")
+
+listOf(
+    "ui",
+    "utils",
+    "data",
+    "domain",
+).forEach {
+    include(":core:$it")
+}
+
+listOf(
+    "splash",
+    "settings",
+    "account_info",
+    "my_expense_categories",
+    "today_expenses",
+    "today_incomes",
+    "history_expenses",
+    "history_incomes",
+).forEach {
+    include(":feature:$it")
+}

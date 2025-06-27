@@ -1,9 +1,9 @@
 package com.yanschool.finapp.di
 
-import com.yanschool.finapp.data.AccountIdRepositoryImpl
-import com.yanschool.finapp.domain.splash.AccountIdRepository
-import com.yanschool.finapp.domain.splash.GetIsReadyToProceedFromSplashScreenFlowUseCase
-import com.yanschool.finapp.domain.splash.IGetIsReadyToProceedFromSplashScreenFlowUseCase
+import com.yanschool.data.common_repository.AccountIdRepositoryImpl
+import com.yanschool.domain.common_repository.AccountIdRepository
+import com.yanschool.domain.common_usecase.GetAccountIdFlowUseCase
+import com.yanschool.domain.common_usecase.IGetAccountIdFlowUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,13 +14,12 @@ import dagger.hilt.components.SingletonComponent
 interface AccountIdModule {
 
     @Binds
-    fun bindGetIsReadyToProceedFromSplashScreenFlow(
-        impl: GetIsReadyToProceedFromSplashScreenFlowUseCase,
-    ): IGetIsReadyToProceedFromSplashScreenFlowUseCase
+    fun bindGetAccountIdFlowUseCase(
+        impl: GetAccountIdFlowUseCase,
+    ): IGetAccountIdFlowUseCase
 
     @Binds
     fun bindAccountIdRepository(
         impl: AccountIdRepositoryImpl
     ): AccountIdRepository
-
 }
