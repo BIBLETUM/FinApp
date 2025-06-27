@@ -20,22 +20,24 @@ class GetTodayIncomesFlowUseCase @Inject constructor(
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun invoke(): Flow<Result<List<TransactionShort>>> {
-        val todayString: String = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            .format(Calendar.getInstance().time)
+        val todayString: String =
+            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().time)
 
-        return accountIdFlowUseCase.invoke()
-            .filterNotNull()
-            .flatMapLatest { accountId ->
-                transactionsRepository.getTransactionsShort(
-                    accountId = accountId,
-                    startDate = todayString,
-                    endDate = todayString,
-                ).map { result ->
-                    result.map { list ->
-                        list.filter { it.category.isIncome }
-                    }
-                }
+        return accountIdFlowUseCase.invoke().filterNotNull().flatMapLatest { accountId ->
+            transactionsRepository.getTransactionsShort(
+                accountId = accountId,
+                startDate = todayString,
+                endDate = todayString,
+            ).map { result ->
+                filterResultByIncome(result)
             }
+        }
+    }
+
+    private fun filterResultByIncome(result: Result<List<TransactionShort>>): Result<List<TransactionShort>> {
+        return result.map { list ->
+            list.filter { it.category.isIncome }
+        }
     }
 }
 

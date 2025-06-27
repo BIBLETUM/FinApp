@@ -31,15 +31,7 @@ class TransactionsExpenseHistoryInteractor @Inject constructor(
             .flatMapLatest { accountId ->
                 dateRangeFlow()
                     .flatMapLatest { (start, end) ->
-                        transactionsRepository.getTransactionsDetail(
-                            accountId = accountId,
-                            startDate = start,
-                            endDate = end
-                        ).map { result ->
-                            result
-                                .filterTransactionsByType(false)
-                                .sortDescendingByDate()
-                        }
+                        getTransactionsDetailFlow(accountId, start, end)
                     }
             }
             .flowOn(Dispatchers.IO)
@@ -51,6 +43,22 @@ class TransactionsExpenseHistoryInteractor @Inject constructor(
 
     override fun setEndDate(endDate: String) {
         _endDate.value = endDate
+    }
+
+    private fun getTransactionsDetailFlow(
+        accountId: Int,
+        startDate: String,
+        endDate: String
+    ): Flow<Result<List<TransactionDetail>>> {
+        return transactionsRepository.getTransactionsDetail(
+            accountId = accountId,
+            startDate = startDate,
+            endDate = endDate,
+        ).map { result ->
+            result
+                .filterTransactionsByType(false)
+                .sortDescendingByDate()
+        }
     }
 
     private fun dateRangeFlow(): Flow<Pair<String, String>> {

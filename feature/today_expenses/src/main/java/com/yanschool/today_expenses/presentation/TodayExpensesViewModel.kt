@@ -3,6 +3,7 @@ package com.yanschool.today_expenses.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanschool.common_mapper.TransactionShortUiMapper
+import com.yanschool.domain.common_models.TransactionShort
 import com.yanschool.today_expenses.domain.IGetTodayExpensesFlowUseCase
 import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
 import com.yanschool.utils.extensions.toStringWithCurrency
@@ -40,23 +41,27 @@ class TodayExpensesViewModel @Inject constructor(
                             TodayExpensesScreenState.Error(error.message ?: UNEXPECTED_ERROR)
                     }
                     result.onSuccess { data ->
-                        val totalAmount = data
-                            .sumOf { BigDecimal(it.amount) }
-                            .toStringWithCurrency()
-
-                        val uiItems = data
-                            .map {
-                                mapper.mapDomainToUi(it)
-                                    .copy(amount = BigDecimal(it.amount).toStringWithCurrency())
-                            }
-                        _screenState.update {
-                            TodayExpensesScreenState.Content(
-                                transactionShortUis = uiItems,
-                                total = totalAmount,
-                            )
-                        }
+                        updateScreenOnSuccess(data)
                     }
                 }
+        }
+    }
+
+    private fun updateScreenOnSuccess(data: List<TransactionShort>) {
+        val totalAmount = data
+            .sumOf { BigDecimal(it.amount) }
+            .toStringWithCurrency()
+
+        val uiItems = data
+            .map {
+                mapper.mapDomainToUi(it)
+                    .copy(amount = BigDecimal(it.amount).toStringWithCurrency())
+            }
+        _screenState.update {
+            TodayExpensesScreenState.Content(
+                transactionShortUis = uiItems,
+                total = totalAmount,
+            )
         }
     }
 }

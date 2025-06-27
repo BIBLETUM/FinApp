@@ -3,6 +3,8 @@ package com.yanschool.my_expense_categories.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanschool.common_mapper.TransactionCategoryUiMapper
+import com.yanschool.common_models.TransactionCategoryUi
+import com.yanschool.domain.common_models.TransactionCategory
 import com.yanschool.my_expense_categories.domain.IGetTransactionCategoriesFlowUseCase
 import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,11 +37,7 @@ class MyExpenseCategoriesViewModel @Inject constructor(
         viewModelScope.launch(exceptionHandler) {
             getTransactionCategoriesFlowUseCase.invoke()
                 .map { result ->
-                    result.map { transactionsDomain ->
-                        transactionsDomain.map {
-                            mapper.mapDomainToUi(it)
-                        }
-                    }
+                    mapResultDomainToUi(result)
                 }
                 .collect { result ->
                     result.onSuccess { data ->
@@ -56,6 +54,14 @@ class MyExpenseCategoriesViewModel @Inject constructor(
                         )
                     }
                 }
+        }
+    }
+
+    private fun mapResultDomainToUi(result: Result<List<TransactionCategory>>): Result<List<TransactionCategoryUi>> {
+        return result.map { transactionsDomain ->
+            transactionsDomain.map {
+                mapper.mapDomainToUi(it)
+            }
         }
     }
 }

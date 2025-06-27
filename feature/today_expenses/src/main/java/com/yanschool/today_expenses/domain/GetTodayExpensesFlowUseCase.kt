@@ -31,11 +31,15 @@ class GetTodayExpensesFlowUseCase @Inject constructor(
                     startDate = todayString,
                     endDate = todayString
                 ).map { result ->
-                    result.map { list ->
-                        list.filter { !it.category.isIncome }
-                    }
+                    filterResultByExpense(result)
                 }
             }
+    }
+
+    private fun filterResultByExpense(result: Result<List<TransactionShort>>): Result<List<TransactionShort>> {
+        return result.map { list ->
+            list.filter { !it.category.isIncome }
+        }
     }
 }
 
