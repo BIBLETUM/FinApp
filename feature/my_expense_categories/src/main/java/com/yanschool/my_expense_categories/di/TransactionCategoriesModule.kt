@@ -3,6 +3,8 @@ package com.yanschool.my_expense_categories.di
 import com.yanschool.my_expense_categories.data.TransactionCategoriesRepositoryImpl
 import com.yanschool.my_expense_categories.domain.GetTransactionCategoriesFlowUseCase
 import com.yanschool.my_expense_categories.domain.IGetTransactionCategoriesFlowUseCase
+import com.yanschool.my_expense_categories.domain.ISetSearchQueryUseCase
+import com.yanschool.my_expense_categories.domain.SetSearchQueryUseCase
 import com.yanschool.my_expense_categories.domain.TransactionCategoriesRepository
 import dagger.Binds
 import dagger.Module
@@ -22,4 +24,9 @@ interface TransactionCategoriesModule {
     fun bindTransactionCategoriesRepository(
         impl: TransactionCategoriesRepositoryImpl
     ): TransactionCategoriesRepository
+
+    @Binds
+    fun bindSetSearchQueryUseCase(
+        impl: SetSearchQueryUseCase
+    ): ISetSearchQueryUseCase
 }

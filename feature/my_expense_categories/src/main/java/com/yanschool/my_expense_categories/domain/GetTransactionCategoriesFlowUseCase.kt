@@ -4,6 +4,7 @@ import com.yanschool.domain.common_models.TransactionCategory
 import com.yanschool.domain.common_usecase.IGetAccountIdFlowUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
@@ -11,16 +12,40 @@ import javax.inject.Inject
 class GetTransactionCategoriesFlowUseCase @Inject constructor(
     private val repository: TransactionCategoriesRepository,
     private val accountIdFlowUseCase: IGetAccountIdFlowUseCase,
+    private val searchFlowUseCase: InnerSearchFlow,
 ) : IGetTransactionCategoriesFlowUseCase {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun invoke(): Flow<Result<List<TransactionCategory>>> {
-        return accountIdFlowUseCase.invoke()
+        val cachedCategoriesFlow = accountIdFlowUseCase.invoke()
             .filterNotNull()
             .flatMapLatest { accountId ->
                 repository.getTransactionCategories(accountId)
             }
+
+        return combine(cachedCategoriesFlow, searchFlowUseCase.getSearchFlow()) { result, query ->
+            filterResultByQuery(result, query)
+        }
     }
+
+    private fun filterResultByQuery(
+        result: Result<List<TransactionCategory>>,
+        query: String
+    ): Result<List<TransactionCategory>> {
+        return if (query.isBlank()) {
+            result
+        } else {
+            result.map { categories ->
+                categories.filter {
+                    it.name.contains(
+                        query,
+                        ignoreCase = true
+                    )
+                }
+            }
+        }
+    }
+
 }
 
 /**

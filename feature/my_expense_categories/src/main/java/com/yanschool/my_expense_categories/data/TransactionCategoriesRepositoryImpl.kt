@@ -18,8 +18,14 @@ class TransactionCategoriesRepositoryImpl @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun getTransactionCategories(accountId: Int): Flow<Result<List<TransactionCategory>>> {
         return retryFlowWithResult {
-            accountInfoService.getAccountInfo(accountId).expenseStats
+            val expenseStats = accountInfoService.getAccountInfo(accountId).expenseStats
                 .map { mapper.mapDtoToDomain(it, false) }
+
+            val incomeStats = accountInfoService.getAccountInfo(accountId).incomeStats
+                .map { mapper.mapDtoToDomain(it, true) }
+
+            val allStats = (expenseStats + incomeStats).toList()
+            allStats
         }
             .flowOn(Dispatchers.IO)
     }

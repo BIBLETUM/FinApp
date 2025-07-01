@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,6 +27,10 @@ class SplashScreenViewModel @Inject constructor(
                 } else {
                     _screenState.value = SplashScreenState.Error(throwable.message())
                 }
+            }
+
+            is UnknownHostException -> {
+                _screenState.value = SplashScreenState.Error("Missing internet connection")
             }
 
             else -> {

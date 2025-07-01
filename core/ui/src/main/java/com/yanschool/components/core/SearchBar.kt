@@ -1,6 +1,7 @@
 package com.yanschool.components.core
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
@@ -19,6 +20,7 @@ import com.yanschool.finapp.ui.R
 @Composable
 fun SearchBar(
     query: String,
+    onQueryChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     ListItem(
@@ -36,19 +38,23 @@ fun SearchBar(
         },
     ) {
         BasicTextField(
+            modifier = Modifier.fillMaxWidth(),
             value = query,
-            onValueChange = {},
+            onValueChange = onQueryChange,
             singleLine = true,
-            textStyle = MaterialTheme.typography.bodyLarge,
-            decorationBox = { _ ->
-                if (query.isEmpty()) {
-                    Text(
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        text = stringResource(R.string.find_expense_category),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+            textStyle = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.onSurface),
+            decorationBox = { innerTextField ->
+                Box {
+                    if (query.isEmpty()) {
+                        Text(
+                            text = stringResource(R.string.find_expense_category),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
+                    innerTextField()
                 }
             }
         )
