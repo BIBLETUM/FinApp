@@ -27,7 +27,6 @@ class TransactionsExpenseHistoryInteractor @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun getFlow(): Flow<Result<List<TransactionDetail>>> {
         return accountIdFlowUseCase.invoke()
-            .filterNotNull()
             .flatMapLatest { account ->
                 dateRangeFlow()
                     .flatMapLatest { (start, end) ->

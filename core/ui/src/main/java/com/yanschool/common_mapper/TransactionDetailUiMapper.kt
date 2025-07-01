@@ -16,7 +16,7 @@ class TransactionDetailUiMapper @Inject constructor(
     private val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
         .withZone(ZoneId.systemDefault())
 
-    fun mapDomainToUi(domain: TransactionDetail): TransactionDetailUi {
+    fun mapDomainToUi(domain: TransactionDetail, currencySymbol: String): TransactionDetailUi {
         val formattedTime = Instant
             .parse(domain.dateTime)
             .atZone(ZoneId.systemDefault())
@@ -24,7 +24,7 @@ class TransactionDetailUiMapper @Inject constructor(
 
         return TransactionDetailUi(
             id = domain.id,
-            amount = BigDecimal(domain.amount).toStringWithCurrency(),
+            amount = BigDecimal(domain.amount).toStringWithCurrency(currencySymbol),
             comment = domain.comment,
             category = transactionCategoryUiMapper.mapDomainToUi(domain.category),
             time = formattedTime,

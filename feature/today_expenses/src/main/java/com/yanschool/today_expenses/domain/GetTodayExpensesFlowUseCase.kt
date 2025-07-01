@@ -5,7 +5,6 @@ import com.yanschool.domain.common_repository.TransactionsRepository
 import com.yanschool.domain.common_usecase.IGetCurrentAccountFlowUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import java.text.SimpleDateFormat
@@ -24,7 +23,6 @@ class GetTodayExpensesFlowUseCase @Inject constructor(
             .format(Calendar.getInstance().time)
 
         return getAccountIdFlowUseCase.invoke()
-            .filterNotNull()
             .flatMapLatest { account ->
                 transactionsRepository.getTransactionsShort(
                     accountId = account.id,

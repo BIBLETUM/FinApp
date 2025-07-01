@@ -10,7 +10,7 @@ import javax.inject.Singleton
 @Singleton
 class InnerSearchFlow @Inject constructor() {
 
-    private val _searchFlow = MutableStateFlow<String>(StringConstants.emptyString)
+    private val _searchFlow = MutableStateFlow<String>(StringConstants.EMPTY)
     private val searchFlow = _searchFlow.asStateFlow()
 
     fun getSearchFlow(): StateFlow<String> = searchFlow
@@ -18,5 +18,4 @@ class InnerSearchFlow @Inject constructor() {
     fun setSearchQuery(value: String) {
         _searchFlow.value = value
     }
-
 }

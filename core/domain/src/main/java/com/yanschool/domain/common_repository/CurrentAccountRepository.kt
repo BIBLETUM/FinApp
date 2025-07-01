@@ -23,4 +23,11 @@ interface CurrentAccountRepository {
      * @return [StateFlow] с текущим аккаунтом или `null`
      */
     fun getCurrentAccountFlow(): StateFlow<AccountInfo?>
+
+    /**
+     * Устанавливает новое значение аккаунта для всего приложения.
+     *
+     * @param [AccountInfo] новое значение аккаунта
+     */
+    fun setNewAccountInfo(accountInfo: AccountInfo)
 }

@@ -5,7 +5,6 @@ import com.yanschool.domain.common_repository.TransactionsRepository
 import com.yanschool.domain.common_usecase.IGetCurrentAccountFlowUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import java.text.SimpleDateFormat
@@ -23,7 +22,7 @@ class GetTodayIncomesFlowUseCase @Inject constructor(
         val todayString: String =
             SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().time)
 
-        return accountIdFlowUseCase.invoke().filterNotNull().flatMapLatest { account ->
+        return accountIdFlowUseCase.invoke().flatMapLatest { account ->
             transactionsRepository.getTransactionsShort(
                 accountId = account.id,
                 startDate = todayString,

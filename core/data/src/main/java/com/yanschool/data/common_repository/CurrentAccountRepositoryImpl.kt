@@ -21,8 +21,8 @@ class CurrentAccountRepositoryImpl @Inject constructor(
     private val accountShortMapper: AccountShortMapper,
 ) : CurrentAccountRepository {
 
-    private val _currentAccountId = MutableStateFlow<AccountInfo?>(null)
-    private val currentAccountId: StateFlow<AccountInfo?> = _currentAccountId.asStateFlow()
+    private val _currentAccount = MutableStateFlow<AccountInfo?>(null)
+    private val currentAccount: StateFlow<AccountInfo?> = _currentAccount.asStateFlow()
 
     override suspend fun loadAccount() {
         flowOf(accountsService.getAccounts().first())
@@ -36,11 +36,15 @@ class CurrentAccountRepositoryImpl @Inject constructor(
                 }
             }
             .collect {
-                _currentAccountId.value = it
+                _currentAccount.value = it
             }
     }
 
-    override fun getCurrentAccountFlow(): StateFlow<AccountInfo?> = currentAccountId
+    override fun setNewAccountInfo(accountInfo: AccountInfo) {
+        _currentAccount.value = accountInfo
+    }
+
+    override fun getCurrentAccountFlow(): StateFlow<AccountInfo?> = currentAccount
 
     private companion object {
         const val MAX_RETRIES = 3

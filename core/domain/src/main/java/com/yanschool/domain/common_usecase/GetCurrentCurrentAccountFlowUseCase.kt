@@ -3,16 +3,16 @@ package com.yanschool.domain.common_usecase
 import com.yanschool.domain.common_models.AccountInfo
 import com.yanschool.domain.common_repository.CurrentAccountRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterNotNull
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class GetCurrentCurrentAccountFlowUseCase @Inject constructor(
     private val currentAccountRepository: CurrentAccountRepository,
 ) : IGetCurrentAccountFlowUseCase {
 
-    override fun invoke(): Flow<AccountInfo?> {
+    override fun invoke(): Flow<AccountInfo> {
         return currentAccountRepository.getCurrentAccountFlow()
+            .filterNotNull()
     }
 }
 
@@ -26,5 +26,5 @@ interface IGetCurrentAccountFlowUseCase {
      *
      * @return [Flow], содержащий значение [AccountInfo] или `null`, если аккаунт ещё не установлен
      */
-    operator fun invoke(): Flow<AccountInfo?>
+    operator fun invoke(): Flow<AccountInfo>
 }

@@ -7,9 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.yanschool.common_mapper.TransactionDetailUiMapper
 import com.yanschool.common_models.TransactionDetailUi
 import com.yanschool.components.core.date_picker.DateType
+import com.yanschool.domain.common_models.AccountInfo
 import com.yanschool.domain.common_models.TransactionDetail
 import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
 import com.yanschool.utils.extensions.formatTimestampToDate
+import com.yanschool.utils.extensions.getCurrencySymbol
 import com.yanschool.utils.extensions.toStringWithCurrency
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +19,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.plus
@@ -29,6 +32,7 @@ abstract class BaseHistoryScreenViewModel<S>(
     private val setStartDateFn: (String) -> Unit,
     private val setEndDateFn: (String) -> Unit,
     dataFlow: Flow<Result<List<TransactionDetail>>>,
+    currentAccountFlow: Flow<AccountInfo?>,
     private val mapper: TransactionDetailUiMapper,
     initialLoadingState: S,
     private val toContentState: (start: String, end: String, items: List<TransactionDetailUi>, total: String) -> S,
@@ -57,8 +61,10 @@ abstract class BaseHistoryScreenViewModel<S>(
                 _screenState.value = initialLoadingState
                 setEndDateFn(it)
             },
-            dataFlow
-        ) { startDate, endDate, result ->
+            dataFlow,
+            currentAccountFlow
+                .filterNotNull(),
+        ) { startDate, endDate, result, currentAccount ->
             val formattedStartDate = parseDate(startDate)
             val formattedEndDate = parseDate(endDate)
 
@@ -67,13 +73,15 @@ abstract class BaseHistoryScreenViewModel<S>(
                     _screenState.value = toErrorState(err.message ?: UNEXPECTED_ERROR)
                 },
                 onSuccess = { transactions ->
+                    val currencySymbol = currentAccount.currency.getCurrencySymbol()
+
                     val mappedTransactions = transactions.map {
-                        mapper.mapDomainToUi(it)
+                        mapper.mapDomainToUi(it, currencySymbol)
                     }
 
                     val total = transactions
                         .sumOf { BigDecimal(it.amount) }
-                        .toStringWithCurrency()
+                        .toStringWithCurrency(currencySymbol)
 
                     _screenState.value = toContentState(
                         formattedStartDate,

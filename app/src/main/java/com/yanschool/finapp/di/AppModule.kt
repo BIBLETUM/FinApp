@@ -2,6 +2,7 @@ package com.yanschool.finapp.di
 
 import com.yanschool.data.remote_data_source.ApiFactory
 import com.yanschool.data.remote_data_source.api.AccountInfoService
+import com.yanschool.data.remote_data_source.api.AccountSettingsService
 import com.yanschool.data.remote_data_source.api.AccountsService
 import com.yanschool.data.remote_data_source.api.TransactionsService
 import com.yanschool.finapp.app.BuildConfig
@@ -53,5 +54,13 @@ object AppModule {
         retrofit: Retrofit
     ): TransactionsService {
         return ApiFactory.createTransactionsService(retrofit)
+    }
+
+    @Singleton
+    @Provides
+    fun provideAccountSettingsService(
+        retrofit: Retrofit
+    ): AccountSettingsService {
+        return ApiFactory.createAccountSettingsService(retrofit)
     }
 }

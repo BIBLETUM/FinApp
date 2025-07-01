@@ -90,5 +90,4 @@ class MyExpenseCategoriesViewModel @Inject constructor(
             }
         )
     }
-
 }
