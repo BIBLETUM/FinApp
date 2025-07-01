@@ -1,9 +1,9 @@
 package com.yanschool.finapp.di
 
-import com.yanschool.data.common_repository.AccountIdRepositoryImpl
-import com.yanschool.domain.common_repository.AccountIdRepository
-import com.yanschool.domain.common_usecase.GetAccountIdFlowUseCase
-import com.yanschool.domain.common_usecase.IGetAccountIdFlowUseCase
+import com.yanschool.data.common_repository.CurrentAccountRepositoryImpl
+import com.yanschool.domain.common_repository.CurrentAccountRepository
+import com.yanschool.domain.common_usecase.GetCurrentCurrentAccountFlowUseCase
+import com.yanschool.domain.common_usecase.IGetCurrentAccountFlowUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,11 +15,11 @@ interface AccountIdModule {
 
     @Binds
     fun bindGetAccountIdFlowUseCase(
-        impl: GetAccountIdFlowUseCase,
-    ): IGetAccountIdFlowUseCase
+        impl: GetCurrentCurrentAccountFlowUseCase,
+    ): IGetCurrentAccountFlowUseCase
 
     @Binds
     fun bindAccountIdRepository(
-        impl: AccountIdRepositoryImpl
-    ): AccountIdRepository
+        impl: CurrentAccountRepositoryImpl
+    ): CurrentAccountRepository
 }

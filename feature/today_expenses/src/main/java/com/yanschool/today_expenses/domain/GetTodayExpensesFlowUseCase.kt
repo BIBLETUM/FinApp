@@ -2,7 +2,7 @@ package com.yanschool.today_expenses.domain
 
 import com.yanschool.domain.common_models.TransactionShort
 import com.yanschool.domain.common_repository.TransactionsRepository
-import com.yanschool.domain.common_usecase.IGetAccountIdFlowUseCase
+import com.yanschool.domain.common_usecase.IGetCurrentAccountFlowUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class GetTodayExpensesFlowUseCase @Inject constructor(
     private val transactionsRepository: TransactionsRepository,
-    private val getAccountIdFlowUseCase: IGetAccountIdFlowUseCase,
+    private val getAccountIdFlowUseCase: IGetCurrentAccountFlowUseCase,
 ) : IGetTodayExpensesFlowUseCase {
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -25,9 +25,9 @@ class GetTodayExpensesFlowUseCase @Inject constructor(
 
         return getAccountIdFlowUseCase.invoke()
             .filterNotNull()
-            .flatMapLatest { accountId ->
+            .flatMapLatest { account ->
                 transactionsRepository.getTransactionsShort(
-                    accountId = accountId,
+                    accountId = account.id,
                     startDate = todayString,
                     endDate = todayString
                 ).map { result ->

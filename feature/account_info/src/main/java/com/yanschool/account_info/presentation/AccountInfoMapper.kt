@@ -1,6 +1,6 @@
 package com.yanschool.account_info.presentation
 
-import com.yanschool.account_info.domain.AccountInfo
+import com.yanschool.domain.common_models.AccountInfo
 import com.yanschool.utils.extensions.toStringWithCurrency
 import java.math.BigDecimal
 import javax.inject.Inject

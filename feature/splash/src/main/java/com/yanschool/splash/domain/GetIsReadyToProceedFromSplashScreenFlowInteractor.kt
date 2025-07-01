@@ -1,14 +1,14 @@
 package com.yanschool.splash.domain
 
-import com.yanschool.domain.common_repository.AccountIdRepository
-import com.yanschool.domain.common_usecase.IGetAccountIdFlowUseCase
+import com.yanschool.domain.common_repository.CurrentAccountRepository
+import com.yanschool.domain.common_usecase.IGetCurrentAccountFlowUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class GetIsReadyToProceedFromSplashScreenFlowInteractor @Inject constructor(
-    private val getAccountIdFlowUseCase: IGetAccountIdFlowUseCase,
-    private val accountIdRepository: AccountIdRepository,
+    private val getAccountIdFlowUseCase: IGetCurrentAccountFlowUseCase,
+    private val currentAccountRepository: CurrentAccountRepository,
 ) : IGetIsReadyToProceedFromSplashScreenFlowInteractor {
 
     override operator fun invoke(): Flow<Boolean> {
@@ -16,7 +16,7 @@ class GetIsReadyToProceedFromSplashScreenFlowInteractor @Inject constructor(
     }
 
     override suspend fun loadAccountId() {
-        accountIdRepository.loadAccountId()
+        currentAccountRepository.loadAccount()
     }
 }
 

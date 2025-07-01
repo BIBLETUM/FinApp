@@ -1,6 +1,7 @@
 package com.yanschool.account_info.domain
 
-import com.yanschool.domain.common_usecase.IGetAccountIdFlowUseCase
+import com.yanschool.domain.common_models.AccountInfo
+import com.yanschool.domain.common_usecase.IGetCurrentAccountFlowUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
@@ -9,15 +10,15 @@ import javax.inject.Inject
 
 class GetAccountInfoFlowUseCase @Inject constructor(
     private val repository: AccountInfoRepository,
-    private val getAccountIdFlowUseCase: IGetAccountIdFlowUseCase,
+    private val getAccountIdFlowUseCase: IGetCurrentAccountFlowUseCase,
 ) : IGetAccountInfoFlowUseCase {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override operator fun invoke(): Flow<Result<AccountInfo>> {
         return getAccountIdFlowUseCase.invoke()
             .filterNotNull()
-            .flatMapLatest { accountId ->
-                repository.getAccountInfo(accountId)
+            .flatMapLatest { account ->
+                repository.getAccountInfo(account.id)
             }
     }
 }

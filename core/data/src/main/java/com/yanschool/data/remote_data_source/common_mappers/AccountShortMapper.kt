@@ -1,12 +1,12 @@
-package com.yanschool.account_info.data
+package com.yanschool.data.remote_data_source.common_mappers
 
-import com.yanschool.data.remote_data_source.common_models.AccountInfoDto
+import com.yanschool.data.remote_data_source.common_models.AccountShortDto
 import com.yanschool.domain.common_models.AccountInfo
 import javax.inject.Inject
 
-class AccountInfoMapper @Inject constructor() {
+class AccountShortMapper @Inject constructor() {
 
-    fun mapDtoToDomain(dto: AccountInfoDto): AccountInfo {
+    fun mapDtoToDomain(dto: AccountShortDto): AccountInfo {
         return AccountInfo(
             id = dto.id,
             name = dto.name,
