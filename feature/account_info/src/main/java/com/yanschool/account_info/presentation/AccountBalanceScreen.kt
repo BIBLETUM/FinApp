@@ -20,27 +20,33 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.yanschool.account_info.presentation.components.ListItemBalance
-import com.yanschool.account_info.presentation.components.ListItemCurrency
 import com.yanschool.components.core.DefaultHorizontalDivider
 import com.yanschool.components.core.DefaultTopAppBar
 import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.FloatingActionButtonPlus
+import com.yanschool.components.core.ListItemCurrency
 import com.yanschool.components.core.Loader
 import com.yanschool.finapp.ui.R
 
 @Composable
 fun AccountBalanceScreenRoot(
     paddingValues: PaddingValues,
+    onEditClick: () -> Unit,
     viewModel: AccountBalanceViewModel = hiltViewModel()
 ) {
     val screenState = viewModel.screenSate.collectAsStateWithLifecycle()
 
-    AccountBalanceScreen(paddingValues = paddingValues, screenState = screenState)
+    AccountBalanceScreen(
+        paddingValues = paddingValues,
+        screenState = screenState,
+        onEditClick = onEditClick
+    )
 }
 
 @Composable
 private fun AccountBalanceScreen(
     paddingValues: PaddingValues,
+    onEditClick: () -> Unit,
     screenState: State<AccountBalanceScreenState>,
 ) {
     Scaffold(
@@ -53,7 +59,7 @@ private fun AccountBalanceScreen(
                 titleRes = R.string.my_balance,
                 actions = {
                     IconButton(
-                        onClick = { },
+                        onClick = { onEditClick() },
                         modifier = Modifier.size(48.dp),
                     ) {
                         Icon(
@@ -114,7 +120,7 @@ private fun AccountBalanceScreenContent(
         )
         DefaultHorizontalDivider()
         ListItemCurrency(
-            currency = screenState.data.currency
+            currencySymbol = screenState.data.currencySymbol
         )
     }
 }

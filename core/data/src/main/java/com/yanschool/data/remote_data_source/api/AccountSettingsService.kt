@@ -3,6 +3,7 @@ package com.yanschool.data.remote_data_source.api
 import com.yanschool.data.remote_data_source.common_models.AccountInfoDto
 import com.yanschool.data.remote_data_source.common_models.AccountSettingsDto
 import com.yanschool.data.remote_data_source.common_models.AccountShortDto
+import retrofit2.http.Body
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
@@ -21,6 +22,6 @@ interface AccountSettingsService {
     @PUT("accounts/{id}")
     suspend fun updateAccount(
         @Path("id") accountId: Int,
-        accountSettingsDto: AccountSettingsDto
+        @Body accountSettingsDto: AccountSettingsDto
     ): AccountShortDto
 }

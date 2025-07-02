@@ -3,6 +3,7 @@ package com.yanschool.account_info.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yanschool.account_info.domain.IGetAccountInfoFlowUseCase
+import com.yanschool.common_mapper.AccountInfoMapper
 import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler

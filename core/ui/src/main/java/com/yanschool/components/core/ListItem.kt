@@ -3,6 +3,7 @@ package com.yanschool.components.core
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -16,7 +17,7 @@ fun ListItem(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(horizontal = 0.dp, vertical = 0.dp),
     leadingContent: (@Composable () -> Unit)? = null,
-    trailingContent: (@Composable () -> Unit)? = null,
+    trailingContent: (@Composable RowScope.() -> Unit)? = null,
     trailingAction: (@Composable () -> Unit)? = null,
     mainContent: @Composable () -> Unit,
 ) {
@@ -37,7 +38,7 @@ fun ListItem(
         }
         trailingContent?.let {
             Spacer(modifier = Modifier.width(16.dp))
-            it.invoke()
+            it()
         }
         trailingAction?.let {
             Spacer(modifier = Modifier.width(16.dp))

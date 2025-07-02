@@ -31,4 +31,9 @@
     <string name="end">Конец</string>
     <string name="sum">Сумма</string>
     <string name="my_history">Моя история</string>
+    <string name="russian_ruble">Российский рубль ₽</string>
+    <string name="us_dollar">Американский доллар $</string>
+    <string name="euro">Евро €</string>
+    <string name="enter_account_name">Введите имя аккаунта</string>
+    <string name="balance_value">Значение баланса</string>
 </resources>

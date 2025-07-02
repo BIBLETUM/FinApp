@@ -1,0 +1,124 @@
+package com.yanschool.account_settings.presentation
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.yanschool.account_settings.domain.IUpdateAccountInfoUseCase
+import com.yanschool.domain.common_models.AccountInfo
+import com.yanschool.domain.common_usecase.IGetCurrentAccountFlowUseCase
+import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
+import com.yanschool.utils.extensions.extractIntegerDigits
+import com.yanschool.utils.extensions.formatAmountWithSpaces
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class AccountSettingsViewModel @Inject constructor(
+    private val currentAccountFlow: IGetCurrentAccountFlowUseCase,
+    private val updateAccountInfoUseCase: IUpdateAccountInfoUseCase,
+) : ViewModel() {
+
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        _screenState.value =
+            AccountSettingsScreenState.Error(throwable.message ?: UNEXPECTED_ERROR)
+    }
+
+    private var currentAccountId: Int? = null
+
+    private val _screenState =
+        MutableStateFlow<AccountSettingsScreenState>(AccountSettingsScreenState.Loading)
+    val screenState: StateFlow<AccountSettingsScreenState> = _screenState.asStateFlow()
+
+    init {
+        viewModelScope.launch(exceptionHandler) {
+            currentAccountFlow.invoke()
+                .map { currentAccount ->
+                    currentAccountId = currentAccount.id
+                    AccountSettingsScreenState.Content(
+                        name = currentAccount.name,
+                        balance = currentAccount.balance.formatAmountWithSpaces(),
+                        currency = Currency.valueOf(currentAccount.currency)
+                    )
+                }
+                .collect { newState ->
+                    _screenState.update { newState }
+                }
+        }
+    }
+
+    fun onAction(action: AccountSettingsScreenActions) {
+        when (action) {
+            is AccountSettingsScreenActions.SetNewName -> setNewName(action.name)
+            is AccountSettingsScreenActions.SetNewCurrency -> setNewCurrency(action.currency)
+            is AccountSettingsScreenActions.SetNewBalance -> setNewBalance(action.balance)
+            is AccountSettingsScreenActions.SaveChanges -> saveChanges()
+        }
+    }
+
+    private fun setNewName(name: String) {
+        val currentState = (_screenState.value as? AccountSettingsScreenState.Content) ?: return
+        _screenState.update {
+            currentState.copy(name = name)
+        }
+    }
+
+    private fun setNewCurrency(currency: Currency) {
+        val currentState = (_screenState.value as? AccountSettingsScreenState.Content) ?: return
+        _screenState.update {
+            currentState.copy(currency = currency)
+        }
+    }
+
+    private fun setNewBalance(balance: String) {
+        val currentState = (_screenState.value as? AccountSettingsScreenState.Content) ?: return
+        _screenState.update {
+            currentState.copy(balance = balance)
+        }
+    }
+
+    private fun saveChanges() {
+        val content = (_screenState.value as? AccountSettingsScreenState.Content) ?: return
+        val accountInfo = content.run {
+            AccountInfo(
+                id = currentAccountId ?: return,
+                name = name,
+                balance = balance.extractIntegerDigits(),
+                currency = currency.name,
+            )
+        }
+
+        viewModelScope.launch(exceptionHandler) {
+            updateAccountInfoUseCase.invoke(accountInfo)
+                .onStart {
+                    _screenState.value = AccountSettingsScreenState.Loading
+                }
+                .catch { throwable ->
+                    _screenState.value = AccountSettingsScreenState.Error(
+                        throwable.message ?: UNEXPECTED_ERROR
+                    )
+                }
+                .onEach { result ->
+                    result.fold(
+                        onSuccess = {
+                            _screenState.value = AccountSettingsScreenState.ChangesSaved
+                        },
+                        onFailure = { error ->
+                            _screenState.value = AccountSettingsScreenState.Error(
+                                error.message ?: UNEXPECTED_ERROR
+                            )
+                        }
+                    )
+                }
+                .collect {}
+        }
+    }
+}

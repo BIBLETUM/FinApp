@@ -23,8 +23,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TodayExpensesViewModel @Inject constructor(
-    private val getTodayExpensesFlow: IGetTodayExpensesFlowUseCase,
-    private val currentAccountFlow: IGetCurrentAccountFlowUseCase,
+    getTodayExpensesFlow: IGetTodayExpensesFlowUseCase,
+    currentAccountFlow: IGetCurrentAccountFlowUseCase,
     private val mapper: TransactionShortUiMapper,
 ) : ViewModel() {
 
