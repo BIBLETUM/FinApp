@@ -39,7 +39,8 @@ fun String.getCurrencyName(): String {
  * "abc-123" -> "-123"
  * ```
  *
- * @return строку, содержащую корректное числовое значение с десятичной точкой в формате для парсинга в число с плавающей точкой.
+ * @return строку, содержащую корректное числовое значение с десятичной точкой в формате для парсинга
+ * в число с плавающей точкой.
  */
 fun String.toNormalizedDecimalString(): String {
     val trimmed = this.trimStart()
@@ -72,7 +73,6 @@ fun String.toNormalizedDecimalString(): String {
 
     return if (hasLeadingMinus) "-$cleaned" else cleaned
 }
-
 
 private const val RUBBLES = "RUB"
 private const val EURO = "EUR"
