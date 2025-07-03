@@ -6,8 +6,7 @@ import com.yanschool.account_settings.domain.IUpdateAccountInfoUseCase
 import com.yanschool.domain.common_models.AccountInfo
 import com.yanschool.domain.common_usecase.IGetCurrentAccountFlowUseCase
 import com.yanschool.utils.constants.ExceptionConstants.UNEXPECTED_ERROR
-import com.yanschool.utils.extensions.extractIntegerDigits
-import com.yanschool.utils.extensions.formatAmountWithSpaces
+import com.yanschool.utils.extensions.toNormalizedDecimalString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -45,8 +44,10 @@ class AccountSettingsViewModel @Inject constructor(
                     currentAccountId = currentAccount.id
                     AccountSettingsScreenState.Content(
                         name = currentAccount.name,
-                        balance = currentAccount.balance.formatAmountWithSpaces(),
-                        currency = Currency.valueOf(currentAccount.currency)
+                        balance = currentAccount.balance,
+                        currency = Currency.valueOf(currentAccount.currency),
+                        isBalanceError = !currentAccount.balance.any { it.isDigit() },
+                        isNameError = currentAccount.name.isBlank(),
                     )
                 }
                 .collect { newState ->
@@ -67,7 +68,10 @@ class AccountSettingsViewModel @Inject constructor(
     private fun setNewName(name: String) {
         val currentState = (_screenState.value as? AccountSettingsScreenState.Content) ?: return
         _screenState.update {
-            currentState.copy(name = name)
+            currentState.copy(
+                name = name,
+                isNameError = name.isBlank()
+            )
         }
     }
 
@@ -81,7 +85,10 @@ class AccountSettingsViewModel @Inject constructor(
     private fun setNewBalance(balance: String) {
         val currentState = (_screenState.value as? AccountSettingsScreenState.Content) ?: return
         _screenState.update {
-            currentState.copy(balance = balance)
+            currentState.copy(
+                balance = balance,
+                isBalanceError = !balance.any { it.isDigit() }
+            )
         }
     }
 
@@ -91,7 +98,7 @@ class AccountSettingsViewModel @Inject constructor(
             AccountInfo(
                 id = currentAccountId ?: return,
                 name = name,
-                balance = balance.extractIntegerDigits(),
+                balance = balance.toNormalizedDecimalString(),
                 currency = currency.name,
             )
         }

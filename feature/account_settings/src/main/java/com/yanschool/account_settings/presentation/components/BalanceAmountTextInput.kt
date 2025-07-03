@@ -23,20 +23,22 @@ import androidx.compose.ui.unit.dp
 import com.yanschool.components.core.EmojiWithCircle
 import com.yanschool.components.core.ListItem
 import com.yanschool.finapp.ui.R
-import com.yanschool.utils.extensions.formatAmountWithSpaces
+import com.yanschool.utils.extensions.toNormalizedDecimalString
 
 @Composable
 fun BalanceAmountTextInput(
     value: String,
     onValueChange: (String) -> Unit,
-    currencySymbol: String,
     modifier: Modifier = Modifier,
+    isError: Boolean = false,
 ) {
+    val backgroundColor =
+        if (isError) MaterialTheme.colorScheme.errorContainer else MaterialTheme.colorScheme.surface
     ListItem(
         modifier = modifier
             .fillMaxWidth()
             .heightIn(56.dp)
-            .background(MaterialTheme.colorScheme.surface),
+            .background(backgroundColor),
         leadingContent = {
             EmojiWithCircle(
                 emoji = stringResource(R.string.money_bag_emoji),
@@ -49,7 +51,6 @@ fun BalanceAmountTextInput(
                 value = value,
                 onValueChange = onValueChange,
                 modifier = Modifier.weight(1f),
-                currencySymbol = currencySymbol,
             )
         },
     ) {
@@ -64,7 +65,6 @@ fun BalanceAmountTextInput(
 @Composable
 private fun TextField(
     value: String,
-    currencySymbol: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -72,18 +72,17 @@ private fun TextField(
         modifier = modifier,
         value = value,
         onValueChange = { newText ->
-            val filtered = newText.filter { it.isDigit() }
-            onValueChange(filtered)
+            onValueChange(newText.toNormalizedDecimalString())
         },
         singleLine = true,
         textStyle = MaterialTheme.typography.bodyLarge.copy(
             color = MaterialTheme.colorScheme.onSurface,
-            textAlign = TextAlign.End
+            textAlign = TextAlign.End,
         ),
+        visualTransformation = IntegerOnlyVisualTransformation(),
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Number
         ),
-        visualTransformation = CurrencyVisualTransformation(currencySymbol),
         decorationBox = { innerTextField ->
             Box(contentAlignment = Alignment.CenterEnd) {
                 if (value.isEmpty()) {
@@ -102,45 +101,22 @@ private fun TextField(
     )
 }
 
-private class CurrencyVisualTransformation(
-    private val currencySymbol: String
-) : VisualTransformation {
-
+class IntegerOnlyVisualTransformation : VisualTransformation {
     override fun filter(text: AnnotatedString): TransformedText {
-        val raw = text.text
+        val original = text.text
+        val result = original.toNormalizedDecimalString()
 
-        if (raw.isEmpty()) {
-            return TransformedText(AnnotatedString(""), OffsetMapping.Identity)
-        }
-
-        val formatted = raw.formatAmountWithSpaces()
-        val transformed = "$formatted $currencySymbol"
-
-        val offsetMapping = object : OffsetMapping {
-            override fun originalToTransformed(offset: Int): Int {
-                var count = 0
-                var transformedOffset = 0
-                for (i in formatted.indices) {
-                    if (formatted[i].isDigit()) {
-                        if (count == offset) break
-                        count++
-                    }
-                    transformedOffset++
+        return TransformedText(
+            AnnotatedString(result),
+            object : OffsetMapping {
+                override fun originalToTransformed(offset: Int): Int {
+                    return result.length.coerceAtMost(offset)
                 }
-                return transformedOffset
-            }
 
-            override fun transformedToOriginal(offset: Int): Int {
-                var count = 0
-                for (i in 0 until offset.coerceAtMost(formatted.length)) {
-                    if (formatted[i].isDigit()) {
-                        count++
-                    }
+                override fun transformedToOriginal(offset: Int): Int {
+                    return original.length.coerceAtMost(offset)
                 }
-                return count
             }
-        }
-
-        return TransformedText(AnnotatedString(transformed), offsetMapping)
+        )
     }
 }

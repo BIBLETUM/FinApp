@@ -71,7 +71,10 @@ private fun AccountSettingsScreen(
                     NavigationIcon(onClick = onDone)
                 },
                 actions = {
-                    ActionIcon(onClick = { onAction(AccountSettingsScreenActions.SaveChanges) })
+                    ActionIcon(
+                        onClick = { onAction(AccountSettingsScreenActions.SaveChanges) },
+                        enabled = screenState.value.isAbleToSave
+                    )
                 }
             )
         },
@@ -133,15 +136,16 @@ private fun AccountSettingsScreenContent(
     ) {
         BalanceNameTextInput(
             query = screenState.name,
+            isError = screenState.isNameError,
             onQueryChange = { onAction(AccountSettingsScreenActions.SetNewName(it)) },
         )
         DefaultHorizontalDivider()
         BalanceAmountTextInput(
             value = screenState.balance,
+            isError = screenState.isBalanceError,
             onValueChange = {
                 onAction(AccountSettingsScreenActions.SetNewBalance(it))
             },
-            currencySymbol = screenState.currency.symbol,
         )
         DefaultHorizontalDivider()
         ListItemCurrency(
@@ -188,8 +192,10 @@ private fun NavigationIcon(
 @Composable
 private fun RowScope.ActionIcon(
     onClick: () -> Unit,
+    enabled: Boolean,
 ) {
     IconButton(
+        enabled = enabled,
         onClick = { onClick() },
         modifier = Modifier.size(48.dp),
     ) {

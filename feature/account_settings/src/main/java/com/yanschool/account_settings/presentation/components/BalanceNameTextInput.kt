@@ -20,12 +20,15 @@ fun BalanceNameTextInput(
     query: String,
     onQueryChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    isError: Boolean = false,
 ) {
+    val backgroundColor =
+        if (isError) MaterialTheme.colorScheme.errorContainer else MaterialTheme.colorScheme.surface
     ListItem(
         modifier = modifier
             .fillMaxWidth()
             .heightIn(56.dp)
-            .background(MaterialTheme.colorScheme.surface),
+            .background(backgroundColor),
     ) {
         BasicTextField(
             modifier = Modifier.fillMaxWidth(),
