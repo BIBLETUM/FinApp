@@ -36,4 +36,5 @@
     <string name="euro">Евро €</string>
     <string name="enter_account_name">Введите имя аккаунта</string>
     <string name="balance_value">Значение баланса</string>
+    <string name="account_settings">Настройки счета</string>
 </resources>

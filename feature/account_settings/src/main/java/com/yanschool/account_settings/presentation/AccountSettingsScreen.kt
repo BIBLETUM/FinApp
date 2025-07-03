@@ -21,7 +21,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -35,6 +37,8 @@ import com.yanschool.components.core.ErrorScreen
 import com.yanschool.components.core.ListItemCurrency
 import com.yanschool.components.core.Loader
 import com.yanschool.finapp.ui.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun AccountSettingsScreenRoot(
@@ -66,7 +70,7 @@ private fun AccountSettingsScreen(
         containerColor = MaterialTheme.colorScheme.surface,
         topBar = {
             DefaultTopAppBar(
-                titleRes = R.string.my_balance,
+                titleRes = R.string.account_settings,
                 navigationIcon = {
                     NavigationIcon(onClick = onDone)
                 },
@@ -119,6 +123,9 @@ private fun AccountSettingsScreenContent(
     onAction: (AccountSettingsScreenActions) -> Unit,
     screenState: AccountSettingsScreenState.Content,
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val coroutineScope = rememberCoroutineScope()
+
     val sheetState = rememberModalBottomSheetState()
     val showBottomSheet = remember { mutableStateOf(false) }
 
@@ -150,7 +157,13 @@ private fun AccountSettingsScreenContent(
         DefaultHorizontalDivider()
         ListItemCurrency(
             modifier = Modifier.clickable {
-                showBottomSheet.value = true
+                coroutineScope.launch {
+                    keyboardController?.let { keyboardController ->
+                        keyboardController.hide()
+                        delay(TIME_FOR_KEYBOARD_TO_HIDE)
+                    }
+                    showBottomSheet.value = true
+                }
             },
             backgroundColor = MaterialTheme.colorScheme.surface,
             currencySymbol = screenState.currency.symbol,
@@ -208,3 +221,5 @@ private fun RowScope.ActionIcon(
     }
     Spacer(modifier = Modifier.width(4.dp))
 }
+
+private const val TIME_FOR_KEYBOARD_TO_HIDE = 150L
