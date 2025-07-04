@@ -84,10 +84,17 @@ class AccountSettingsViewModel @Inject constructor(
 
     private fun setNewBalance(balance: String) {
         val currentState = (_screenState.value as? AccountSettingsScreenState.Content) ?: return
+
+        val parts = balance.split('.', limit = 2)
+        val integerPart = parts.getOrNull(0) ?: ""
+
+        val isIntegerPartTooLarge = integerPart.length > MAX_BALANCE_INTEGER_PART_LENGTH
+        val hasAnyDigit = balance.any { it.isDigit() }
+
         _screenState.update {
             currentState.copy(
                 balance = balance,
-                isBalanceError = !balance.any { it.isDigit() }
+                isBalanceError = !hasAnyDigit || isIntegerPartTooLarge
             )
         }
     }
@@ -127,5 +134,9 @@ class AccountSettingsViewModel @Inject constructor(
                 }
                 .collect {}
         }
+    }
+
+    companion object {
+        private const val MAX_BALANCE_INTEGER_PART_LENGTH = 13
     }
 }

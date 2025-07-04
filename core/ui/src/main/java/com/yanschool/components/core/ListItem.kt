@@ -22,27 +22,25 @@ fun ListItem(
     mainContent: @Composable () -> Unit,
 ) {
     Row(
-        modifier = modifier
-            .padding(contentPadding),
+        modifier = modifier.padding(contentPadding),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Spacer(modifier = Modifier.width(16.dp))
         leadingContent?.let {
-            it.invoke()
+            it()
             Spacer(modifier = Modifier.width(16.dp))
         }
-        Box(
-            modifier = Modifier.weight(1f)
-        ) {
+        Box {
             mainContent()
         }
+        Spacer(modifier = Modifier.weight(1f))
         trailingContent?.let {
             Spacer(modifier = Modifier.width(16.dp))
             it()
         }
         trailingAction?.let {
             Spacer(modifier = Modifier.width(16.dp))
-            it.invoke()
+            it()
         }
         Spacer(modifier = Modifier.width(16.dp))
     }
