@@ -23,11 +23,14 @@ class MainActivity : ComponentActivity() {
     private val networkCallback = object : ConnectivityManager.NetworkCallback() {
         override fun onLost(network: Network) {
             super.onLost(network)
-            Toast.makeText(
-                this@MainActivity,
-                getString(R.string.no_internet_connection),
-                Toast.LENGTH_LONG
-            ).show()
+            val isStillConnected = getCurrentConnectivity()
+            if (!isStillConnected) {
+                Toast.makeText(
+                    this@MainActivity,
+                    getString(R.string.no_internet_connection),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
@@ -53,6 +56,12 @@ class MainActivity : ComponentActivity() {
             .build()
 
         connectivityManager.registerNetworkCallback(networkRequest, networkCallback)
+    }
+
+    private fun getCurrentConnectivity(): Boolean {
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 
     override fun onDestroy() {

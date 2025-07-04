@@ -20,7 +20,7 @@ internal enum class BottomNavigationItem(
         titleResId = R.string.incomes
     ),
     Balance(
-        screen = Screen.Balance,
+        screen = Screen.AccountHome,
         iconResId = R.drawable.balance_ic,
         titleResId = R.string.score
     ),

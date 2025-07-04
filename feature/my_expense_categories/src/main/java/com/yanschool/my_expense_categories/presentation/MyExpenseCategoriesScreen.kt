@@ -28,12 +28,17 @@ fun MyExpenseCategoriesScreenRoot(
 ) {
     val screenState = viewModel.screenState.collectAsStateWithLifecycle()
 
-    MyExpenseCategoriesScreen(paddingValues = paddingValues, screenState = screenState)
+    MyExpenseCategoriesScreen(
+        paddingValues = paddingValues,
+        screenState = screenState,
+        onQueryChange = viewModel::setQuery
+    )
 }
 
 @Composable
 private fun MyExpenseCategoriesScreen(
     paddingValues: PaddingValues,
+    onQueryChange: (String) -> Unit,
     screenState: State<MyExpenseCategoriesScreenState>,
 ) {
     Scaffold(
@@ -51,6 +56,7 @@ private fun MyExpenseCategoriesScreen(
             is MyExpenseCategoriesScreenState.Content -> {
                 MyExpenseCategoriesScreenContent(
                     paddingValues = innerPaddingValues,
+                    onQueryChange = onQueryChange,
                     screenState = currentState
                 )
             }
@@ -78,6 +84,7 @@ private fun MyExpenseCategoriesScreen(
 @Composable
 private fun MyExpenseCategoriesScreenContent(
     paddingValues: PaddingValues,
+    onQueryChange: (String) -> Unit,
     screenState: MyExpenseCategoriesScreenState.Content,
 ) {
     LazyColumn(
@@ -86,7 +93,7 @@ private fun MyExpenseCategoriesScreenContent(
             .padding(top = paddingValues.calculateTopPadding()),
     ) {
         item {
-            SearchBar(query = screenState.searchQuery)
+            SearchBar(query = screenState.searchQuery, onQueryChange = onQueryChange)
             DefaultHorizontalDivider()
         }
 

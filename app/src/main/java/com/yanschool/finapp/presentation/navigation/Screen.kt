@@ -24,7 +24,13 @@ internal sealed interface Screen {
     data object TodayIncomes : Screen
 
     @Serializable
-    data object Balance : Screen
+    data object AccountHome : Screen
+
+    @Serializable
+    data object Account : Screen
+
+    @Serializable
+    data object AccountSettings : Screen
 
     @Serializable
     data object ExpenseCategories : Screen

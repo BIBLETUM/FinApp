@@ -2,7 +2,7 @@ package com.yanschool.history_expenses.domain
 
 import com.yanschool.domain.common_models.TransactionDetail
 import com.yanschool.domain.common_repository.TransactionsRepository
-import com.yanschool.domain.common_usecase.IGetAccountIdFlowUseCase
+import com.yanschool.domain.common_usecase.IGetCurrentAccountFlowUseCase
 import com.yanschool.domain.extensions.filterTransactionsByType
 import com.yanschool.domain.extensions.sortDescendingByDate
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 class TransactionsExpenseHistoryInteractor @Inject constructor(
     private val transactionsRepository: TransactionsRepository,
-    private val accountIdFlowUseCase: IGetAccountIdFlowUseCase
+    private val accountIdFlowUseCase: IGetCurrentAccountFlowUseCase
 ) : ITransactionsExpenseHistoryInteractor {
 
     private val _startDate = MutableStateFlow<String?>(null)
@@ -27,11 +27,10 @@ class TransactionsExpenseHistoryInteractor @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun getFlow(): Flow<Result<List<TransactionDetail>>> {
         return accountIdFlowUseCase.invoke()
-            .filterNotNull()
-            .flatMapLatest { accountId ->
+            .flatMapLatest { account ->
                 dateRangeFlow()
                     .flatMapLatest { (start, end) ->
-                        getTransactionsDetailFlow(accountId, start, end)
+                        getTransactionsDetailFlow(account.id, start, end)
                     }
             }
             .flowOn(Dispatchers.IO)

@@ -1,8 +1,8 @@
 package com.yanschool.account_info.data
 
-import com.yanschool.account_info.domain.AccountInfo
 import com.yanschool.account_info.domain.AccountInfoRepository
 import com.yanschool.data.remote_data_source.api.AccountInfoService
+import com.yanschool.domain.common_models.AccountInfo
 import com.yanschool.utils.extensions.retryFlowWithResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

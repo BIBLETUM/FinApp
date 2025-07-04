@@ -1,5 +1,6 @@
 package com.yanschool.account_info.domain
 
+import com.yanschool.domain.common_models.AccountInfo
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -10,7 +11,7 @@ interface AccountInfoRepository {
     /**
      * Возвращает поток с информацией об аккаунте по его идентификатору.
      *
-     * Поток эмитит [Result], содержащий объект [AccountInfo] при успешной загрузке
+     * Поток эмитит [Result], содержащий объект [com.yanschool.domain.common_models.AccountInfo] при успешной загрузке
      * или ошибку в случае неудачи (например, проблемы с сетью или сервером).
      *
      * @param accountId идентификатор аккаунта, для которого запрашивается информация

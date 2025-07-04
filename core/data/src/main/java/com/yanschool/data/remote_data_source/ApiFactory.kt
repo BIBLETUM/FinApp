@@ -1,6 +1,7 @@
 package com.yanschool.data.remote_data_source
 
 import com.yanschool.data.remote_data_source.api.AccountInfoService
+import com.yanschool.data.remote_data_source.api.AccountSettingsService
 import com.yanschool.data.remote_data_source.api.AccountsService
 import com.yanschool.data.remote_data_source.api.TransactionsService
 import okhttp3.OkHttpClient
@@ -34,5 +35,9 @@ object ApiFactory {
 
     fun createTransactionsService(retrofit: Retrofit): TransactionsService {
         return retrofit.create(TransactionsService::class.java)
+    }
+
+    fun createAccountSettingsService(retrofit: Retrofit): AccountSettingsService {
+        return retrofit.create(AccountSettingsService::class.java)
     }
 }

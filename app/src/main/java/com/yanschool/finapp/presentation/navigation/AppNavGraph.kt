@@ -13,7 +13,8 @@ internal fun AppNavGraph(
     splashScreenContent: @Composable () -> Unit,
     todayExpensesScreenContent: @Composable () -> Unit,
     todayIncomesScreenContent: @Composable () -> Unit,
-    balanceScreenContent: @Composable () -> Unit,
+    accountScreenContent: @Composable () -> Unit,
+    accountSettingsScreenContent: @Composable () -> Unit,
     myExpenseCategoriesScreenContent: @Composable () -> Unit,
     settingsScreenContent: @Composable () -> Unit,
     historyExpensesScreenContent: @Composable () -> Unit,
@@ -34,9 +35,10 @@ internal fun AppNavGraph(
             todayIncomesScreenContent,
             historyIncomesScreenContent
         )
-        composable<Screen.Balance> {
-            balanceScreenContent()
-        }
+        AccountNavGraph(
+            accountScreenContent,
+            accountSettingsScreenContent
+        )
         composable<Screen.ExpenseCategories> {
             myExpenseCategoriesScreenContent()
         }

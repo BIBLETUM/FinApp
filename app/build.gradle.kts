@@ -34,6 +34,7 @@ dependencies {
     implementation(project(":feature:splash"))
     implementation(project(":feature:account_info"))
     implementation(project(":feature:my_expense_categories"))
+    implementation(project(":feature:account_settings"))
     implementation(project(":feature:today_expenses"))
     implementation(project(":feature:today_incomes"))
     implementation(project(":feature:history_incomes"))

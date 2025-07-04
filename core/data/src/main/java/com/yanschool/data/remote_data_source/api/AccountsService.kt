@@ -1,6 +1,6 @@
 package com.yanschool.data.remote_data_source.api
 
-import com.yanschool.data.remote_data_source.common_models.UserDto
+import com.yanschool.data.remote_data_source.common_models.AccountShortDto
 import retrofit2.http.GET
 
 /**
@@ -11,8 +11,8 @@ interface AccountsService {
     /**
      * Запрашивает список счетов пользователя.
      *
-     * @return список DTO пользователей ([UserDto])
+     * @return список DTO пользователей ([AccountShortDto])
      */
     @GET("accounts")
-    suspend fun getAccounts(): List<UserDto>
+    suspend fun getAccounts(): List<AccountShortDto>
 }

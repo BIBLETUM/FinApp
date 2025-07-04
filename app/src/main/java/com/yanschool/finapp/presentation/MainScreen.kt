@@ -17,6 +17,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.yanschool.account_info.presentation.AccountBalanceScreenRoot
+import com.yanschool.account_settings.presentation.AccountSettingsScreenRoot
 import com.yanschool.finapp.presentation.components.navigation.NavigationBarItemIcon
 import com.yanschool.finapp.presentation.components.navigation.NavigationBarItemLabel
 import com.yanschool.finapp.presentation.navigation.AppNavGraph
@@ -109,8 +110,10 @@ internal fun MainScreen() {
                     navHostController.navigate(Screen.HistoryIncomes)
                 })
             },
-            balanceScreenContent = {
-                AccountBalanceScreenRoot(paddingValues)
+            accountScreenContent = {
+                AccountBalanceScreenRoot(paddingValues, onEditClick = {
+                    navHostController.navigate(Screen.AccountSettings)
+                })
             },
             myExpenseCategoriesScreenContent = {
                 MyExpenseCategoriesScreenRoot(paddingValues)
@@ -127,6 +130,14 @@ internal fun MainScreen() {
                 HistoryIncomesScreenRoot(paddingValues) {
                     navHostController.popBackStack()
                 }
+            },
+            accountSettingsScreenContent = {
+                AccountSettingsScreenRoot(
+                    paddingValues = paddingValues,
+                    onDone = {
+                        navHostController.popBackStack()
+                    }
+                )
             }
         )
     }

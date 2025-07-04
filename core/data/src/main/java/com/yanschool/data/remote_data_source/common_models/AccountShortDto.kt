@@ -2,7 +2,7 @@ package com.yanschool.data.remote_data_source.common_models
 
 import com.google.gson.annotations.SerializedName
 
-data class UserDto(
+data class AccountShortDto(
     @SerializedName("id")
     val id: Int,
     @SerializedName("userId")

@@ -45,3 +45,4 @@ listOf(
 ).forEach {
     include(":feature:$it")
 }
+include(":feature:account_settings")

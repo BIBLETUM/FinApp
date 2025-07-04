@@ -1,5 +1,6 @@
 package com.yanschool.splash.presentation
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -40,6 +41,7 @@ private fun SplashScreen(
 ) {
     when (val currentScreenState = screenState.value) {
         is SplashScreenState.Error -> {
+            Log.d("SplashScreen", currentScreenState.msg)
             ErrorScreen(
                 modifier = Modifier.fillMaxSize(),
                 message = currentScreenState.msg

@@ -1,5 +1,7 @@
 package com.yanschool.account_info.presentation
 
+import com.yanschool.common_models.AccountBalanceUi
+
 sealed interface AccountBalanceScreenState {
 
     data object Loading : AccountBalanceScreenState

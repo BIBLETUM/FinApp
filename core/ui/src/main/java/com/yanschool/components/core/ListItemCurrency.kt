@@ -1,4 +1,4 @@
-package com.yanschool.account_info.presentation.components
+package com.yanschool.components.core
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,25 +9,26 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.yanschool.components.core.ListItem
 import com.yanschool.finapp.ui.R
 
 @Composable
 fun ListItemCurrency(
-    currency: String,
+    currencySymbol: String,
+    backgroundColor: Color = MaterialTheme.colorScheme.primaryContainer,
     modifier: Modifier = Modifier,
 ) {
     ListItem(
         modifier = modifier
             .fillMaxWidth()
             .heightIn(56.dp)
-            .background(MaterialTheme.colorScheme.primaryContainer),
+            .background(backgroundColor),
         trailingContent = {
             Text(
-                text = currency,
+                text = currencySymbol,
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurface,
             )
